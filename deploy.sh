@@ -7,7 +7,7 @@ echo "---- DEPLOY START $(date) ----"
 
 git pull origin main
 npm install
-node scripts/updateMethodology.js
+# node scripts/updateMethodology.js
 npm run build
 
 echo "---- DEPLOY END $(date) ----"
