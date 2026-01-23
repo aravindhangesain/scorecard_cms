@@ -1,0 +1,250 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const Data = lang === "zh" ? zh : en;
+
+---
+
+<section id="PowerDegration" class="Pan-spotlight">
+    <div class="Pan-container">
+        <!-- HEADER -->
+        <div class="Pan-header">
+            <div class="Pan-title">
+                <h2>
+                    {Data.bds_power_title}<br />
+                    <span>{Data.bds_power_span}</span>
+                </h2>
+            </div>
+
+            <div class="Pan-description">
+                <p>
+                    {Data.bds_power_description}
+                </p>
+            </div>
+        </div>
+        <div class="Pan-cards">
+            <div class="Pan-card">
+                <div class="Pan-card-image">
+                    <img
+                        src="/images/bds-chart.jpg"
+                        alt={Data.bds_power_pancard_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+
+                <p class="Pan-card-caption">
+                    {Data.bds_power_pancard_caption}
+                </p>
+            </div>
+        </div>
+        <a href={Data.bds_power_link_url} target="_blank" class="text-link"> {Data.bds_power_link_text} </a>
+        <!-- FULL WIDTH FOOTNOTE ROW -->
+        <div class="footnote-row">
+            <a
+                class="footnote"
+                href={Data.bds_power_footnote_row_url}
+                target="_blank"
+            >
+                {Data.bds_power_footnote_row_text}
+            </a>
+
+            <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+        </div>
+    </div>
+</section>
+
+<style>
+    .Pan-spotlight {
+        padding: clamp(40px, 6vw, 80px) 20px;
+        background: #ffffff;
+    }
+
+    .Pan-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .Pan-header {
+        display: grid;
+        grid-template-columns: 1fr 1.9fr;
+        gap: 40px;
+        margin-bottom: clamp(20px, 4vw, 40px);
+    }
+
+    .Pan-title h2 {
+        font-size: 46.8px;
+        line-height: 57.8px;
+        color: #072643;
+        margin-bottom: 2rem;
+        font-family: "Azo Sans" sans-serif;
+        font-weight: 400;
+        text-align: left;
+        letter-spacing: -1.5px;
+    }
+
+    .Pan-title span {
+        font-weight: 700;
+        font-style: italic;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .Pan-description p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.01em;
+    }
+
+    .Pan-cards {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Pan-card {
+        width: 100%;
+        max-width: 1200px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .Pan-card-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: clamp(8px, 2vw, 16px);
+    }
+
+    .Pan-card-image img {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    .Pan-card-caption {
+        font-size: 12px;
+        line-height: 18px;
+        color: #072643;
+        max-width: 720px;
+        margin: 0 auto;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .text-link {
+        color: #072643;
+        text-decoration: none;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        font-family: "Work Sans", sans-serif;
+        margin-top: 20px;
+
+        line-height: 21px;
+        padding-bottom: 4px;
+        /* underline using background */
+        background-image: linear-gradient(#072643, #072643);
+        background-repeat: no-repeat;
+        background-size: 100% 1.5px;
+        background-position: 100% 100%;
+
+        transition: background-size 0.4s ease;
+    }
+
+    /* hover: underline disappears left → right */
+    .text-link:hover {
+        background-size: 0% 1.5px;
+    }
+    .footnote-row {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .footnote-row .footnote {
+        max-width: 1100px;
+        font-weight: 400;
+
+        font-size: 14px;
+
+        line-height: 18px;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        color: #072643;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        text-align: left;
+    }
+
+    /* Keep arrow size fixed */
+    .footnote-row img.cta-arrow {
+        width: 60px; /* keep original size */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Slide on hover */
+    .footnote-row:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click feedback */
+    .footnote-row:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .Pan-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Pan-header {
+            text-align: left;
+        }
+
+        .Pan-card-caption {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .Pan-title h2 {
+            font-size: 28px;
+        }
+
+        .Pan-description p {
+            font-size: 14px;
+        }
+
+        .Pan-card-caption {
+            font-size: 13px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

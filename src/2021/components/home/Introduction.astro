@@ -1,0 +1,112 @@
+---
+---
+<section class="home_intro">
+  <div class="intro-overlay"></div>
+
+  <div class="container intro-content">
+    <h1 class="hero-title">
+      2021 PV <span class="pvel-underline">Module</span><br />
+      <span class="pvel-underline">Reliability</span> Scorecard
+    </h1>
+
+    <p>
+      The 7th Edition of PVEL’s PV Module <br />
+      Reliability Scorecard features a record 26 <br />
+      Top Performers and highlights <br />
+      many opportunities to improve module quality.
+    </p>
+  </div>
+</section>
+
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ===== HERO SECTION ===== */
+.home_intro {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #86aee3;
+  color: #ffffff;
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.intro-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 200px 20px 0;
+}
+
+/* ===== TITLE ===== */
+.home_intro h1.hero-title {
+  font-family: "Asap", sans-serif;
+  font-weight: 550;
+  font-size: 40px;
+  line-height: 1.05;
+  margin-bottom: 22px;
+  color: #ffffff;
+}
+
+/* ===== FORCE WHITE TEXT + GREEN LINE (PVEL STYLE) ===== */
+.home_intro h1.hero-title span.pvel-underline {
+  position: relative;
+  display: inline-block;
+  color: #ffffff !important;
+
+  padding-bottom: 16px;
+
+  overflow: visible;
+}
+
+.home_intro h1.hero-title span.pvel-underline::after {
+  content: "";
+  position: absolute;
+
+  left: -4px;
+  width: calc(100% + 8px);
+
+  bottom: 2px;
+
+  height: 10px !important;
+
+  background-color: #7CFF9A;
+}
+
+
+/* ===== PARAGRAPH ===== */
+.home_intro p {
+  font-family: "Asap", sans-serif;
+  font-weight: 550;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 720px;
+  color: #ffffff;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .intro-content {
+    padding-top: 140px;
+    text-align: center;
+  }
+
+  .home_intro h1.hero-title {
+    font-size: 32px;
+  }
+
+  .home_intro h1.hero-title span.pvel-underline::after {
+    bottom: -12px;
+    height: 8px;
+  }
+}
+
+</style>

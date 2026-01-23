@@ -1,0 +1,123 @@
+<section class="methodology">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="methodology-header">
+      <h2 class="methodology-title">Methodology</h2>
+
+      <a href="/methodology" class="methodology-btn">
+        Learn More
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- BODY -->
+    <div class="methodology-body">
+      <!-- TEXT -->
+      <div class="methodology-text">
+        <p>
+          We use a consistent methodology for testing and ranking PV modules:
+          the Product Qualification Program. Our process helps buyers compare
+          products consistently from year to year and Scorecard to Scorecard.
+        </p>
+
+        <p>
+          Our testing goes beyond the model types of PV modules to assess bills
+          of materials. This approach ensures buyers can procure the specific
+          products that we have validated in testing.
+        </p>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="methodology-image">
+        <img
+          src="/images/2022/VMS14878-1-1.png"
+          alt="PV module testing methodology"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.methodology {
+  background: #ffffff;
+  padding: 5.5rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===== HEADER ===== */
+.methodology-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.methodology-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.methodology-btn {
+  background: #5CB66A;
+  color: #ffffff;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Divider */
+.divider {
+  margin: 2rem 0 3.5rem;
+  height: 1px;
+  background: #e6e8f0;
+}
+
+/* ===== BODY ===== */
+.methodology-body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.methodology-text p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #2f2f2f;
+  margin-bottom: 1.6rem;
+}
+
+.methodology-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .methodology-body {
+    grid-template-columns: 1fr;
+  }
+
+  .methodology-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+
+</style>

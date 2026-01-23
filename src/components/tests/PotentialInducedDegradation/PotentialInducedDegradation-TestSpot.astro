@@ -1,0 +1,212 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="TestSpotlight" class="Pid-spotlight">
+  <div class="Pid-container">
+
+    <div class="Pid-header">
+      <div class="Pid-title">
+        <h2>
+          {data.pid_spotlight_title}<br />
+          <span style="font-style:italic">{data.pid_spotlight_span}</span>
+        </h2>
+      </div>
+
+      <div class="Pid-description">
+        <p>
+          {data.pid_spotlight_desc}
+        </p>
+      </div>
+    </div> 
+
+    <div class="Pid-cards">
+
+      <div class="Pid-card">
+        <div class="Pid-card-header">
+          <h3>{data.pid_card_initial_title}</h3>
+          <p>{data.pid_card_initial_text}</p>
+        </div>
+        <div class="Pid-card-image">
+          <img src="/images/EN-PID-1.png" alt={data.pid_card_initial_title} class="modal-trigger" />
+        </div>
+      </div>
+
+      <div class="Pid-card">
+        <div class="Pid-card-header">
+          <h3>{data.pid_card_stress_title}</h3>
+          <p>{data.pid_card_stress_text}</p>
+        </div>
+        <div class="Pid-card-image">
+          <img src="/images/EN-PID-2.png" alt={data.pid_card_stress_title} class="modal-trigger" />
+        </div>
+      </div>
+
+      <div class="Pid-card">
+        <div class="Pid-card-header">
+          <h3>{data.pid_card_uv_title}</h3>
+          <p>{data.pid_card_uv_text}</p>
+        </div>
+        <div class="Pid-card-image">
+          <img src="/images/EN-PID-3.png" alt={data.pid_card_uv_title} class="modal-trigger" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+
+  .Pid-spotlight {
+  padding: clamp(40px, 6vw, 80px) 20px;
+  background: #ffffff;
+}
+
+.Pid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+
+.Pid-header {
+  display: grid;
+  grid-template-columns: 1fr 1.9fr;
+  gap: 40px;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.Pid-title h2 {
+  font-size: 46.8px;
+  line-height: 1.2;
+  color: #072643;
+  font-family: "Azo Sans" sans-serif;
+  font-weight: 400;
+}
+
+.Pid-title span {
+  font-weight: 800;
+  font-family: "Azo Sans" sans-serif;
+  font-style: italic;
+}
+
+.Pid-description p {
+  font-size: 16px;
+  line-height: 28px;
+  color: #072643;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+
+
+.Pid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2vw, 30px);
+  max-width: 900px;
+}
+
+.Pid-card {
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Header */
+.Pid-card-header {
+  background: #0a2b4f;
+  color: #ffffff;
+  padding: 16px;
+  min-height: 190px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Pid-card-header h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-family: "Azo Sans" sans-serif;
+}
+
+.Pid-card-header p {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing:0.01em;
+  text-align: left;
+  font-family: "Work Sans" sans-serif;
+  font-weight: 400;
+}
+
+
+.Pid-card-image img {
+  width: 100%;
+  display: block;
+}
+
+
+
+@media (max-width: 1024px) {
+  .Pid-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .Pid-cards {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+
+  .Pid-card-header {
+    min-height: 140px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .Pid-header {
+    text-align: left;
+  }
+
+  .Pid-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .Pid-card-header {
+    min-height: auto;
+    padding: 20px 16px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .Pid-title h2 {
+    font-size: 28px;
+  }
+
+  .Pid-description p {
+    font-size: 14px;
+  }
+  }
+
+  /* Cursor */
+  .modal-trigger {
+    cursor: pointer;
+  }
+
+</style>

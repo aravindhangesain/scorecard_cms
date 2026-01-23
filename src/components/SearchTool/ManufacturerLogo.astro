@@ -1,0 +1,62 @@
+---
+// src/components/ManufacturerLogo.astro
+interface Props {
+    manufacturer: string;
+}
+
+const { manufacturer } = Astro.props;
+
+// Map the manufacturer name string to the logo path
+const manufacturerLogos: Record<string, string> = {
+    'Adani Solar': '/images/Manufactures/ADANI.webp',
+    'Aiko Solar': '/images/Manufactures/AIKO.webp',
+    'Astronergy': '/images/Manufactures/ASTRONERGY.webp',
+    'Canadian Solar': '/images/Manufactures/CANADIAN_SOLAR.webp',
+    'DMEGC Solar': '/images/Manufactures/DMEGC.webp',
+    'EliTe Solar': '/images/Manufactures/ELITE-SOLAR.webp',
+    'Emmvee': '/images/Manufactures/EMMVEE.webp',
+    'GCL': '/images/Manufactures/GCL.webp',
+    'HD Hyundai': '/images/Manufactures/HYUNDAI.webp',
+    'Heliene': '/images/Manufactures/HELIENE.webp',
+    'HT-SAAE': '/images/Manufactures/HT-SAAE.webp',
+    'JA Solar': '/images/Manufactures/JA-SOLAR.webp',
+    'Jinko': '/images/Manufactures/JINKO.webp',
+    'Jolywood': '/images/Manufactures/JOLYWOOD.webp',
+    'Longi': '/images/Manufactures/LONGI.webp',
+    'Maxeon': '/images/Manufactures/MAXEON.webp',
+    'Phono Solar': '/images/Manufactures/PHONO-SOLAR.webp',
+    'Qcells': '/images/Manufactures/QCELLS.webp',
+    'REC Group': '/images/Manufactures/REC.webp',
+    'Risen Energy': '/images/Manufactures/RISEN.webp',
+    'SEG Solar': '/images/Manufactures/SEG.webp',
+    'Seraphim': '/images/Manufactures/Seraphim.webp',
+    'Silfab Solar': '/images/Manufactures/SILFAB.webp',
+    'Talesun': '/images/Manufactures/Talesun.webp',
+    'Trina Solar': '/images/Manufactures/TRINA.webp',
+    'Vikram Solar': '/images/Manufactures/VIKRAM.webp',
+    'VSUN': '/images/Manufactures/VSUN.webp',
+    'Waaree': '/images/Manufactures/WAAREE.webp',
+    'Yingli Solar': '/images/Manufactures/YINGLI.webp',
+    'ZNShine Solar': '/images/Manufactures/ZNSHINE.webp',
+};
+
+const logoPath = manufacturerLogos[manufacturer];
+---
+
+{logoPath ? (
+    <img 
+        src={logoPath} 
+        alt={`${manufacturer} logo`}
+        class="brand-logo"
+    />
+) : (
+    <span>{manufacturer}</span> 
+)}
+
+<style>
+    .brand-logo {
+        height: 48px; 
+        width: auto;
+        object-fit: contain;
+    }
+</style>

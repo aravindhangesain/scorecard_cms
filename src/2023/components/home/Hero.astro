@@ -1,0 +1,139 @@
+---
+/* Hero – final tuned version */
+---
+
+<section class="hero">
+  <div class="hero-container">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <span class="badge">JUST RELEASED</span>
+
+      <h1>
+        The 2023 PV Module<br />
+        Reliability Scorecard
+      </h1>
+
+      <div class="scroll">
+        <span class="circle">↓</span>
+        <span class="scroll-text">SCROLL DOWN FOR MORE</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <p>
+        <strong>It’s here.</strong> The 9th Edition of PVEL’s PV Module Reliability
+        Scorecard features Top Performers from 35 manufacturers and is the solar industry’s
+        essential resource for PV module reliability and performance insights.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- RESET ---------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :global(html),
+  :global(body) {
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    color: #0b0b0b;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding-top: 90px; /* space below navbar */
+    padding-bottom: 120px;
+    background: #ffffff;
+  }
+
+  .hero-container {
+    max-width: 1320px; /* IMPORTANT: wider like reference */
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: grid;
+    grid-template-columns: 1.45fr 1fr; /* IMPORTANT: wider left column */
+    gap: 4.5rem;
+    align-items: center;
+  }
+
+  /* ---------- LEFT ---------- */
+  .badge {
+    display: inline-block;
+    background: #0a5bd3;
+    color: #ffffff;
+    padding: 0.45rem 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-left h1 {
+    font-size: clamp(3rem, 4.8vw, 4.3rem);
+    font-weight: 700;
+    line-height: 1.08;
+    max-width: 720px; /* controls line breaks */
+    margin-bottom: 3.2rem;
+  }
+
+  /* ---------- SCROLL ---------- */
+  .scroll {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .circle {
+    width: 52px;
+    height: 52px;
+    border: 1.5px solid #0a5bd3;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #0a5bd3;
+    font-size: 1.1rem;
+  }
+
+  .scroll-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    font-weight: 650;
+  }
+
+  /* ---------- RIGHT ---------- */
+  .hero-right p {
+    max-width: 440px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2c2c2c;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero {
+      padding-top: 110px;
+    }
+
+    .hero-left h1 {
+      max-width: 100%;
+    }
+  }
+</style>

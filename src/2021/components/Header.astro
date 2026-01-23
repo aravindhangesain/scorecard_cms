@@ -1,0 +1,781 @@
+---
+import { getLang } from "../../2021/data/useLang";
+import en from "../../2021/data/ln.json"; // English
+import zh from "../../2021/data/ln-eg.json"; // Chinese
+
+const normalize = (path) =>
+  path.replace(/^\/zh/, "").replace(/\/$/, "");
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+
+// current path WITHOUT language prefix
+const pathWithoutLang = Astro.url.pathname.replace(/^\/(zh)\//, "/");
+
+const currentPath = normalize(Astro.url.pathname);
+
+const isActive = (path) => currentPath === normalize(path);
+
+const isTestsActive =
+  currentPath.startsWith("/thermalcycling") ||
+  currentPath.startsWith("/dampheat") ||
+  currentPath.startsWith("/mechanicalstresssequence") ||
+  currentPath.startsWith("/hailstresssequence") ||
+  currentPath.startsWith("/pid") ||
+  currentPath.startsWith("/lidletid") ||
+  currentPath.startsWith("/pan-performance") ||
+  currentPath.startsWith("/uvid") ||
+  currentPath.startsWith("/bds") ||
+  currentPath.startsWith("/iam") ||
+  currentPath.startsWith("/failure");
+
+const isTopPerformersActive =
+  currentPath.startsWith("/searchtool") ||
+  currentPath.startsWith("/manufacturers");
+---
+
+
+<div class="overlay"></div>
+<header class="header">
+  <div class="container">
+    <a href={isZh ? "/zh/" : "/"} class="logo">
+      <img src="/images/kiwa.jpg" alt="Kiwa Logo" />
+    </a>
+    <nav class="nav-center">
+      <a href={isZh ? "/zh/methodology/" : "/methodology/"} class={isActive("/methodology/") ? "active" : ""}>
+        {data.nav_methodology}
+      </a>
+      <div class="nav-item dropdown">
+        <a href="#" class={`dropdown-toggle ${isTestsActive ? "active" : ""}`}>
+          {data.nav_tests}
+        </a>
+        <div class="dropdown-menu">
+          <a href={isZh ? "/zh/thermalcycling/" : "/thermalcycling/"}>{data.nav_tc}</a>
+          <a href={isZh ? "/zh/dampheat/" : "/dampheat/"}>{data.nav_dh}</a>
+          <a href={isZh ? "/zh/mechanicalstresssequence/" : "/mechanicalstresssequence/"}>{data.nav_mss}</a>
+          <a href={isZh ? "/zh/hailstresssequence/" : "/hailstresssequence/"}>{data.nav_hss}</a>
+          <a href={isZh ? "/zh/pid/" : "/pid/"}>{data.nav_pid}</a>
+          <a href={isZh ? "/zh/lidletid/" : "/lidletid/"}>{data.nav_lid}</a>
+          <a href={isZh ? "/zh/pan-performance/" : "/pan-performance/"}>{data.nav_pan}</a>
+          <a href={isZh ? "/zh/uvid/" : "/uvid/"}>{data.nav_uvid}</a>
+          <a href={isZh ? "/zh/bds/" : "/bds/"}>{data.nav_bds}</a>
+          <a href={isZh ? "/zh/iam/" : "/iam/"}>{data.nav_iam}</a>
+          <a href={isZh ? "/zh/failure/" : "/failure/"}>{data.nav_failures}</a>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a
+          href="#"
+          class={`dropdown-toggle ${isTopPerformersActive ? "active" : ""}`}
+        >
+          {data.nav_top_performers}
+        </a>
+
+        <div class="dropdown-menu">
+          <a href={isZh ? "/zh/searchtool/" : "/searchtool/"}>{data.nav_search_tool}</a>
+          <a href={isZh ? "/zh/manufacturers/" : "/manufacturers/"}>{data.nav_by_manufacturer}</a>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="#">{data.nav_take_action}</a>
+        <div class="dropdown-menu">
+          <a
+            href="https://www.kiwa.com/us/en-us/services/engineering-and-consultancy/ppp"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{data.nav_ppp}
+          </a>
+          <a
+            href="https://www.kiwa.com/en/markets/energy-and-power-generation/solar/locations/kiwa-pi-berlin/module-best-practices"
+            target="_blank"
+            rel="noopener noreferrer">{data.nav_best_practices}</a
+          >
+          <a
+            href="https://www.kiwa.com/pvel/pqp/sign-up/"
+            target="_blank"
+            rel="noopener noreferrer">{data.nav_sign_up}</a
+          >
+        </div>
+      </div>
+      <a
+        href="https://www.kiwa.com/pvel"
+        target="_blank"
+        rel="noopener noreferrer">{data.nav_about_us}</a
+      >
+      <a href={isZh ? pathWithoutLang : `/zh${pathWithoutLang}`} class="lang">
+        <img
+          src={isZh ? "/images/en-us.png" : "/images/china-flag.png"}
+          class="flag"
+        />
+        {isZh ? "English" : "中文"}
+      </a>
+    </nav>
+    <div class="header-btn">
+      <a
+        href="https://www.kiwa.com/us/en-us/services/engineering-and-consultancy/ppp"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn">{data.nav_join_network}</a
+      >
+    </div>
+    <!-- HAMBURGER -->
+    <button class="hamburger" aria-label="Open menu">
+      <img src="/images/Icon_Hamburger_Responsive.svg" />
+    </button>
+  </div>
+</header>
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer">
+  <button class="close-btn" aria-label="Close menu">✕</button>
+  <nav class="mobile-nav">
+    <a
+      href={isZh ? "/zh/methodology/" : "/methodology/"}
+      class={`mobile-nav-link ${isActive("/methodology/") ? "active" : ""}`}
+    >
+      {data.nav_methodology}
+    </a>
+
+    <details class="mobile-dropdown">
+      <summary class="mobile-summary">
+        <span class="mobile-label">{data.nav_tests}</span>
+        <svg class="mobile-icon" viewBox="0 0 24 24" width="16" height="16">
+          <path
+            d="M6 9l6 6 6-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"></path>
+        </svg>
+      </summary>
+      <div class="mobile-submenu">
+        <a
+          href={isZh ? "/zh/thermalcycling/" : "/thermalcycling/"}
+          class={`mobile-submenu-link ${isActive("/thermalcycling/") ? "active" : ""}`}
+        >
+          <span>{data.nav_tc}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/dampheat/" : "/dampheat/"}
+          class={`mobile-submenu-link ${isActive("/dampheat/") ? "active" : ""}`}
+        >
+          <span>{data.nav_dh}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/mechanicalstresssequence/" : "/mechanicalstresssequence/"}
+          class={`mobile-submenu-link ${isActive("/mechanicalstresssequence/") ? "active" : ""}`}
+        >
+          <span>{data.nav_mss}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/hailstresssequence/" : "/hailstresssequence/"}
+          class={`mobile-submenu-link ${isActive("/hailstresssequence/") ? "active" : ""}`}
+        >
+          <span>{data.nav_hss}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/pid/" : "/pid/"}
+          class={`mobile-submenu-link ${isActive("/pid/") ? "active" : ""}`}
+        >
+          <span>{data.nav_pid}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/lidletid/" : "/lidletid/"}
+          class={`mobile-submenu-link ${isActive("/lidletid/") ? "active" : ""}`}
+        >
+          <span>{data.nav_lid}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/pan-performance/" : "/pan-performance/"}
+          class={`mobile-submenu-link ${isActive("/pan-performance/") ? "active" : ""}`}
+        >
+          <span>{data.nav_pan}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/uvid/" : "/uvid/"}
+          class={`mobile-submenu-link ${isActive("/uvid/") ? "active" : ""}`}
+        >
+          <span>{data.nav_uvid}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/bds/" : "/bds/"}
+          class={`mobile-submenu-link ${isActive("/bds/") ? "active" : ""}`}
+        >
+          <span>{data.nav_bds}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/iam/" : "/iam/"}
+          class={`mobile-submenu-link ${isActive("/iam/") ? "active" : ""}`}
+        >
+          <span>{data.nav_iam}</span>
+        </a>
+        <a
+          href={isZh ? "/zh/failure/" : "/failure/"}
+          class={`mobile-submenu-link ${isActive("/failure/") ? "active" : ""}`}
+        >
+          <span>{data.nav_failures}</span>
+        </a>
+      </div>
+    </details>
+    <details class="mobile-dropdown">
+      <summary class="mobile-summary">
+        <span class="mobile-label">{data.nav_top_performers}</span>
+        <svg class="mobile-icon" viewBox="0 0 24 24" width="16" height="16">
+          <path
+            d="M6 9l6 6 6-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"></path>
+        </svg>
+      </summary>
+      <div class="mobile-submenu">
+        <a
+          href={isZh ? "/zh/searchtool/" : "/searchtool/"}
+          class={`mobile-submenu-link ${isActive("/searchtool/") ? "active" : ""}`}
+          ><span>{data.nav_search_tool}</span></a
+        >
+        <a
+          href={isZh ? "/zh/manufacturers/" : "/manufacturers/"}
+          class={`mobile-submenu-link ${isActive("/manufacturers/") ? "active" : ""}`}
+          ><span>{data.nav_by_manufacturer}</span></a
+        >
+      </div>
+    </details>
+    <details class="mobile-dropdown">
+      <summary class="mobile-summary">
+        <span class="mobile-label">{data.nav_take_action}</span>
+        <svg class="mobile-icon" viewBox="0 0 24 24" width="16" height="16">
+          <path
+            d="M6 9l6 6 6-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"></path>
+        </svg>
+      </summary>
+      <div class="mobile-submenu">
+        <a
+          href="https://www.kiwa.com/us/en-us/services/engineering-and-consultancy/ppp"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-submenu-link"><span>{data.nav_ppp}</span></a
+        >
+        <a
+          href="https://www.kiwa.com/en/markets/energy-and-power-generation/solar/locations/kiwa-pi-berlin/module-best-practices"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-submenu-link"><span>{data.nav_best_practices}</span></a
+        >
+        <a
+          href="https://www.kiwa.com/pvel/pqp/sign-up/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-submenu-link"><span>{data.nav_sign_up}</span></a
+        >
+      </div>
+    </details>
+    <a
+      href="https://www.kiwa.com/pvel"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mobile-nav-link">{data.nav_about_us}</a
+    >
+    <a
+      href={isZh ? pathWithoutLang : `/zh${pathWithoutLang}`}
+      class="mobile-nav-link mobile-lang"
+    >
+      <img
+        src={isZh ? "/images/en-us.png" : "/images/china-flag.png"}
+        class="flag"
+      />
+      {isZh ? "English" : "中文"}
+    </a>
+
+    <a
+      href="https://www.kiwa.com/us/en-us/services/engineering-and-consultancy/ppp"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mobile-cta">{data.nav_join_network}</a
+    >
+  </nav>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".header");
+    const hamburger = document.querySelector(".hamburger");
+    const drawer = document.querySelector(".mobile-drawer");
+    const closeBtn = document.querySelector(".close-btn");
+    const overlay = document.querySelector(".overlay");
+    let lastScrollY = window.scrollY;
+    hamburger.addEventListener("click", () => {
+      drawer.classList.add("open");
+      hamburger.classList.add("open");
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+    closeBtn.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      hamburger.classList.remove("open");
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+    overlay.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      hamburger.classList.remove("open");
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+    drawer.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+    document.addEventListener("click", (e) => {
+      if (
+        drawer.classList.contains("open") &&
+        !drawer.contains(e.target) &&
+        !hamburger.contains(e.target)
+      ) {
+        drawer.classList.remove("open");
+        hamburger.classList.remove("open");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    });
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        header.classList.add("hide");
+      } else if (currentScrollY < lastScrollY) {
+        header.classList.remove("hide");
+        if (currentScrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+      if (currentScrollY < 10) {
+        header.classList.remove("hide", "scrolled");
+      }
+      lastScrollY = currentScrollY;
+    });
+  });
+</script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body,
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9998;
+    pointer-events: none;
+  }
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .header {
+    background: transparent;
+    padding: 16px 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    font-size: 17px;
+    font-family: "Work Sans";
+    transition:
+      top 0.35s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .header.hide {
+    top: -120px;
+  }
+  .header.scrolled {
+    background: #072643;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0, 100px;
+  }
+  .logo {
+    position: relative;
+    z-index: 10001;
+  }
+  .logo img {
+    max-height: 50px;
+    padding: 5px;
+  }
+  .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 15px;
+    white-space: nowrap;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-center > a.active::after,
+  .nav-item.dropdown > a.active::after {
+    width: 100%;
+  }
+  .nav-center a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 5px 0;
+  }
+  .nav-center > a,
+  .nav-item.dropdown > a {
+    position: relative;
+    text-decoration: none;
+  }
+  .nav-center > a::after,
+  .nav-item.dropdown > a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  .nav-center > a:hover::after,
+  .nav-item.dropdown > a:hover::after {
+    width: 100%;
+  }
+  .nav-item.dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 18px;
+    background: white;
+    margin-top: 5px;
+    border-radius: 5px;
+    min-width: 250px;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  .dropdown-menu a {
+    padding: 10px 15px;
+    color: #072643;
+    text-decoration: none;
+    display: block;
+    font-weight: 200;
+    white-space: normal;
+    font-size: 15px;
+  }
+  .dropdown-menu a:hover {
+    background: #0054c5;
+    color: white;
+  }
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: flex;
+  }
+  .nav-center .lang img.flag {
+    width: 24px;
+    height: 26px;
+    margin-right: 5px;
+  }
+  .header-btn .btn {
+    background: #f0f0e0;
+    color: #282828;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 200;
+    transition: all 0.3s ease;
+  }
+  .header-btn .btn:hover {
+    background: #e6e6e6;
+  }
+  .hamburger {
+    position: relative;
+    width: 30px;
+    height: 24px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10001;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+  }
+  /* MOBILE DRAWER - Hidden on desktop */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    background: #0054c5;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 10000;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 10001;
+    transition: background 0.3s ease;
+  }
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  /* MOBILE NAV STYLES */
+  .mobile-nav {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .mobile-nav-link {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 300;
+    padding: 8px 0;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-dropdown {
+    width: 100%;
+  }
+  .mobile-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    padding: 8px 0;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .mobile-label {
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .mobile-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    width: 20px;
+    height: 20px;
+  }
+  .mobile-dropdown[open] .mobile-icon {
+    transform: rotate(180deg);
+  }
+  .mobile-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      margin-top 0.4s ease;
+    margin-top: 0;
+  }
+  .mobile-dropdown[open] .mobile-submenu {
+    max-height: 500px;
+    margin-top: 12px;
+  }
+  .mobile-submenu-link {
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: 300;
+    opacity: 0.85;
+    padding: 6px 0;
+    padding-left: 16px;
+    display: block;
+    text-align: left;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+  .mobile-submenu-link span {
+    position: relative;
+    display: inline-block;
+  }
+  .mobile-submenu-link span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+  }
+  .mobile-dropdown[open] .mobile-submenu-link {
+    transform: translateX(0);
+  }
+  .mobile-submenu-link:hover span::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+  .mobile-submenu-link:hover {
+    opacity: 1;
+  }
+  .mobile-lang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mobile-lang img.flag {
+    width: 24px;
+    height: 16px;
+  }
+  .mobile-cta {
+    margin-top: 20px;
+    border: 2px solid white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+  }
+  .mobile-cta:hover {
+    background: white;
+    color: #0054c5;
+  }
+
+  /* =========================
+   MOBILE ACTIVE STATE
+========================= */
+
+  .mobile-nav-link {
+    display: inline-block; /* ✅ REQUIRED */
+    width: fit-content; /* ✅ ADD THIS */
+  }
+
+  .mobile-nav-link.active {
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .mobile-nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+  }
+
+  /* Submenu underline */
+  .mobile-submenu-link.active span::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+
+  /* RESPONSIVE - Mobile only changes */
+  @media (max-width: 1054px) {
+    .nav-center,
+    .header-btn {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .logo img {
+      max-height: 30px;
+      padding: 5px;
+    }
+    /* ✅ REPLACE: Start transparent, add background on scroll */
+    .header {
+      background: transparent;
+    }
+    .header.scrolled {
+      background: rgba(0, 39, 69, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    /* Add slight background for hamburger visibility at top */
+    .hamburger span {
+      background: #ffffff;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* ✅ Makes it visible on any background */
+    }
+  }
+</style>

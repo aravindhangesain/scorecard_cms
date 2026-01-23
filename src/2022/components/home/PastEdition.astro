@@ -1,0 +1,239 @@
+<section class="past-scorecards">
+    <div class="container">
+        <h2 class="section-title">View Past Editions of the Scorecard</h2>
+
+        <div class="carousel">
+            <button class="nav prev" id="prevBtn">‹</button>
+
+            <div class="cards" id="cardsTrack">
+                <div class="card">
+                    <img src="/images/2022/2021PVELScorecard.png" />
+                    <p>7TH EDITION: 26 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2020PVELScorecard.png" />
+                    <p>6TH EDITION: 22 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2019PVELScorecard.png" />
+                    <p>5TH EDITION: 15 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2018PVELScorecard.png" />
+                    <p>4TH EDITION: 22 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2017PVELScorecard.png" />
+                    <p>3RD EDITION: 22 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2016PVELScorecard.png" />
+                    <p>2ND EDITION: 13 Manufacturers Named</p>
+                </div>
+
+                <div class="card">
+                    <img src="/images/2022/2014PVELScorecard.png" />
+                    <p>1ST EDITION: 10 Manufacturers Named</p>
+                </div>
+            </div>
+
+            <button class="nav next" id="nextBtn">›</button>
+        </div>
+    </div>
+</section>
+
+<section class="quote-section">
+    <!-- Background Image -->
+    <img
+        src="/images/2022/IMG_E1182-1-1.png"
+        alt="Quote background"
+        class="quote-bg-img"
+    />
+
+    <!-- Overlay -->
+    <div class="quote-overlay"></div>
+
+    <!-- Content -->
+    <div class="quote-content">
+        <blockquote>
+            “We are proud to be recognized as a PVEL Top Performer for the
+            eighth consecutive PV Module Reliability Scorecard. Trina’s
+            consistent and exemplary performance in PVEL’s rigorous independent
+            testing is accepted by the market as clear evidence of our
+            long-standing commitment to product quality.”
+        </blockquote>
+
+        <p class="author">
+            Helena Li, President, Global Module & Cell Business, Trina Solar
+        </p>
+    </div>
+
+    <!-- Badge -->
+    <div class="badge">
+        <img src="/images/2022/PV-Module-2022.png" alt="PVEL 2022 Badge" />
+    </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+    const track = document.getElementById("cardsTrack");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    const scrollAmount = 300; // one card width
+
+    nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+</script>
+
+<style>
+    /* ===== PAST SCORECARDS ===== */
+    .past-scorecards {
+        background: #1f2740;
+        padding: 5rem 0;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .carousel {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .cards {
+        display: flex;
+        gap: -10rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .cards::-webkit-scrollbar {
+        display: none; /* Chrome */
+    }
+
+    .card {
+        min-width: 180px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card img {
+        width: 80%;
+        height: 150px;
+        object-fit: contain;
+        background: #1a2238;
+        padding: 6px;
+        border-radius: 4px;
+        opacity: 0.9;
+    }
+
+    .card p {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        opacity: 0.85;
+    }
+
+    .nav {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: #fff;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .nav.prev {
+        margin-right: 1rem;
+    }
+
+    .nav.next {
+        margin-left: 1rem;
+    }
+
+    .quote-section {
+        position: relative;
+        padding: 6rem 2rem;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* Background image */
+    .quote-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* Dark overlay */
+    .quote-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(31, 39, 64, 0.9) 70%
+        );
+        z-index: 1;
+    }
+
+    /* Text content */
+    .quote-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .quote-content blockquote {
+        font-size: 1.9rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .author {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        opacity: 0.8;
+    }
+
+    /* Badge */
+    .badge {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+        z-index: 2;
+    }
+
+    .badge img {
+        width: 120px;
+    }
+</style>

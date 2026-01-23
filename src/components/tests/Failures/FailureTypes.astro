@@ -1,0 +1,133 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+const failureImages = [
+    "/images/failure_type_1.png",
+    "/images/failure_type_2.png",
+    "/images/Power-Failure.jpg",
+    "/images/Diode-Failure1.jpeg"
+];
+---
+
+<section class="failure-types container">
+    <h2 class="section-title">
+        {data.fail_types_title}
+        <br />
+        <span>{data.fail_types_span}</span>
+    </h2>
+
+    <div class="failure-grid">
+        {
+            data.fail_types_list.map((item, index) => (
+                <div class="failure-card">
+                    <img src={failureImages[index]} alt={item.title} />
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                    <p class="italic">{item.description2}</p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .failure-types {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 52px;
+        margin-bottom: 40px;
+        line-height: 64px;
+        font-family: "Azo Sans", sans-serif;
+        font-weight: 400;
+        color: #072643;
+    }
+
+    .section-title span {
+        font-family: "Azo Sans", sans-serif;
+        font-style: italic;
+        font-weight: 700;
+    }
+
+    .failure-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .failure-card {
+        border: 1px solid #5a5b5e;
+    }
+
+    .failure-card img {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+    .failure-card p {
+        font-size: 16px;
+        line-height: 28px;
+        color: #072643;
+        font-weight: 400;
+        padding: 10px 20px 12px; /* no top padding */
+        margin: 0;
+        font-family: "Work Sans", sans-serif;
+    }
+
+    @media (max-width: 1024px) {
+        
+        .failure-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-title {
+            font-size: 40px;
+            line-height: 52px;
+            margin-bottom: 32px;
+        }
+
+        .failure-card p {
+            font-size: 15px;
+            line-height: 26px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        
+        .failure-types {
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            line-height: 42px;
+            margin-bottom: 24px;
+        }
+
+        .failure-card p {
+            font-size: 14px;
+            line-height: 24px;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .section-title {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        .failure-card p {
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+</style>

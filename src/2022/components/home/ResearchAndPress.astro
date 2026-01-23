@@ -1,0 +1,134 @@
+<section class="research-press">
+  <div class="container">
+    <!-- Header Row -->
+    <div class="header-row">
+      <h2>Research and Press</h2>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+
+    <hr />
+
+    <!-- Content Row -->
+    <div class="content">
+      <!-- Left Content -->
+      <div class="text">
+        <p>
+          PVEL collaborates with the PV research community and media to share data
+          that matters with the solar industry. Download the 2022 Scorecard Media
+          Kit to learn more. For interview requests, contact
+          <a href="mailto:pr@pvel.com">pr@pvel.com</a>.
+        </p>
+      </div>
+
+      <!-- Right Logos -->
+      <div class="logos">
+        <img src="/images/2022/PV-Magazine.png" alt="PV Magazine" />
+        <img src="/images/2022/PV-Tech.png" alt="PV Tech" />
+        <img src="/images/2022/Solar-Power-World.png" alt="Solar Power World" />
+        <img src="/images/2022/Solar-Builder.png" alt="Solar Builder" />
+        <img src="/images/2022/exawatt.png" alt="Exawatt" />
+        <img src="/images/2022/wood-mackenzie.png" alt="Wood Mackenzie" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section */
+.research-press {
+  padding: 80px 0;
+  background: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Row */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-row h2 {
+  font-size: 44px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Learn More Button */
+.learn-more {
+  background: #5CB66A;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.learn-more:hover {
+  background: #5CB66A;
+}
+
+/* Divider */
+hr {
+  margin: 24px 0 48px;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Text */
+.text {
+  flex: 1;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #111827;
+  max-width: 520px;
+}
+
+.text a {
+  color: #5CB66A;
+  text-decoration: none;
+}
+
+/* Logos Grid */
+.logos {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+  align-items: center;
+}
+
+.logos img {
+  max-width: 140px;
+  opacity: 0.6;
+  filter: grayscale(100%);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .logos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>

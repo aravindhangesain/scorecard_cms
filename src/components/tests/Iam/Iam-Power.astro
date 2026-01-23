@@ -1,0 +1,321 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="Test-Fleet" class="iam-section">
+    <div class="iam-container">
+        <div class="iam-left">
+            <h2>
+                {data.iam_fleet_title_main}
+                <span>{data.iam_fleet_title_span}</span>
+            </h2>
+        </div>
+
+        <div class="iam-right">
+            <p>
+                {data.iam_fleet_description}
+            </p>
+        </div>
+        <div class="iam-chart-container">
+            <div class="chart-wrapper">
+                <img
+                    src="/images/iam-result-2.jpg"
+                    alt={data.iam_fleet_chart_alt}
+                />
+            </div>
+
+            <p class="chart-caption">
+                {data.iam_fleet_chart_caption}
+            </p>
+        </div>
+        <div class="footnote-row">
+            <a
+                class="footnote"
+                href="https://www.kiwa.com/pvel/pqp/pan-iam"
+                target="_blank"
+            >
+                {data.iam_fleet_footnote_link}
+            </a>
+
+            <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+        </div>
+        <div class="references">
+            <p>
+                <sup>1</sup>
+                {data.iam_fleet_ref_1}
+            </p>
+
+            <p>
+                <sup>2</sup>
+                {data.iam_fleet_ref_2}
+                <a
+                    href="https://doi.org/10.1002/pip.3365"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    {data.iam_fleet_ref_2_link_text}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .iam-section {
+        padding: 40px 0 100px;
+        background: #ffffff;
+    }
+    .iam-container {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+    .iam-chart-container {
+        grid-column: 1 / -1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    .iam-left h2 {
+        font-size: 46.8px;
+        line-height: 57.8px;
+        color: #072643;
+        margin-bottom: 2rem;
+        font-family: "Azo Sans" sans-serif;
+        font-weight: 400;
+        text-align: left;
+        letter-spacing: -1.5px;
+    }
+
+    .iam-left h2 span {
+        font-style: italic;
+        font-weight: 700;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .iam-right p {
+        font-size: 16px;
+        line-height: 28px;
+        color: #072643;
+        max-width: 650px;
+        font-weight: 400;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .iam-chart-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    .chart-wrapper img {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .chart-caption {
+        max-width: 1000px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .footnote-row {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footnote-row .footnote {
+        font-size: 14px;
+        max-width: 85%;
+        line-height: 18px;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        color: #072643;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .references {
+        grid-column: 1 / -1;
+        max-width: 1200px;
+        margin: 0 0;
+        padding: 0 0px;
+    }
+
+    .references p {
+        font-size: 16px;
+        line-height: 28px;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .references sup {
+        font-size: 0.5em;
+        margin-right: 6px;
+    }
+
+    .references a {
+        color: #0054c5;
+        text-decoration: underline;
+    }
+
+    .references a:hover {
+        color: #072643;
+    }
+
+    /* Keep arrow size fixed */
+    .footnote-row img.cta-arrow {
+        width: 60px; /* keep original size */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Slide on hover */
+    .footnote-row:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click feedback */
+    .footnote-row:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .iam-section {
+            padding: 64px 0 80px;
+        }
+
+        .iam-container {
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .iam-left h2 {
+            font-size: 40px;
+            line-height: 52px;
+        }
+
+        .iam-right p {
+            font-size: 15px;
+            line-height: 26px;
+            max-width: 100%;
+        }
+
+        .chart-wrapper img {
+            max-width: 100%;
+        }
+
+        .footnote-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .arrow-link {
+            font-size: 24px;
+        }
+
+        .references p {
+            font-size: 15px;
+            line-height: 26px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .iam-section {
+            padding: 48px 0 64px;
+        }
+
+        .iam-container {
+            padding: 0 16px;
+            gap: 24px;
+        }
+
+        .iam-left h2 {
+            font-size: 32px;
+            line-height: 42px;
+        }
+
+        .iam-right p {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .chart-caption {
+            font-size: 13px;
+            line-height: 18px;
+            padding: 0 8px;
+        }
+
+        .footnote-row .footnote {
+            font-size: 13px;
+            line-height: 18px;
+        }
+
+        .references {
+            padding: 0 8px;
+        }
+
+        .references p {
+            font-size: 14px;
+            line-height: 24px;
+            text-indent: -1.4em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .iam-left h2 {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        .arrow-link {
+            font-size: 22px;
+        }
+
+        .chart-wrapper img {
+            max-width: 100%;
+        }
+
+        .references p {
+            margin-bottom: 16px;
+        }
+    }
+</style>

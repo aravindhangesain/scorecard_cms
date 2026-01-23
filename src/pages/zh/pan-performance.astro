@@ -1,0 +1,25 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PanBanner from "../../components/tests/Pan/PanHeroBanner.astro";
+import PanKeyTakeAways from "../../components/tests/Pan/PanKeyTakeAways.astro";
+import PanTestSpotlight from "../../components/tests/Pan/PanTestSpotlight.astro";
+import PanEnergy from "../../components/tests/Pan/PanEnergy.astro";
+
+
+import CTA from "../../components/CTA.astro";
+---
+
+<MainLayout
+    title="PAN Test | Kiwa PVEL PV Module Reliability Scorecard"
+    description="Kiwa PVEL’s PAN files simulate PV module performance in different temperature and irradiance conditions and are used as data inputs for energy models."
+    canonical="https://scorecard.pvel.com/pan-performance/"
+>
+    <PanBanner />
+    <PanKeyTakeAways />
+    <PanTestSpotlight />
+    <PanEnergy />
+   
+    
+
+    <CTA />
+</MainLayout>

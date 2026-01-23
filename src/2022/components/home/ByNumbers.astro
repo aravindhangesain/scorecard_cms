@@ -1,0 +1,210 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="by-numbers-interactive">
+  <div class="overlay"></div>
+
+  <div class="wrapper">
+    <!-- LEFT NAV -->
+    <div class="left">
+      <h1>By the Numbers</h1>
+      <p class="subtitle">Click through the key takeaways below.</p>
+
+      <ul id="numbersNav">
+        <li class="active" data-key="top">
+          <span class="line"></span>
+          <div>
+            <strong>01.</strong>
+            <p>Top Performers</p>
+          </div>
+        </li>
+
+        <li data-key="power">
+          <span class="line"></span>
+          <div>
+            <strong>02.</strong>
+            <p>Power Class</p>
+          </div>
+        </li>
+
+        <li data-key="cell">
+          <span class="line"></span>
+          <div>
+            <strong>03.</strong>
+            <p>Cell Sizes</p>
+          </div>
+        </li>
+
+        <li data-key="allstar">
+          <span class="line"></span>
+          <div>
+            <strong>04.</strong>
+            <p>All Star Results</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="right">
+      <h2 id="contentTitle">122 top performing model types</h2>
+
+      <div class="info-box" id="contentText">
+        122 model types from 25 manufacturers are named as 2022 Top
+        Performers for their superior results in PVEL’s Product
+        Qualification Program.
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side interaction -->
+  <script is:inline>
+    const contentMap = {
+      top: {
+        title: "122 top performing model types",
+        text:
+          "122 model types from 25 manufacturers are named as 2022 Top Performers for their superior results in PVEL’s Product Qualification Program."
+      },
+      power: {
+        title: "Higher power classes",
+        text:
+          "This year's Top Performers pack more power into every module than ever before, with wattages as high as 650W and an average power class greater than 450W."
+      },
+      cell: {
+        title: "11 cell sizes",
+        text:
+          "2022 Top Performers include models based upon eleven cell sizes from 156 mm to 182 mm and 210 mm, proving that manufacturers can design reliable large-format PV modules."
+      },
+      allstar: {
+        title: "All star results from 12 suppliers",
+        text:
+          "12 manufacturers had one or more model types that were Top Performers in every reliability test – and six of these model types were also Top Performers in PAN."
+      }
+    };
+
+    const navItems = document.querySelectorAll("#numbersNav li");
+    const titleEl = document.getElementById("contentTitle");
+    const textEl = document.getElementById("contentText");
+
+    navItems.forEach(item => {
+      item.addEventListener("click", () => {
+        navItems.forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+
+        const key = item.dataset.key;
+        titleEl.textContent = contentMap[key].title;
+        textEl.textContent = contentMap[key].text;
+      });
+    });
+  </script>
+</section>
+
+
+
+<style>
+ .by-numbers-interactive {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("/images/2022/VMS14849-2-1.png");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 35, 0.75);
+}
+
+.wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+}
+
+/* LEFT */
+.left h1 {
+  font-family: Georgia, serif;
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 3rem;
+}
+
+.left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left li {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.75rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.left li.active {
+  opacity: 1;
+}
+
+.line {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.left strong {
+  font-size: 0.85rem;
+}
+
+.left p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* RIGHT */
+.right h2 {
+  font-family: Georgia, serif;
+  font-size: 4.25rem;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+}
+
+.info-box {
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .right h2 {
+    font-size: 2.75rem;
+  }
+}
+
+</style>

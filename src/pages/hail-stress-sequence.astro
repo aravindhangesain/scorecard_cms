@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import HailStressHero from "../components/tests/HailStressSequence/HailStressSequence-Hero.astro"
+import HailStressKeyTakeAway from "../components/tests/HailStressSequence/HailStressSequence-KeyTake.astro"
+import HailStressSequenceTest from "../components/tests/HailStressSequence/HailStressSequence-TestSpot.astro"
+import HailStressSequencePowerDegration from "../components/tests/HailStressSequence/HailStressSequence-Power.astro"
+
+
+import CTA from "../components/CTA.astro";
+
+---
+
+<MainLayout
+  title="HSS Test | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Kiwa PVEL’s Hail Stress Sequence (HSS) replicates the impact energy of natural hail and simulates field conditions to assess PV module durability. Learn about the test."
+  canonical="https://scorecard.pvel.com/hail-stress-sequence/">
+  <HailStressHero />  
+  <HailStressKeyTakeAway />
+  <HailStressSequenceTest />
+  <HailStressSequencePowerDegration />
+  <CTA />
+
+</MainLayout>

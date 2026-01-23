@@ -1,0 +1,336 @@
+/* Azo Sans - Light */
+@font-face {
+  font-family: "Azo Sans";
+  src: url("/fonts/AzoSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Azo Sans - Regular */
+@font-face {
+  font-family: "Azo Sans";
+  src: url("/fonts/AzoSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Azo Sans - Bold Italic */
+@font-face {
+  font-family: "Azo Sans";
+  src: url("/fonts/AzoSans-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
+body {
+  margin: 0;
+  font-family: "Azo Sans", Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 550px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: #0054c5;
+  opacity: 0.5;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 0 0 100px;
+  /* unchanged */
+  padding: 0 20px;
+  color: #fff;
+}
+
+/* Heading */
+.hero-content h1 {
+  font-family: "Azo Sans", sans-serif;
+  font-weight: 300;
+  font-size: 80px;
+  /* unchanged */
+  font-style: normal;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  /* FIXED (was invalid) */
+  margin-top: 140px;
+}
+
+.hero-content h1 span {
+  font-family: "Azo Sans", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  color: #80ffca;
+}
+
+/* Paragraph */
+.hero-content p {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  max-width: 650px;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  margin-bottom: 50px;
+}
+
+/* ===================== */
+/* RESPONSIVE ONLY BELOW */
+/* ===================== */
+
+@media (min-width: 1201px) {
+  .hero {
+
+    justify-content: center;
+  }
+
+  .hero-content {
+    margin-right: 600px;
+  }
+}
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .hero-content {
+    margin-left: 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 64px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero-content {
+    margin-left: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 52px;
+    margin-top: 100px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-left: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+    margin-top: 80px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .hero-content {
+    margin-left: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+    margin-top: 60px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+
+/* Key Takeaway Section */
+
+.section {
+  max-width: 1300px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 64px);
+  padding-block: clamp(40px, 6vw, 80px);
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: clamp(20px, 3vw, 32px);
+  align-items: stretch;
+}
+
+.title-wrap {
+  grid-row: span 2;
+  max-width: 420px;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.2;
+  color: #072643;
+  letter-spacing: -1.5px;
+  font-family: "Azo Sans", sans-serif;
+}
+
+.keyspanclass {
+  display: block;
+  font-style: italic;
+  font-weight: 800;
+  font-size: inherit;
+
+}
+
+.keyspanclass1 {
+  display: block;
+  font-style: italic;
+  font-weight: 800;
+  font-size: inherit;
+  padding-inline: clamp(16px, 5vw, 64px);
+  font-size: 40px;
+
+}
+
+.card {
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.card-heading {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+}
+
+.top-card-heading-class {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "Azo Sans", sans-serif;
+  margin-bottom: 12px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 28px;
+  color: #072643;
+  letter-spacing: 0.01em;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+}
+
+.card a {
+  color: #072643;
+  text-decoration: underline;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  margin-top: auto;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* TABLET */
+@media (min-width: 1440px) {
+  .section {
+    max-width: 1300px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .title-wrap {
+    grid-column: span 2;
+    grid-row: auto;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .card img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .top-card-heading-class {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .card p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+    .card img {
+    aspect-ratio: 4 / 3;
+  }
+}

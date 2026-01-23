@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import ThermalCyclingHero from "../../components/tests/ThermalCycling/ThermalCyling-Hero.astro"
+import ThermalCylingKeyTakeaways from "../../components/tests/ThermalCycling/ThermalCycling-KeyTakeaway.astro";
+import ThermalCylingTestResult from "../../components/tests/ThermalCycling/ThermalCyclingTestResult.astro";
+import ThermalCylingPower from "../../components/tests/ThermalCycling/ThermalCycling-Power.astro";
+import CTA from "../../components/CTA.astro";
+
+
+---
+
+<MainLayout
+title="Thermal Cycling Test | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Kiwa PVEL’s Thermal Cycling (TC) test assesses a PV module’s ability to withstand changes in temperature. Learn more about the test."
+  canonical="https://scorecard.pvel.com/thermal-cycling/">
+  <ThermalCyclingHero />
+  <ThermalCylingKeyTakeaways />
+  <ThermalCylingTestResult />
+  <ThermalCylingPower />
+  <CTA />
+
+</MainLayout>

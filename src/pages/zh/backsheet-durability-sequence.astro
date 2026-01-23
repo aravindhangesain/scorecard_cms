@@ -1,0 +1,25 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import BdsBanner from "../../components/tests/Bds/Bds-Hero.astro";
+import BdsKeyTakeAways from "../../components/tests/Bds/Bds-KeyTakeaway.astro";
+import BdsTestSpotlight from "../../components/tests/Bds/Bds-TestResult.astro";
+import BdsEnergy from "../../components/tests/Bds/Bds-Power.astro";
+
+
+import CTA from "../../components/CTA.astro";
+---
+
+<MainLayout
+    title="PAN Test | Kiwa PVEL PV Module Reliability Scorecard"
+    description="Kiwa PVEL’s PAN files simulate PV module performance in different temperature and irradiance conditions and are used as data inputs for energy models."
+    canonical="https://scorecard.pvel.com/bds/"
+>
+    <BdsBanner />
+    <BdsKeyTakeAways />
+    <BdsTestSpotlight />
+    <BdsEnergy />
+   
+    
+
+    <CTA />
+</MainLayout>

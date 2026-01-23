@@ -1,0 +1,30 @@
+---
+import MainLayout from "../../2024/layouts/MainLayout.astro";
+import Hero from "../../2024/components/home/Hero.astro";
+import Welcome from "../../2024/components/home/Welcome.astro";
+import KeyTakeaways from "../../2024/components/home/KeyTakeaways.astro";
+import TopPerformers from "../../2024/components/home/TopPerformers.astro";
+import Testimonial from "../../2024/components/home/Testimonial.astro";
+import CTA from "../../2024/components/CTA.astro";
+
+
+import { getLang } from "../../2024/data/useLang";
+import en from "../../2024/data/ln.json"; // English
+import zh from "../../2024/data/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<MainLayout
+  title="Kiwa PVEL PV Module Reliability Scorecard"
+  description="The 11th Edition of Kiwa PVEL’s PV Module Reliability Scorecard recognizes manufacturers with excellent test results in the PV Module Product Qualification Program."
+  canonical="https://scorecard.pvel.com/"
+>
+  <Hero />
+  <Welcome />
+  <KeyTakeaways />
+  <TopPerformers />
+  <Testimonial />
+  <CTA />
+</MainLayout>

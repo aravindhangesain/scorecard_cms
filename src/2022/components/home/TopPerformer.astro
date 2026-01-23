@@ -1,0 +1,168 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="top-performers">
+  <div class="container">
+    <!-- Section Header -->
+    <h1 class="title">Top Performers</h1>
+    <hr class="divider" />
+
+    <!-- Content Grid -->
+    <div class="content">
+      <!-- Left Text -->
+      <div class="text">
+        <p class="text-p">
+          Every year, our Scorecard recognizes manufacturers that </br>
+          produce PV modules with excellent results in PVEL's </br>
+          independent testing.
+        </p>
+
+        <p>
+          Rankings are based on performance and reliability data from the </br>
+          PVEL PV Module Product Qualification Program, a suite of lab and</br>
+          field tests that inform solar procurement and investment decisions.
+        </p>
+      </div>
+
+      <!-- Right Card -->
+      <div class="card">
+        <div class="badge">
+          <img src="/images/2022/PV-Module-2022-Top-Performer-Mark-White.png" alt="Top Performer Badge" />
+        </div>
+
+        <h2>See All<br />Top Performers</h2>
+
+        <a href="/top-performers" class="btn">
+          Go to Top Performers Page
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  const btn = document.getElementById("toggleBtn");
+  const fullMessage = document.getElementById("fullMessage");
+  const icon = btn.querySelector(".icon");
+  const label = btn.querySelector(".label");
+
+  const defaultLabel = label.textContent;
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const isOpen = fullMessage.classList.contains("open");
+
+    if (isOpen) {
+      fullMessage.classList.remove("open");
+      label.textContent = defaultLabel;
+      icon.textContent = "+";
+    } else {
+      fullMessage.classList.add("open");
+      label.textContent = defaultLabel;
+      icon.textContent = "-";
+    }
+  });
+</script>
+
+
+<style>
+ .top-performers {
+  padding: 4rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin-bottom: 3rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+.text-p{
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Card */
+.card {
+  background: linear-gradient(135deg, #1c2340, #3a4375);
+  border-radius: 8px;
+  padding: 3rem;
+  color: #fff;
+  position: relative;
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin: 2rem 0;
+  line-height: 1.3;
+}
+
+.badge {
+  text-align: right;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.badge strong {
+  display: block;
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  background-color: #7bc47f;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+</style>

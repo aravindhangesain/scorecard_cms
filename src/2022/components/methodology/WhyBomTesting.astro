@@ -1,0 +1,116 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="bom-section">
+  <h1>Why BOM-Level Testing is Important</h1>
+
+  <div class="divider"></div>
+
+  <div class="content">
+    <div class="text">
+      <p>
+        PVEL’s test results from the lab and field demonstrate that individual PV
+        module components can dramatically affect product quality. PV modules with
+        the exact same model type can be manufactured from completely different
+        BOMs. Suppliers are free to mix-and-match integral materials – even cells –
+        as long as all the components are listed in the model’s IEC certification
+        report.
+      </p>
+
+      <div class="divider inner"></div>
+
+      <p class="emphasis">
+        PVEL’s testing generates vital procurement intelligence.
+      </p>
+
+      <p class="bold">
+        While individual BOMs are not marketed to buyers, PQP reports clearly
+        document the BOMs of each model that performed well in testing. PVEL’s
+        downstream partners can leverage PQP reports to specify BOMs in supply
+        agreements.
+      </p>
+    </div>
+
+    <div class="image">
+      <img
+        src="/images/2022/SolarPanelCloseup.png"
+        alt="Solar panels"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .bom-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    color: #111;
+    background: #fff;
+  }
+
+  h1 {
+    font-family: serif;
+    font-size: 44px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #e6e6e6;
+    margin-bottom: 56px;
+  }
+
+  .divider.inner {
+    margin: 48px 0 32px;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #222;
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+
+  .text p.emphasis {
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .text p.bold {
+    font-weight: 600;
+  }
+
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .content {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+  }
+</style>

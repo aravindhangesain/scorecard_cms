@@ -1,0 +1,149 @@
+---
+/* Top Performers – fixed to match reference */
+---
+
+<section class="top-performers">
+  <div class="tp-container">
+    <!-- LEFT TEXT -->
+    <div class="tp-left">
+      <h2>Top Performers</h2>
+
+      <p>
+        Each year, our Scorecard showcases manufacturers that produce PV modules
+        with noteworthy results in PVEL’s independent testing.
+      </p>
+
+      <p>
+        Inclusion in the Scorecard is based on performance and reliability data
+        from PVEL’s Product Qualification Program, a suite of lab and field
+        tests that inform solar procurement and investment decisions.
+      </p>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="tp-card">
+      <div class="card-text">
+        <h3>See All 2023 Top Performers</h3>
+
+        <p>
+          Engage with our sortable database. You can view Top<br />
+          Performers by manufacturer, location, nameplate power,<br />
+          module design, cell technology and more.
+        </p>
+
+        <a href="#" class="card-link">
+          Go to Top Performers Page
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- BADGE -->
+      <img
+        class="card-badge"
+        src="/images/2023/top-performer-badge.webp"
+        alt="2023 PVEL Top Performer Badge"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- SECTION ---------- */
+  .top-performers {
+    background: #f2f6fd;
+    padding: 100px 0;
+  }
+
+  /* ---------- CONTAINER ---------- */
+  .tp-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* ---------- LEFT ---------- */
+  .tp-left h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .tp-left p {
+    max-width: 480px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1f2937;
+    margin-bottom: 1.6rem;
+  }
+
+  /* ---------- CARD ---------- */
+  .tp-card {
+    position: relative;
+    background: linear-gradient(135deg, #1b2440, #2b3a6e);
+    border-radius: 8px;
+    /* top:1000px */
+    padding: 3rem 3.5rem 3.2rem;
+    color: #ffffff;
+    max-width: 800px;
+    min-height: 180px;
+  }
+
+  /* ---------- CARD TEXT ---------- */
+  .card-text {
+    max-width: 460px;
+  }
+
+  .card-text h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+  }
+
+  .card-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* ---------- LINK ---------- */
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* ---------- BADGE ---------- */
+  .card-badge {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 135px;
+    height: auto;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px) {
+    .tp-container {
+      grid-template-columns: 1fr;
+    }
+
+    .tp-card {
+      padding-right: 3rem;
+    }
+
+    .card-badge {
+      position: static;
+      transform: none;
+      margin-top: 2rem;
+    }
+  }
+</style>

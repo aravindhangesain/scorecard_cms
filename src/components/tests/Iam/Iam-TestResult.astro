@@ -1,0 +1,183 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="TestSpotlight" class="Iam-spotlight">
+    <div class="Iam-container">
+        <div class="Iam-header">
+            <div class="Iam-title">
+                <h2>
+                    {data.iam_spotlight_title}<br />
+                    <span>{data.iam_spotlight_span}</span>
+                </h2>
+            </div>
+
+            <div class="Iam-description">
+                <p>
+                    {data.iam_spotlight_description}
+                </p>
+            </div>
+        </div>
+        <div class="Iam-cards">
+            <div class="Iam-card">
+                <div class="Iam-media">
+                    <img
+                        src="/images/iam-result-1.jpg"
+                        alt={data.iam_spotlight_chart_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+            </div>
+        </div>
+        <p class="Iam-card-caption">
+            {data.iam_spotlight_caption}
+        </p>
+
+        <a
+            href={data.iam_spotlight_plot_guide_link}
+            target="_blank"
+            class="text-link"
+        >
+            {data.iam_spotlight_plot_guide}
+        </a>
+    </div>
+</section>
+<style>
+    .Iam-spotlight {
+        padding: clamp(40px, 6vw, 80px) 20px;
+        background: #ffffff;
+    }
+
+    .Iam-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .Iam-header {
+        display: grid;
+        grid-template-columns: 1fr 1.9fr;
+        gap: 40px;
+        margin-bottom: clamp(20px, 4vw, 40px);
+    }
+
+    .Iam-title h2 {
+        font-size: clamp(32px, 4.5vw, 48px);
+        font-weight: 400;
+        line-height: 1.2;
+        color: #072643;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .Iam-title span {
+        font-weight: 800;
+        font-style: italic;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .Iam-description p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.01em;
+    }
+
+    .Iam-cards {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Iam-card {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .Iam-media {
+        max-width: 700px;
+        width: 100%;
+    }
+
+    .Iam-media img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        display: block;
+    }
+
+    .Iam-card-caption {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 18px;
+        color: #072643;
+        margin-top: 20px;
+        text-align: center;
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .text-link {
+        margin-left: 30px;
+        color: #072643;
+        text-decoration: none;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        font-family: "Work Sans", sans-serif;
+        margin-top: 20px;
+
+        line-height: 21px;
+        padding-bottom: 4px;
+        /* underline using background */
+        background-image: linear-gradient(#072643, #072643);
+        background-repeat: no-repeat;
+        background-size: 100% 1.5px;
+        background-position: 100% 100%;
+
+        transition: background-size 0.4s ease;
+    }
+
+    /* hover: underline disappears left → right */
+    .text-link:hover {
+        background-size: 0% 1.5px;
+    }
+
+    
+
+    @media (max-width: 1024px) {
+        .Iam-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Iam-header {
+            text-align: left;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .Iam-title h2 {
+            font-size: 28px;
+        }
+
+        .Iam-description p {
+            font-size: 14px;
+        }
+
+        .Iam-card-caption {
+            font-size: 13px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

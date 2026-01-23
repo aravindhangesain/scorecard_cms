@@ -1,0 +1,62 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<button class="btn btn-danger btn-icon" id="back-to-top">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<script>
+  const btn = document.getElementById("back-to-top");
+
+  // Hide initially
+  btn.style.display = "none";
+
+  // Show / hide on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {   // after 100px scroll
+      btn.style.display = "flex";
+    } else {
+      btn.style.display = "none";
+      
+    }
+  });
+
+  // Scroll to top on click
+  btn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+<style>
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  outline: none;
+  background-color: #bfc0c2ff;
+  color: #fff;
+
+  cursor: pointer;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s ease;
+}
+
+#back-to-top i {
+  color: #fff;
+}
+
+#back-to-top:hover {
+  background-color: #0d6efd;
+}
+</style>

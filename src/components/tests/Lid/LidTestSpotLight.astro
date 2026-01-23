@@ -1,0 +1,125 @@
+---
+/*
+  TestSpotlight Component
+  Usage:
+  <TestSpotlight />
+*/
+
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="TestSpotlight" class="spotlight">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="spotlight-header">
+      <h2>
+        {data.lid_test_spotlight_title}<br />
+        <span>{data.lid_test_spotlight_title_span}</span>
+      </h2>
+
+      <p>
+        {data.lid_test_spotlight_paragraph_1}
+      </p>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="spotlight-images">
+      <img src="/images/LID_Spotlight_1.webp" alt={data.lid_test_spotlight_imagealt1} class="modal-trigger" title={data.lid_test_spotlight_imgtitle}/>
+      <img src="/images/LID_Spotlight_2.webp" alt={data.lid_test_spotlight_imagealt2} title={data.lid_test_spotlight_imgtitle}/>
+    </div>
+
+    <!-- FOOTER NOTE -->
+    <div class="spotlight-note">
+      {data.lid_test_spotlight_note}
+    </div>
+
+  </div>
+</section>
+
+<style scoped>
+.spotlight {
+  padding: clamp(40px, 6vw, 80px) 20px;
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.spotlight-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.spotlight-header h2 {
+  font-size: clamp(36px, 4.5vw, 48px);
+  line-height: 1.2;
+  color: #072643;
+  font-family: "Azo Sans" sans-serif;
+  font-weight: 400;
+}
+
+.spotlight-header h2 span {
+  font-style: italic;
+  font-weight: 700;
+  font-family: "Azo Sans" sans-serif;
+}
+
+.spotlight-header p {
+  font-family: "Work Sans", sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.8;
+  color: #072643;
+  font-weight: 400;
+
+}
+
+/* IMAGES */
+.spotlight-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.spotlight-images img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* FOOTER BAR */
+.spotlight-note {
+  background: #072643;
+  color: #ffffff;
+  padding: 18px 28px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: "Work Sans", sans-serif;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .spotlight-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .spotlight-images {
+    grid-template-columns: 1fr;
+  }
+}
+.modal-trigger {
+  cursor: pointer;
+}
+</style>

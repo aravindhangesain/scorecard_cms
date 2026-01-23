@@ -1,0 +1,121 @@
+---
+import MethodologyEffect from "../methodology/Methodology-Parallax.astro";
+
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="pv-module-section">
+  <div class="pv-module-container">
+    <!-- TEXT -->
+    <div class="pv-module-text">
+      <h2>
+        {data.method_main_title} <strong style="font-style: italic;">{data.method_main_title_italic}</strong>
+      </h2>
+      <p>
+       {data.method_main_description}
+      </p>
+    </div>
+
+    <!-- IMAGE -->
+    <MethodologyEffect />
+  </div>
+</section>
+
+<style>
+  .pv-module-section {
+    background: #ffffff;
+    padding: 40px 20px 20px;
+  }
+
+  .pv-module-container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  /* TEXT */
+  .pv-module-text h2 {
+    font-size: 48px;
+    font-weight: 400;
+    color: #072643;
+    margin-bottom: 24px;
+    margin-left: 80px;
+  }
+
+  .pv-module-text h2 strong {
+    font-weight: 600;
+  }
+
+  .pv-module-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #5a5b5e;
+    max-width: 1200px;
+    margin-left: 80px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+  }
+
+  /* IMAGE BELOW */
+  .pv-module-image {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pv-module-image img {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .pv-module-container {
+      margin: 0 20px;
+    }
+
+    .pv-module-text h2 {
+      font-size: 40px;
+      margin-left: 20px;
+    }
+
+    .pv-module-text p {
+      font-size: 17px;
+      margin-left: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pv-module-section {
+      padding: 40px 16px;
+    }
+
+    .pv-module-container {
+      margin: 0;
+    }
+
+    .pv-module-text h2 {
+      font-size: 32px;
+      margin-left: 0;
+    }
+
+    .pv-module-text p {
+      font-size: 16px;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pv-module-text h2 {
+      font-size: 28px;
+    }
+
+    .pv-module-text p {
+      font-size: 15px;
+    }
+  }
+</style>

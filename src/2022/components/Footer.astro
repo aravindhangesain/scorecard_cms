@@ -1,0 +1,271 @@
+---
+import en from "../i18n/ln.json"; // English
+import zh from "../i18n/ln-eg.json"; // Chinese
+---
+
+<footer class="footer-wrapper">
+  <!-- Main Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img
+            src="/images/2022/PVEL-KIWA-LOGO-WT.png"
+            alt="PVEL"
+            class="pvel-logo"
+          />
+
+          <p class="brand-text">
+            PVEL is the leading independent lab<br />
+            for the global downstream PV market.
+          </p>
+
+          <div class="kiwa">
+            <span>member of group</span>
+            <img src="/images/2022/kiwa-group.png" alt="Kiwa" />
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <p class="newsletter-heading">
+            Sign up to get the latest testing and industry news
+          </p>
+
+          <label class="email-label">Email</label>
+          <input type="email" />
+
+          <p class="privacy">
+            I would like sign up for email updates from PVEL. I understand that
+            I can unsubscribe at any time. Click here to read our Privacy
+            Policy.
+          </p>
+
+          <label class="checkbox consent">
+            <input type="checkbox" />
+            <span>I agree to receive other communications from PVEL.</span>
+          </label>
+
+          <button class="submit-btn">SUBMIT</button>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-contact">
+          <h4>CONTACT US</h4>
+          <p>
+            <strong>PVEL</strong><br />
+            388 Devlin Road<br />
+            Napa, CA 94558<br />
+            (415) 320-7835<br />
+            info@pvel.com
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-nav">
+          <h4>NAVIGATION</h4>
+          <ul>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">Top Performers</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Take Action</a></li>
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Download PDFs</a></li>
+            <li><a href="#">Press & Researchers</a></li>
+            <li><a href="#">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    ©2022 PVEL LLC, a member of the Kiwa Group. All rights reserved.
+  </div>
+</footer>
+
+<style>
+  /* Wrapper */
+  .footer-wrapper {
+    width: 100%;
+  }
+
+  /* Main footer */
+  .footer {
+    background: #353c56;
+    padding: 90px 0 80px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Grid */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1.7fr 1fr 1fr;
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  /* Brand */
+  .pvel-logo {
+    width: 120px;
+  }
+
+  .brand-text {
+    margin: 26px 0 50px;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .kiwa span {
+    font-size: 12px;
+    color: #b8bfdc;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .kiwa img {
+    width: 80px;
+  }
+
+  /* Newsletter */
+  .footer-newsletter {
+    max-width: 480px;
+    padding-top: 6px;
+  }
+
+  .newsletter-heading {
+    color: #9aa4c7;
+    margin-bottom: 44px;
+    font-size: 15px;
+  }
+
+  /* Email label — PRIMARY */
+  .email-label {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* Email input stays the same */
+  .footer-newsletter input[type="email"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #9aa4c7;
+    padding: 10px 0;
+    color: #fff;
+    margin-bottom: 26px;
+  }
+
+  /* Privacy description — secondary text */
+  .privacy {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  /* Consent checkbox — TERTIARY */
+  .checkbox.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #d1d5f0;
+    margin-bottom: 48px;
+  }
+
+  .checkbox.consent input {
+    margin-top: 2px;
+  }
+
+  .checkbox.consent span {
+    line-height: 1.5;
+  }
+
+  /* Submit button — EXACT */
+  .submit-btn {
+    width: 360px;
+    margin: 0 auto;
+    display: block;
+    background: #626b99;
+    border: none;
+    padding: 14px 0;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  .submit-btn:hover {
+    background: #707bb0;
+  }
+
+  /* Contact & Nav */
+  .footer-contact h4,
+  .footer-nav h4 {
+    font-size: 14px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-contact p {
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* Navigation */
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav li {
+    margin-bottom: 12px;
+  }
+
+  .footer-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    background: #ffffff;
+    color: #111827;
+    text-align: center;
+    padding: 20px 12px;
+    font-size: 14px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .submit-btn {
+      width: 100%;
+    }
+  }
+</style>

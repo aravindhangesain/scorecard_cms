@@ -1,0 +1,224 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json"; // English
+import zh from "../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="top-performers">
+  <div class="tp-container">
+    <!-- ROW 1 -->
+    <div class="tp-content">
+      <h2 class="tp-heading">
+        {data.top_performers_heading}
+        <strong>{data.top_performers_heading_strong}</strong>
+      </h2>
+
+      <div class="tp-subtitle">{data.top_performers_subtitle}</div>
+
+      <p class="tp-text">
+        {data.top_performers_paragraph_1}
+        <br /><br />
+        {data.top_performers_paragraph_2}
+        <a href={data.top_performers_manufacturers_link_url}>
+          {data.top_performers_manufacturers_link_text}
+        </a>
+        {data.top_performers_manufacturers_link_textafter}
+      </p>
+    </div>
+
+    <!-- CTA button -->
+    <div class="tp-cta-wrap">
+      <a class="tp-cta" href={data.top_performers_cta_url}>
+        {data.top_performers_cta_text}
+        <img class="cta-arrow" src="/images/Icon_Arrow_White.svg" />
+      </a>
+    </div>
+
+    <!-- GIF -->
+    <div class="gif-wrap">
+      <img
+        src="/gifs/English-Searchtool.gif"
+        alt={data.top_performers_gif_alt}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .top-performers {
+    background: #0054c5;
+    color: #ffffff;
+    padding: clamp(40px, 6vw, 80px) 0 0;
+  }
+
+  /* 1. Main Grid Container */
+  .tp-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 10vw, 100px);
+    display: grid;
+    /* Split into two columns: Text (left) and CTA (right) */
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    /* Aligns the CTA text to the bottom baseline of the left paragraph */
+    align-items: end;
+  }
+
+  /* 2. Left Content Section */
+  .tp-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tp-heading {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-family: "Azo Sans", sans-serif;
+  }
+
+  .tp-heading strong {
+    font-style: italic;
+    font-weight: 800;
+  }
+
+  .tp-subtitle {
+    font-size: clamp(18px, 2.4vw, 25px);
+    margin-bottom: 1.25rem;
+    font-family: "Azo Sans", sans-serif;
+  }
+
+  .tp-text {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 800px;
+    font-family: "Work Sans", sans-serif;
+    /* Remove bottom margin so baseline alignment is precise */
+    margin-bottom: 0;
+  }
+
+  .tp-text a {
+    color: #cfe0ff;
+    text-decoration: underline;
+    display: inline-block;
+  }
+
+  .tp-text a:hover {
+    color: #ffffff;
+  }
+
+  /* 3. Right CTA Section */
+  .tp-cta-wrap {
+    display: flex;
+    justify-content: flex-end;
+    /* Fine-tune padding to match line-height of paragraph */
+    padding-bottom: 4px;
+    margin-right: 44px;
+  }
+
+  .tp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* 4. GIF Wrap - Alignment fix */
+  .gif-wrap {
+    grid-column: 1 / -1; /* Spans across the grid */
+    text-align: left; /* Starts at the same horizontal point as text */
+    margin-top: clamp(24px, 5vw, 40px);
+    width: 100%;
+  }
+
+  .gif-wrap img {
+    width: 100%;
+    max-width: 1250px;
+    height: auto;
+    border-radius: 0px;
+    display: block;
+  }
+
+  /* Arrow & Animations */
+  .tp-cta img.cta-arrow {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .tp-cta:hover img.cta-arrow {
+    animation: arrowBounce 0.4s ease forwards;
+  }
+
+  @keyframes arrowBounce {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Responsive Adjustments */
+  @media (min-width: 1400px) {
+    .tp-container {
+      width: 1300px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .tp-container {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tp-container {
+      grid-template-columns: 1fr;
+      align-items: start; /* Reset alignment for stacked mobile view */
+    }
+
+    .tp-cta-wrap {
+      justify-content: flex-start;
+      margin-top: 20px;
+      padding-bottom: 0;
+    }
+
+    .gif-wrap {
+      text-align: center; /* Center GIF on mobile for better balance */
+    }
+
+    .tp-text {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tp-heading {
+      font-size: 1.8rem;
+    }
+    .tp-cta {
+      font-size: 14px;
+      gap: 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tp-cta img.cta-arrow {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

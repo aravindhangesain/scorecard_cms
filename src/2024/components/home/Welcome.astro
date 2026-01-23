@@ -1,0 +1,406 @@
+---
+import { getLang } from "../../../2024/data/useLang";
+import en from "../../../2024/data/ln.json"; // English
+import zh from "../../../2024/data/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="welcome" class="welcome">
+  <div class="container">
+    <div class="welcome-content">
+      <h1 class="welcome-title">
+        {data.welcome_title_normal}
+        <span>{data.welcome_title_italic}</span>
+      </h1>
+
+      <div class="welcome-columns">
+        <div class="welcome-column">
+          <p>{data.welcome_paragraph_1}</p>
+        </div>
+        <div class="welcome-column">
+          <p>{data.welcome_paragraph_2}</p>
+        </div>
+        <div class="welcome-cta-wrapper">
+          <a href="#" id="openModal" class="welcome-cta">
+            {data.welcome_toggle_label}
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="welcomeModal" class="modal">
+    <div class="modal-overlay"></div>
+
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal">×</button>
+
+      <div class="modal-content">
+        <p>{data.welcome_drawer_paragraph_1}</p>
+        <p>{data.welcome_drawer_paragraph_2}</p>
+        <p>{data.welcome_drawer_paragraph_3}</p>
+        <p>{data.welcome_drawer_paragraph_4}</p>
+      </div>
+    </div>
+  </div>
+  <div class="welcome-image">
+    <img
+      src="../../../2024/images/Welcome-Message-Image-scaled.jpeg"
+      alt="Key Takeaways"
+    />
+  </div>
+</section>
+
+<script>
+  const openBtn = document.getElementById("openModal");
+  const modal = document.getElementById("welcomeModal");
+  const closeBtn = document.getElementById("closeModal");
+
+  openBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal?.classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal?.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+
+  modal?.querySelector(".modal-overlay")?.addEventListener("click", () => {
+    modal?.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+</script>
+
+<style>
+  .welcome {
+    background: #e8ecef;
+    padding: 80px 0 100px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .welcome-content {
+    max-width: 100%;
+  }
+
+  .welcome-title {
+    font-family:
+      "Azo Sans",
+      sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #005a9c;
+    margin-bottom: 60px;
+    max-width: 800px;
+  }
+
+  .welcome-title span {
+    display: block;
+  }
+
+  .welcome-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 80px;
+    margin-bottom: 0;
+    align-items: end;
+  }
+
+  .welcome-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome-column p {
+    font-family:
+      "Work Sans",
+      sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5a5b5e;
+    margin: 0;
+  }
+
+  .welcome-image {
+    width: 100%;
+    margin-top: 80px; 
+  }
+
+  .welcome-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .welcome-cta-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .welcome-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #00bcd4;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .welcome-cta:hover {
+    gap: 16px;
+  }
+
+  .welcome-cta .arrow {
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+  }
+
+  .welcome-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-box {
+    position: relative;
+    background: #ffffff;
+    width: min(900px, 90vw);
+    max-height: 85vh;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 40px;
+    height: 40px;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+  }
+
+  .modal-close:hover {
+    background: #333333;
+    transform: rotate(90deg);
+  }
+
+  .modal-content {
+    background: #005a9c;
+    color: #ffffff;
+    padding: 40px;
+    overflow-y: auto;
+    border-radius: 4px;
+    max-height: calc(85vh - 60px);
+  }
+
+  .modal-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .modal-content p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .modal-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Tablet Styles */
+  @media (max-width: 1024px) {
+    .welcome {
+      padding: 60px 0 80px;
+    }
+
+    .container {
+      padding: 0 30px;
+    }
+
+    .welcome-title {
+      font-size: 52px;
+      margin-bottom: 50px;
+    }
+
+    .welcome-columns {
+      gap: 40px;
+    }
+
+    .modal-content {
+      padding: 32px;
+    }
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .welcome {
+      padding: 50px 0 60px;
+    }
+
+    .container {
+      padding: 0 20px;
+    }
+
+    .welcome-title {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    .welcome-columns {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .welcome-cta-wrapper {
+      justify-content: flex-start;
+    }
+
+    .welcome-cta {
+      margin-top: 20px;
+    }
+
+    .modal-box {
+      width: 95vw;
+      max-height: 90vh;
+      padding: 16px;
+    }
+
+    .modal-content {
+      padding: 24px;
+      max-height: calc(90vh - 50px);
+    }
+
+    .modal-content p {
+      font-size: 15px;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      font-size: 22px;
+      top: -12px;
+      right: -12px;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+    .welcome {
+      padding: 40px 0 50px;
+    }
+
+    .welcome-title {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+
+    .welcome-column p {
+      font-size: 15px;
+    }
+
+    .modal-box {
+      width: 100vw;
+      height: 100vh;
+      max-height: none;
+      border-radius: 0;
+      padding: 12px;
+    }
+
+    .modal-content {
+      height: 100%;
+      max-height: none;
+      padding: 20px;
+    }
+
+    .modal-content p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .modal-close {
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+</style>

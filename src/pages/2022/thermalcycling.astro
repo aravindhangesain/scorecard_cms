@@ -1,0 +1,25 @@
+---
+import MainLayout from "../../2022/layouts/MainLayout.astro";
+import TCHero from "../../2022/components/tests/ThermalCycling/TCHero.astro";
+import TestingMatters from "../../2022/components/tests/ThermalCycling/TestingMatters.astro";
+
+
+import { getLang } from "../../2022/i18n/useLang";
+import en from "../../2022/i18n/ln.json";      // English
+import zh from "../../2022/i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+---
+
+<MainLayout
+  title="Kiwa PVEL PV Module Reliability Scorecard"
+  description="The 11th Edition of Kiwa PVEL’s PV Module Reliability Scorecard recognizes manufacturers with excellent test results in the PV Module Product Qualification Program."
+  canonical="https://scorecard.pvel.com/"
+>
+    <TCHero/>
+    <TestingMatters/>
+
+
+</MainLayout>

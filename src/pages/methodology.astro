@@ -1,0 +1,21 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import MethodologyHero from "../components/methodology/Methodology-Hero.astro"
+import MethodologyMain from "../components/methodology/Methodology-Main.astro"
+import MethodologyEffect from "../components/methodology/Methodology-Parallax.astro"
+import MethodologyPQP from "../components/methodology/Methodology-PQPTesting.astro"
+import MethodologyBomScored from "../components/methodology/Methodology-BomScored.astro"
+import CTA from "../components/CTA.astro";
+---
+
+<MainLayout
+title="Methodology | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Kiwa PVEL’s consistent approach and methodology to testing and benchmarking PV module reliability drives data-driven solar procurement and investments for developers, financiers, and asset owners."
+  canonical="https://scorecard.pvel.com/methodology/"
+>
+  <MethodologyHero />
+  <MethodologyMain />
+  <MethodologyPQP />
+  <MethodologyBomScored />
+  <CTA />
+</MainLayout>

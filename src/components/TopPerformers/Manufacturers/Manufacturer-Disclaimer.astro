@@ -1,0 +1,198 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="Manufacturer-section">
+    <!-- Background image -->
+    <img
+        src="/images/testimonial-bg.jpg"
+        alt={data.acknowledgment_section_image_alt}
+        class="hero-bg"
+    />
+
+    <!-- Blue overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+        <h6>
+            {data.acknowledgment_section_heading_line_1}
+            <br />
+            <span class="heat"
+                >{data.acknowledgment_section_heading_highlight}</span
+            >
+        </h6>
+        <div>
+            <p>
+                {data.acknowledgment_section_paragraph1}
+                <br />
+                <br />
+                {data.acknowledgment_section_paragraph2}
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .Manufacturer-section {
+        position: relative;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* Background image */
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Dark blue overlay */
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(6, 30, 55, 0.72);
+    }
+
+    /* Content wrapper */
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+        color: #ffffff;
+    }
+
+    /* Heading */
+    .hero-content h6 {
+        font-size: 54px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: -1.2px;
+        margin-bottom: 26px;
+        margin-top: 0;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .hero-content h6 .heat {
+        font-style: italic;
+        font-weight: 700;
+    }
+
+    /* Paragraph */
+    .hero-content p {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.02em;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+        opacity: 0.95;
+        margin: 0;
+    }
+
+    /* Tablet and below */
+    @media (max-width: 1024px) {
+        .Manufacturer-section {
+            height: auto;
+            min-height: 450px;
+            padding: 20px 0;
+            justify-content: flex-start; 
+        }
+
+        .hero-content {
+            padding: 0 40px; 
+            max-width: 900px;
+            margin: 0; /* prevent auto-centering */
+        }
+
+        .hero-content h6 {
+            font-size: 44px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 15px;
+            line-height: 24px;
+        }
+    }
+
+    /* Mobile landscape and below */
+    @media (max-width: 768px) {
+        .Manufacturer-section {
+            min-height: 400px;
+            padding: 50px 0;
+        }
+
+        .hero-content {
+            padding: 0 30px;
+        }
+
+        .hero-content h6 {
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+
+    /* Mobile portrait */
+    @media (max-width: 480px) {
+        .Manufacturer-section {
+            min-height: 350px;
+            padding: 40px 0;
+        }
+
+        .hero-content {
+            padding: 0 20px;
+        }
+
+        .hero-content h6 {
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero-content p {
+            font-size: 13px;
+            line-height: 20px;
+        }
+    }
+
+    /* Extra small mobile */
+    @media (max-width: 360px) {
+        .Manufacturer-section {
+            min-height: 320px;
+            padding: 30px 0;
+        }
+
+        .hero-content {
+            padding: 0 16px;
+        }
+
+        .hero-content h6 {
+            font-size: 24px;
+        }
+
+        .hero-content p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PidHero from "../../components/tests/PotentialInducedDegradation/PotentialInducedDegradation-Hero.astro";
+import PidKeyTake from "../../components/tests/PotentialInducedDegradation/PotentialInducedDegradation-KeyTake.astro";
+import PidTestSpotlight from "../../components/tests/PotentialInducedDegradation/PotentialInducedDegradation-TestSpot.astro";
+import PidTestPower from "../../components/tests/PotentialInducedDegradation/PotentialInducedDegradation-Power.astro";
+
+import CTA from "../../components/CTA.astro";
+---
+
+<MainLayout
+  title="PID Test | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Potential-induced degradation (PID) is triggered by high PV system voltages on ungrounded systems. Learn about Kiwa PVEL's PID test."
+  canonical="https://scorecard.pvel.com/pid/"
+>
+  <PidHero />
+  <PidKeyTake />
+  <PidTestSpotlight />
+  <PidTestPower />
+  <CTA />
+</MainLayout>

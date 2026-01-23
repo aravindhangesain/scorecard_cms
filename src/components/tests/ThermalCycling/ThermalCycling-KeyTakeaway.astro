@@ -1,0 +1,42 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const cards = data.tc_cards;
+---
+
+<section class="section">
+  <!-- TITLE -->
+  <div class="test-title-wrap">
+    <h1 class="tests-title">
+      <span class="keyspanclass1">
+        <span class="light-word">{data.tc_takeaways_title1}</span>
+        {data.tc_takeaways_title2}
+      </span>
+    </h1>
+  </div>
+
+  <!-- CARDS -->
+  {
+    cards.map((card) => (
+      <div class="card">
+        <div class="card-content">
+          <p class="card-heading">{card.heading}</p>
+
+          <b class="top-card-heading-class">{card.title}</b>
+
+          <p>
+            {card.text}
+            {card.linkText && <a href={card.linkUrl}>{card.linkText}</a>}
+            {card.textAfter}
+          </p>
+        </div>
+
+        <img src={card.image} alt={card.alt} loading="lazy" />
+      </div>
+    ))
+  }
+</section>

@@ -1,0 +1,249 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json"; // English
+import zh from "../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="welcome" class="welcome container">
+  <div class="text">
+    <h2 class="title-normal">{data.welcome_title_normal}</h2>
+    <h2 class="title-italic">{data.welcome_title_italic}</h2>
+
+    <p>{data.welcome_paragraph_1}</p>
+
+    <p>{data.welcome_paragraph_2}</p>
+
+    <div id="fullMessage" class="drawer">
+      <p>{data.welcome_drawer_paragraph_1}</p>
+
+      <p>
+        {data.welcome_drawer_paragraph_2}
+        <a class="welcome-link" href={data.welcome_link} target="_blank">
+          {data.welcome_link_text}
+        </a>
+      </p>
+    </div>
+
+    <a href="#" id="toggleBtn" class="toggle">
+      <span class="label">{data.welcome_toggle_label}</span>
+      <span class="icon">+</span>
+    </a>
+  </div>
+
+  <img src="/images/welcome-image.jpg" alt="Lab Test" class="welcome-img" />
+</section>
+
+<script>
+  const btn = document.getElementById("toggleBtn");
+  const fullMessage = document.getElementById("fullMessage");
+  const icon = btn.querySelector(".icon");
+  const label = btn.querySelector(".label");
+
+  const defaultLabel = label.textContent;
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const isOpen = fullMessage.classList.contains("open");
+
+    if (isOpen) {
+      fullMessage.classList.remove("open");
+      label.textContent = defaultLabel;
+      icon.textContent = "+";
+    } else {
+      fullMessage.classList.add("open");
+      label.textContent = defaultLabel;
+      icon.textContent = "-";
+    }
+  });
+</script>
+
+<style>
+  /* Global container */
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 5vw, 64px);
+  }
+
+  /* Layout */
+  .welcome {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 60px);
+    align-items: start;
+    padding-block: clamp(40px, 8vw, 100px);
+  }
+
+  .text {
+    max-width: 600px;
+  }
+
+  .welcome-img {
+    order: 2; /* Image on right */
+  }
+
+  /* Text */
+  .welcome p {
+    font-family: "Work Sans", sans-serif;
+    font-size: clamp(14px, 1.2vw, 16px);
+    color: #5a5b5e;
+    margin-bottom: 16px;
+    font-weight: 400;
+    line-height: 1.7em;
+    font-kerning: auto;
+    letter-spacing: 1.6;
+  }
+
+  .welcome-link {
+    color: #0054c5;
+    text-decoration: underline;
+    transition:
+      color 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .welcome-link:hover {
+    color: #5a5b5e;
+    opacity: 0.8;
+  }
+
+  /* Titles */
+  .title-normal {
+    font-family: "Azo Sans", sans-serif;
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 400;
+    color: #072643;
+    margin: 0 0 10px 0;
+  }
+
+  .title-italic {
+    font-family: "Azo Sans", sans-serif;
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 800;
+    font-style: italic;
+    color: #072643;
+    margin: 0 0 20px 0;
+  }
+
+  /* Toggle */
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-weight: 600;
+    color: #072643;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Work Sans" sans-serif;
+    font-size: 16px;
+  }
+
+  .toggle .label {
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    color: #072643;
+  }
+
+  .icon {
+    font-size: 20px;
+    line-height: 1;
+    color: #072643;
+  }
+
+  .welcome-img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    object-fit: cover;
+    justify-self: center;
+  }
+
+  /* Drawer animation */
+  .drawer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      max-height 0.6s ease,
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  .drawer.open {
+    max-height: 1500px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Optional spacing when open */
+  .drawer p:first-child {
+    margin-top: 16px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .welcome {
+      grid-template-columns: 1fr;
+      text-align: left;
+      padding: 20px;
+      gap: 30px;
+    }
+    .text,
+    .welcome-img {
+      order: unset; /* Keep text first, image second */
+      justify-self: center;
+    }
+    .welcome-img {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .welcome {
+      padding: 40px;
+      gap: 20px;
+    }
+
+    .title-normal,
+    .title-italic {
+      font-size: clamp(22px, 6vw, 32px);
+    }
+
+    .welcome p {
+      font-size: clamp(14px, 4vw, 16px);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .welcome {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .text {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .welcome {
+      padding-block: 40px;
+    }
+
+    .title-normal,
+    .title-italic {
+      font-size: clamp(22px, 6vw, 32px);
+    }
+
+    .welcome p {
+      font-size: 15px;
+    }
+  }
+</style>

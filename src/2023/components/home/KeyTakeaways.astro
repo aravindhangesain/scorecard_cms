@@ -1,0 +1,293 @@
+---
+/* 2023 Scorecard – combined sections (fixed & cleaned) */
+---
+
+<!-- ================= WELCOME ================= -->
+<section class="welcome">
+  <div class="welcome-container">
+    <h2>Welcome to the 2023 Scorecard</h2>
+
+    <div class="welcome-grid">
+      <img
+        src="/images/2023/welcome.jpeg"
+        alt="Solar panels with rainbow"
+        class="welcome-image"
+      />
+
+      <div class="welcome-text">
+        <p>
+          Over the last year the solar industry has experienced unprecedented
+          growth, and some significant challenges, as PV module demand and
+          production have exploded across the globe. In 2023, Bloomberg New
+          Energy Finance forecasts that we will surpass 300 GW of solar
+          deployments globally.
+        </p>
+
+        <p>
+          At this scale of project development and investment, understanding how
+          to procure high-performing, reliable modules has never been more
+          critical. As module buyers seek the guidance they need to navigate the
+          latest technology trends and new market entrants, we are pleased to
+          share with you the 9th Edition of PVEL’s PV Module Reliability
+          Scorecard.
+        </p>
+
+        <a href="#">View More Message</a>
+
+        <div class="signature">
+          <strong>Luca Votta</strong>
+          <span>Global Business Sector Leader</span>
+          <span>Renewable Energy at Kiwa</span>
+          <img src="/images/2023/kiwalogo.webp" alt="Kiwa Logo" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BY THE NUMBERS ================= -->
+<section class="numbers">
+  <div class="numbers-grid">
+    <!-- LEFT IMAGE -->
+    <div class="numbers-image">
+      <div class="numbers-overlay">
+        <h2>2023 Top Performers<br />by the Numbers</h2>
+        <p>Scroll through the key takeaways.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT STATS -->
+    <div class="numbers-list">
+      <div class="num-item">
+        <span class="num">01.</span>
+        <span class="label">Top Performers</span>
+      </div>
+
+      <div class="num-item">
+        <span class="num">02.</span>
+        <span class="label">Global Coverage</span>
+      </div>
+
+      <div class="num-item">
+        <span class="num">03.</span>
+        <span class="label">All Star Results</span>
+      </div>
+
+      <div class="num-item">
+        <span class="num">04.</span>
+        <span class="label">New Technology Increase</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHODOLOGY & FAILURES ================= -->
+<section class="cards">
+  <div class="cards-container">
+    <div class="card">
+      <h3>Methodology</h3>
+
+      <img src="/images/2023/methodology.jpg" alt="Testing methodology" />
+
+      <p>
+        We use a consistent methodology for testing and ranking PV modules: the
+        Product Qualification Program. Our process helps buyers compare products
+        across different technologies, manufacturers and model types.
+      </p>
+
+      <p>
+        Our testing goes beyond the model types of PV modules to assess unique
+        bill of materials (BOM) combinations.
+      </p>
+
+      <a href="#">Go to Methodology →</a>
+    </div>
+
+    <div class="card">
+      <h3>Failures</h3>
+
+      <img src="/images/2023/failures.jpg" alt="Module failures" />
+
+      <p>
+        While the number of Top Performer manufacturers increased this year, so
+        did the percentage of manufacturers experiencing a failure.
+      </p>
+
+      <p>
+        Almost one-third of BOMs suffered at least one failure during testing,
+        and 15% had a failure even before stress testing.
+      </p>
+
+      <a href="#">Go to Failures →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- GLOBAL ---------- */
+  * {
+    box-sizing: border-box;
+  }
+
+  section {
+    width: 100%;
+  }
+
+  /* ---------- WELCOME ---------- */
+  .welcome {
+    padding: 120px 0;
+  }
+
+  .welcome-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .welcome h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .welcome-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .welcome-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .welcome-text a {
+    color: #0a5bd3;
+    font-weight: 600;
+  }
+
+  /* ---------- SIGNATURE ---------- */
+  .signature {
+    margin-top: 2.5rem;
+  }
+
+  .signature strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .signature span {
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  .signature img {
+    width: 90px;
+    height: auto;
+    margin-top: 1rem;
+    display: block;
+  }
+
+  /* ---------- BY THE NUMBERS ---------- */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
+  }
+
+  .numbers-image {
+    aspect-ratio: 5 / 3;
+    background:
+      linear-gradient(
+        180deg,
+       rgba(10, 102, 194, .551) 10%, rgba(10, 102, 194, .559) 31%, rgba(48, 65, 127, .556) 90%
+      ),
+      url("/images/2023/numbers.jpg") center / cover no-repeat;
+    position: relative;
+  }
+
+  .numbers-overlay {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 4rem;
+    color: #fff;
+  }
+
+  .numbers-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: start;
+    padding: 3rem 4rem;
+    gap: 3rem;
+
+    background: #f3f7fe;
+  }
+
+  .num-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .num {
+    font-weight: 600;
+  }
+
+  .label {
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  /* underline */
+  .label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 56px;
+    height: 2px;
+    background: #8f97c6;
+  }
+
+  /* ---------- CARDS ---------- */
+  .cards {
+    padding: 120px 0;
+  }
+
+  .cards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .card h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .card p {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+  }
+
+  .card a {
+    color: #0a5bd3;
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import MechanicalStressHero from "../../components/tests/MechanicalStressSequence/MechanicalStressSequence-Hero.astro"
+import MechanicalStressKeyTake from "../../components/tests/MechanicalStressSequence/MechanicalStressSequence-KeyTake.astro"
+import MechanicalStressTestSpot from "../../components/tests/MechanicalStressSequence/MechanicalStressSequence-TestSpot.astro"
+import MechanicalStressPowerDegradation from "../../components/tests/MechanicalStressSequence/MechanicalStressSequence-power.astro"
+
+import CTA from "../../components/CTA.astro";
+
+---
+
+<MainLayout
+  title="MSS Test | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Kiwa PVEL’s Mechanical Stress Sequence (MSS) determines whether cells are vulnerable to cracking under pressure and if cell damage is likely to cause power loss or hot spots. Learn more about the test."
+  canonical="https://scorecard.pvel.com/mechanical-stress-sequence/"
+>
+  <MechanicalStressHero />  
+  <MechanicalStressKeyTake />
+  <MechanicalStressTestSpot />
+  <MechanicalStressPowerDegradation />
+  <CTA />
+
+</MainLayout>

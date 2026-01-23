@@ -1,0 +1,34 @@
+---
+import MainLayout from "../../2022/layouts/MainLayout.astro";
+import Hero from "../../2022/components/methodology/MethodologyHero.astro";
+import MethodologyParallax from "../../2022/components/methodology/MethodologyParallax.astro";
+import WhyBomTesting from "../../2022/components/methodology/WhyBomTesting.astro";
+import WhoQualifiesScorecard from "../../2022/components/methodology/WhoQualifiesScorecard.astro";
+import BomScored from "../../2022/components/methodology/BomScored.astro";
+import PVModuleTesting from "../../2022/components/methodology/PVModuleTesting.astro";
+import HeroBOM from "../../2022/components/methodology/HeroBOM.astro";
+
+import { getLang } from "../../2022/i18n/useLang";
+import en from "../../2022/i18n/ln.json";      // English
+import zh from "../../2022/i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+---
+
+<MainLayout
+  title="Kiwa PVEL PV Module Reliability Scorecard"
+  description="The 11th Edition of Kiwa PVEL’s PV Module Reliability Scorecard recognizes manufacturers with excellent test results in the PV Module Product Qualification Program."
+  canonical="https://scorecard.pvel.com/"
+>
+    <Hero />
+    <MethodologyParallax />
+    <WhyBomTesting />
+    <WhoQualifiesScorecard />
+    <BomScored />
+    <PVModuleTesting />
+    <HeroBOM />
+
+
+</MainLayout>

@@ -1,0 +1,370 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+---
+
+<section id="PowerDegration" class="mss-boms">
+  <div class="mss-boms-container">
+    <!-- LEFT SIDE -->
+    <div class="mss-boms-left">
+      <h2>
+        {data.mss_power_left_line1}<br />
+        <span>{data.mss_power_left_line2 || data.mss_power_left_highlight}</span
+        >
+      </h2>
+
+      <div class="chart-wrapper">
+        <img
+          src="/images/Power-Degradation-of-MSS-BOMs.jpg"
+          alt={data.mss_power_left_alt}
+          class="modal-trigger"
+          title={data.mss_power_left_title}
+        />
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <a
+      href={isZh
+        ? "/zh/top-performers/?pqp_test=MSS"
+        : "/top-performers/?pqp_test=MSS"}
+      class="mss-boms-link"
+    >
+      <div class="mss-boms-right">
+        <img
+          class="badge-img"
+          src="/images/Kiwa-PVEL-2025-TP-Mark-2.svg"
+          alt={data.mss_power_right_alt}
+        />
+
+        <div class="cta">
+          <h4>
+            {data.mss_power_right_heading1}<br />
+            {data.mss_power_right_heading2}
+          </h4>
+          <p>
+            {data.mss_power_right_description}
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <div>
+      <p class="footnote-left">
+        {data.mss_power_footnotes_note}
+      </p>
+
+      <a
+        href={data.mss_power_footnotes_link_text_url}
+        target="_blank"
+        class="text-link"
+      >
+        {data.mss_power_footnotes_link_text}
+      </a>
+    </div>
+
+    <!-- FULL WIDTH FOOTNOTE ROW -->
+    <div class="footnote-row">
+      <a
+        class="footnote"
+        href="https://www.kiwa.com/pvel/pqp/mss"
+        target="_blank"
+      >
+        {data.mss_power_footer_externalLink_text}
+      </a>
+
+      <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+    </div>
+    <div class="reference">
+      <p>
+        <sup>1</sup>
+        {data.mss_power_reference_citation}
+        <a
+          href="https://doi.org/10.2172/2479454"
+          target="_blank"
+          rel="noopener"
+        >
+          https://doi.org/10.2172/2479454
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mss-boms {
+    padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+    background: #ffffff;
+  }
+
+  .mss-boms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.2fr 0.8fr;
+    gap: clamp(2rem, 1vw, 5rem);
+    align-items: start;
+  }
+
+  .mss-boms-left h2 {
+    font-size: 46.8px;
+    line-height: 57.8px;
+    color: #072643;
+    margin-bottom: 2rem;
+    font-family: "Azo Sans" sans-serif;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: -1.5px;
+  }
+
+  .mss-boms-left h2 span {
+    font-weight: 800;
+    font-family: "Azo Sans" sans-serif;
+    font-style: italic;
+  }
+
+  .chart-wrapper img {
+    width: 100%;
+    display: block;
+  }
+
+  .mss-boms-link {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Footnotes */
+  .footnote-left {
+    font-size: 12px;
+    color: #072643;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
+    width: 80%;
+  }
+
+  .footnote-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footnote-row .footnote {
+    font-size: 14px;
+    max-width: 85%;
+    line-height: 18px;
+    letter-spacing: normal;
+    color: #072643;
+    text-decoration: none;
+    font-family: "Work Sans", sans-serif;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .mss-boms-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 190px;
+  }
+
+  .badge-img {
+    width: clamp(180px, 25vw, 240px);
+    height: auto;
+    /* margin-bottom: 2rem; */
+  }
+
+  .cta h4 {
+    font-size: 24px;
+    color: #282828;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    line-height: 32px;
+    font-family: "Azo Sans", sans-serif;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .cta p {
+    font-size: 16px;
+    color: #282828;
+    font-weight: 400;
+    max-width: 200px;
+    line-height: 28px;
+    font-family: "Work Sans", sans-serif;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .text-link {
+    color: #072643;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Work Sans", sans-serif;
+    margin-top: 20px;
+    padding-bottom: 4px;
+
+    line-height: 21px;
+    /* underline using background */
+    background-image: linear-gradient(#072643, #072643);
+    background-repeat: no-repeat;
+    background-size: 100% 1.5px;
+    background-position: 100% 100%;
+
+    transition: background-size 0.4s ease;
+  }
+
+  /* hover: underline disappears left → right */
+  .text-link:hover {
+    background-size: 0% 1.5px;
+  }
+
+  .reference {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .reference p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #072643;
+    font-family: "Work Sans", sans-serif;
+    width: 100%;
+  }
+
+  .reference sup {
+    font-size: 0.5em;
+    vertical-align: super;
+    margin-right: 4px;
+  }
+
+  .reference a {
+    color: #0054c5;
+    text-decoration: underline;
+  }
+
+  .reference a:hover {
+    color: #072643;
+  }
+
+  /* Keep arrow size fixed */
+  .footnote-row img.cta-arrow {
+    width: 60px; /* keep original size */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  /* Slide on hover */
+  .footnote-row:hover img.cta-arrow {
+    transform: translateX(8px);
+  }
+
+  /* Click feedback */
+  .footnote-row:active img.cta-arrow {
+    transform: translateX(12px);
+  }
+
+  @keyframes arrowSlide {
+    0% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(12px);
+    }
+    100% {
+      transform: translateX(8px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footnote-row img.cta-arrow {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .mss-boms-container {
+      grid-template-columns: 1fr;
+    }
+
+    .mss-boms-right {
+      margin-top: 0; /* REMOVE fixed spacing */
+    }
+
+    .footnote-row .footnote {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mss-boms {
+      padding: 3rem 1.25rem;
+    }
+
+    .mss-boms-left h2 {
+      text-align: left;
+    }
+
+    .chart-wrapper img {
+      margin: 0 auto 1.5rem;
+    }
+
+    .mss-boms-right {
+      margin-top: 2rem;
+    }
+
+    .cta p {
+      max-width: 100%;
+    }
+
+    .footnote-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .arrow-link {
+      align-self: flex-end;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mss-boms-left h2 {
+      font-size: 28px;
+      line-height: 1.25;
+    }
+
+    .badge-img {
+      width: 150px;
+    }
+
+    .cta h3 {
+      font-size: 20px;
+    }
+
+    .reference p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
+  /* Cursor */
+  .modal-trigger {
+    cursor: pointer;
+  }
+</style>

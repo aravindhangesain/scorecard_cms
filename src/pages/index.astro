@@ -1,0 +1,48 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import Welcome from "../components/home/Welcome.astro";
+import KeyTakeaways from "../components/home/KeyTakeaways.astro";
+import TopPerformers from "../components/home/TopPerformers.astro";
+import Slider from "../components/home/Silder.astro";
+import CTA from "../components/CTA.astro";
+
+
+import { getLang } from "../i18n/useLang";
+import en from "../i18n/ln.json";      // English
+import zh from "../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+---
+
+<MainLayout
+  title="Kiwa PVEL PV Module Reliability Scorecard"
+  description="The 11th Edition of Kiwa PVEL’s PV Module Reliability Scorecard recognizes manufacturers with excellent test results in the PV Module Product Qualification Program."
+  canonical="https://scorecard.pvel.com/"
+>
+  <Hero />
+  <Welcome />
+  <KeyTakeaways />
+  <TopPerformers />
+
+  <Slider
+  images={["/images/testimonial-bg.jpg", "/images/testimonial-bg2.jpg"]}
+  slides={[
+    {
+      text: data.slider_1_text,
+      author_name: data.slider_1_author_name,
+      author_designation: data.slider_1_author_designation
+    },
+    {
+      text: data.slider_2_text,
+      author_name: data.slider_2_author_name,
+      author_designation: data.slider_2_author_designation
+    }
+  ]}
+  interval={10000}
+/>
+
+  <CTA />
+</MainLayout>

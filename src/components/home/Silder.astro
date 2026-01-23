@@ -1,0 +1,267 @@
+---
+// props
+const { images = [], slides = [], interval = 5000 } = Astro.props;
+---
+<section class="bg-slider" data-interval={interval}>
+  {slides.map((slide, index) => (
+    <div
+      class={`slide ${index === 0 ? "active" : ""}`}
+      style={`background-image: url(${images[index]})`}
+    >
+      <div class="overlay">
+        <div class="text-content">
+          <p>“{slide.text}”</p>
+          <span class="author">
+            <strong>{slide.author_name}</strong><br />
+            {slide.author_designation}
+          </span>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <div class="dots">
+  {slides.map((_, index) => (
+    <button 
+      class={`dot-container ${index === 0 ? "active" : ""}`} 
+      data-index={index}
+      aria-label={`Go to slide ${index + 1}`}
+    >
+      <svg class="progress-ring" width="24" height="24">
+        <circle
+          class="progress-ring__circle"
+          stroke="white"
+          stroke-width="2"
+          fill="transparent"
+          r="10"
+          cx="12"
+          cy="12"
+        />
+      </svg>
+      <span class="dot"></span>
+    </button>
+  ))}
+</div>
+</section>
+
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".bg-slider");
+  const dotContainers = slider.querySelectorAll(".dot-container");
+  const intervalTime = Number(slider.dataset.interval) || 3000;
+  let current = 0;
+  let slideInterval;
+// Pass the interval to CSS
+  slider.style.setProperty('--slider-interval', `${intervalTime}ms`);
+
+  function showSlide(index) {
+    const slides = slider.querySelectorAll(".slide");
+    
+    // 1. Reset state
+    dotContainers.forEach(d => d.classList.remove("active"));
+    slides.forEach(s => s.classList.remove("active"));
+
+    // 2. Force a "reflow" so the CSS animation restarts from zero
+    // This is necessary to make the circle reset
+    void slider.offsetWidth; 
+
+    // 3. Set active
+    slides[index].classList.add("active");
+    dotContainers[index].classList.add("active");
+    current = index;
+  }
+
+  function startTimer() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+      showSlide((current + 1) % dotContainers.length);
+    }, intervalTime);
+  }
+
+  dotContainers.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      showSlide(Number(dot.dataset.index));
+      startTimer(); // Reset timer on click
+    });
+  });
+
+  startTimer();
+});
+</script>
+
+
+<style>
+  .bg-slider {
+    position: relative;
+    width: 100%;
+    min-height: 580px; /* ✅ better than vh */
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(7, 38, 67, 0.5);
+    padding: clamp(16px, 5vw, 64px);
+
+    overflow-y: auto; /* ✅ prevents hidden content */
+  }
+
+  .text-content {
+    max-width: min(90%, 1050px);
+    max-height: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1.8vw, 22px);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ✅ QUOTE — THIS FIXES IT */
+  .text-content p {
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Author */
+  .text-content :global(.author strong) {
+    display: block;
+    font-size: clamp(10px, 1.4vw, 14px);
+    margin-top: clamp(20px, 4vh, 32px);
+    font-weight: 600;
+    line-height: 0.8;
+  }
+
+  .text-content :global(.author) {
+    display: block;
+    margin-top: 1px;
+    font-size: clamp(10px, 1.2vw, 14px);
+    font-style: normal;
+    line-height: 0.8;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 10;
+  }
+
+  .dot-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+
+  .dot-container.active .dot {
+    background-color: white;
+  }
+
+  /* SVG Ring Layout */
+  .progress-ring {
+    position: absolute;
+    transform: rotate(-90deg); /* Rotate so it starts at 12 o'clock */
+  }
+
+  .progress-ring__circle {
+    /* Circumference = ~62.8 */
+    stroke-dasharray: 63;
+    stroke-dashoffset: 63;
+    transition: stroke-dashoffset 0s linear;
+    opacity: 0;
+  }
+
+  /* When active, animate the stroke-dashoffset */
+  .dot-container.active .progress-ring__circle {
+    opacity: 1;
+    /* This duration MUST match your intervalTime variable */
+    transition: stroke-dashoffset var(--slider-interval) linear;
+    stroke-dashoffset: 0;
+  }
+
+  @media (min-width: 1600px) {
+    .text-content {
+      max-width: 900px;
+    }
+  }
+
+    @media (min-width: 1400px) {
+    .text-content {
+      max-width: 1000px;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .bg-slider {
+      min-height: 70vh;
+    }
+
+    .text-content {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-height: 520px) {
+    .bg-slider {
+      min-height: 120svh; /* ✅ avoid clipping */
+    }
+
+    .overlay {
+      align-items: flex-start;
+      padding-top: 48px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bg-slider {
+      min-height: 90vh;
+    }
+
+    .dots {
+      bottom: 12px;
+    }
+    .text-content {
+      font-size: 15px;
+    }
+  }
+</style>

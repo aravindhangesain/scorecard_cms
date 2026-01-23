@@ -1,0 +1,81 @@
+---
+const testimonials = [
+    {
+        text: `Kiwa PVEL’s Scorecard is a massive driver for Astronergy brand awareness growth and a great recognition for our products. It has greatly helped us in initiating conversations with new buyers and attracted more potential customers.We’re proud to participate in Kiwa PVEL’s extended-reliability testing — which verifies the performance and reliability of our products — allowing us to continue to showcase our expertise in n-type TOPCon solar tech and intelligent manufacturing to markets around the world.`,
+        name: "Dr. Lu Chuan",
+        role: "Chairman & CEO of Astronergy (Chint New Energy Technology Co., Ltd.)",
+        bg: "../../../2024/images/Manufacturer-Testimonial-background-image-scaled.jpg",
+    },
+    {
+        text: `Procuring high performing, reliable PV modules remains a key focus for SUSI Partners to ensure strong performance across our fleet of PV sites.The data from Kiwa PVEL’s Product Qualification Program helps provide the guidance we need when purchasing modules for our projects, and the PV Module Reliability Scorecard is required reading for anyone in the solar industry.Even better, as subscribers to the Premium Partner Program, we get exclusive access to the crucial BOM-level information we need for quality procurement. Kiwa PVEL’s data is an essential resource for our company.`,
+        name: "Marco Vedaschi",
+        role: "Senior Engineering Manager at SUSI Partners",
+        bg: "../../../2024/images/Downstream-Testimonial-background-image-scaled.jpg",
+    },
+];
+---
+
+<section class="testimonials">
+    {
+        testimonials.map((t) => (
+            <article class="card" style={`--bg:url(${t.bg})`}>
+                <p class="quote">“{t.text}”</p>
+
+                <div class="author">
+                    <strong>{t.name}</strong>
+                    <span>{t.role}</span>
+                </div>
+            </article>
+        ))
+    }
+</section>
+
+<style>
+    .testimonials {
+        display: grid;
+        width: 1200px;
+        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        padding: 80px 40px;
+        background: #f4f9fc;
+    }
+
+    .card {
+        position: relative;
+        padding: 48px;
+        color: #fff;
+        background:
+            linear-gradient(rgba(0, 90, 160, 0.9), rgba(0, 90, 160, 0.9)),
+            var(--bg) center / cover no-repeat;
+        clip-path: polygon(0 0, 95% 0, 100% 10%, 100% 100%, 0 100%);
+        height: 50vh;
+    }
+
+    .quote {
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+        color: #ffffff;
+    }
+
+    .author strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 6px;
+
+    }
+
+    .author span {
+        font-size: 13px;
+        opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .testimonials {
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+        }
+    }
+</style>

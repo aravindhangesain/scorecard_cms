@@ -1,0 +1,469 @@
+---
+import { getLang } from "../i18n/useLang";
+import en from "../i18n/ln.json";      // English
+import zh from "../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const content = lang === "zh" ? zh : en;
+---
+
+<footer class="footer">
+  <div class="footer-top container">
+    <!-- Left: Image -->
+    <div class="footer-image">
+      <img
+        class="footer-logo"
+        src="/images/kiwa-logo.jpg"
+        alt={content.footer_logo_alt}
+      />
+      <img
+        class="footer-lab"
+        src="/images/footer-image.jpg"
+        alt={content.footer_lab_image_alt}
+      />
+    </div>
+
+    <!-- Middle: Contact -->
+    <div class="footer-contact">
+      <h4>{content.footer_contact_heading}</h4>
+      <p class="company">{content.footer_company_name}</p>
+      <p>{content.footer_address}</p>
+      <p>{content.footer_phone}</p>
+      <p>
+        <a href={`mailto:${content.footer_email}`}>
+          {content.footer_email}
+        </a>
+      </p>
+    </div>
+
+    <!-- Right: Signup -->
+    <div class="footer-signup">
+      <h4>{content.footer_signup_heading}</h4>
+      <p>
+        {content.footer_signup_description}{" "}
+        <a href={content.footer_privacy_policy_url}>
+          {content.footer_privacy_policy_text}
+        </a>{" "}
+        {content.footer_privacy_policy_suffix}
+      </p>
+
+      <label class="checkbox">
+        <input type="checkbox" />
+        {content.footer_consent_checkbox_text}
+      </label>
+
+      <div class="signup-form">
+        <input
+          type="email"
+          placeholder={content.footer_email_placeholder}
+        />
+        <button>{content.footer_subscribe_button_text}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <div class="links">
+        <a
+          href={content.footer_privacy_statement_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content.footer_privacy_statement_text}
+        </a>
+
+        <a href={content.footer_responsible_disclosure_url}>
+          {content.footer_responsible_disclosure_text}
+        </a>
+
+        <div class="copy">
+          {content.footer_copyright}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+  /* ===== FOOTER BASE ===== */
+  .footer {
+    background: #ffffff;
+    color: #4a4a4a;
+  }
+
+  .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-kerning: auto;
+  }
+
+  /* ===== TOP SECTION ===== */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.4fr;
+    gap: 80px;
+    padding: 40px 0;
+    align-items: start;
+  }
+
+  .footer-image {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 550px;
+  }
+
+  .footer-logo {
+    width: 80px;
+  }
+
+  .footer-lab {
+    width: 100%;
+    max-width: 530px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .footer-contact h4,
+  .footer-signup h4 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 16px;
+    line-height: 32px;
+    color: #072643;
+    font-family: "Azo Sans", sans-serif;
+    font-style: normal;
+  }
+
+  .footer-contact p {
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    color: #5a5b5e;
+    font-style: normal;
+  }
+
+  .footer-contact .company {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    color: #5a5b5e;
+    font-style: normal;
+  }
+
+  .footer-contact a {
+    color: #5a5b5e;
+    text-decoration: none;
+  }
+  .footer-signup p {
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 16px;
+    color: #5a5b5e;
+    font-style: normal;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+  }
+
+  .footer-signup a {
+    color: #0054c5;
+    text-decoration: underline;
+  }
+
+  /* Checkbox */
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    line-height: 22px;
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #5a5b5e;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+  }
+
+  .checkbox input {
+    margin-top: 5px;
+  }
+
+  /* Signup form */
+  .signup-form {
+    display: flex;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .signup-form input {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: #e9ecef;
+    font-size: 16px;
+    outline: none;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    color: #5a5b5e;
+  }
+
+  .signup-form button {
+    padding: 0 28px;
+    background: #0056c7;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: normal;
+    font-style: normal;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .signup-form button:hover {
+    background: #0041a8;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #e0e0e0;
+    padding: 24px 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    flex-wrap: wrap;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  .footer-bottom .links {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .footer-bottom a {
+    color: #072643;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+  }
+  .copy {
+    font-family: "Work Sans", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 30px;
+    color: #072643;
+    font-weight: 400;
+  }
+
+  @media (min-width: 1600px) {
+    .footer .container {
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .footer .container {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+
+    .footer-top {
+      gap: 72px;
+    }
+  }
+
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    .footer .container {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    .footer-top {
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 48px 20px;
+    }
+
+    .footer-image {
+      max-width: 100%;
+    }
+
+    .footer-lab {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .footer-contact h4,
+    .footer-signup h4 {
+      margin-top: 0;
+    }
+
+    .signup-form {
+      max-width: 100%;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .footer-bottom .links {
+      flex-direction: column;
+      margin-left: 20px;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-logo {
+      width: 64px;
+    }
+
+    .footer-contact h4,
+    .footer-signup h4 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .footer-contact p,
+    .footer-signup p,
+    .checkbox {
+      font-size: 15px;
+      line-height: 26px;
+    }
+
+    .signup-form {
+      flex-direction: row; /* ✅ keep single line */
+      gap: 8px;
+    }
+
+    .signup-form input {
+      flex: 1;
+      min-width: 0; /* 🔑 prevents overflow */
+    }
+
+    .signup-form button {
+      padding: 0 20px;
+      white-space: nowrap; /* 🔑 keeps text in one line */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-top {
+      padding: 40px 16px;
+    }
+
+    .footer-logo {
+      width: 56px;
+    }
+
+    .footer-contact h4,
+    .footer-signup h4 {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    .footer-contact p,
+    .footer-signup p,
+    .checkbox {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .signup-form input {
+      padding: 14px;
+    }
+
+    .signup-form button {
+      font-size: 16px;
+    }
+
+    .footer-bottom a,
+    .footer-bottom .copy {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .footer .container {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .footer-top {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .footer-bottom .links {
+      margin-left: 0;
+    }
+
+    .signup-form {
+      gap: 6px;
+    }
+
+    .signup-form button {
+      padding: 0 14px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 340px) {
+  .footer .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .footer-top {
+    padding: 32px 0;
+  }
+
+  .signup-form {
+    flex-direction: column; /* stack only at very small size */
+    gap: 8px;
+  }
+
+  .signup-form input {
+    width: 100%;
+  }
+
+  .signup-form button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  .footer-contact p,
+  .footer-signup p,
+  .checkbox {
+    font-size: 13px;
+    line-height: 22px;
+  }
+}
+
+</style>

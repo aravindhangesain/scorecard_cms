@@ -1,0 +1,200 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const Data = lang === "zh" ? zh : en;
+
+---
+
+<section id="TestSpotlight" class="mss-spotlight">
+    <div class="mss-container">
+        <!-- HEADER -->
+        <div class="mss-header">
+            <div class="mss-title">
+                <h2>
+                    {Data.bds_test_title}<br />
+                    <span>{Data.bds_test_span}</span>
+                </h2>
+            </div>
+
+            <div class="mss-description">
+                <p>
+                    {Data.bds_test_description}
+                </p>
+            </div>
+        </div>
+        <div class="mss-cards">
+            <div class="mss-card">
+                <div class="mss-card-image">
+                    <img
+                        src="/images/BDS_SPOTLIGHT_1.png"
+                        alt={Data.bds_test_msscard_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+                <div class="mss-card-header">
+                    <h3>{Data.bds_test_msscard_heading}</h3>
+                    <p>
+                        {Data.bds_test_msscard_paragraph}
+                    </p>
+                </div>
+            </div>
+
+            <div class="mss-card">
+                <div class="mss-card-image">
+                    <img
+                        src="/images/BDS_SPOTLIGHT_2.png"
+                        alt={Data.bds_test_msscard_alt1}
+                        class="modal-trigger"
+                    />
+                </div>
+                <div class="mss-card-header">
+                    <h3>{Data.bds_test_msscard_heading1}</h3>
+                    <p>
+                        {Data.bds_test_msscard_paragraph1}
+                    </p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .mss-spotlight {
+        padding: clamp(40px, 6vw, 80px) 20px;
+        background: #ffffff;
+    }
+
+    .mss-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    .mss-header {
+        display: grid;
+        grid-template-columns: 1fr 1.9fr;
+        gap: 40px;
+        margin-bottom: clamp(40px, 6vw, 80px);
+    }
+
+    .mss-title h2 {
+        font-size: clamp(32px, 4.5vw, 48px);
+        font-weight: 400;
+        line-height: 1.2;
+        color: #072643;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .mss-title span {
+        font-weight: 700;
+        font-style: italic;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .mss-description p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.01em;
+        font-weight: 400;
+    }
+
+    .mss-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(20px, 4vw, 30px);
+        align-items: stretch; /* 🔑 */
+    }
+
+    .mss-card {
+        border: 1px solid #dcdcdc;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .mss-card-image {
+        aspect-ratio: 4 / 3; /* or 16 / 9 if you prefer */
+        overflow: hidden;
+    }
+
+    .mss-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Caption */
+    .mss-card-header {
+        background-color: #072643;
+        color: #ffffff;
+        padding: 14px;
+        margin-top: auto; /* 🔑 keeps captions aligned */
+    }
+
+    .mss-card-header h3 {
+        font-family: "Azo Sans" sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .mss-card-header p {
+        font-family: "Work Sans" sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+    }
+
+    @media (max-width: 1024px) {
+        .mss-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .mss-cards {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 768px) {
+        .mss-header {
+            text-align: left;
+        }
+
+        .mss-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .mss-card-image img {
+            height: 260px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .mss-title h2 {
+            font-size: 28px;
+        }
+
+        .mss-description p {
+            font-size: 14px;
+        }
+
+        .mss-card-image img {
+            height: 220px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

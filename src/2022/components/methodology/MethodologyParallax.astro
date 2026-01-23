@@ -1,0 +1,676 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+<section class="pv-intro">
+  <div class="pv-intro-inner">
+    <h2 class="pv-title">Go Inside a PV Module</h2>
+    <hr class="pv-divider" />
+    <p class="pv-desc">
+      Scroll to explore the materials inside a PV module. Click on labels to see
+      how many types of each component were used in the BOMs tested for the 2022 Scorecard.
+    </p>
+  </div>
+</section>
+
+<section class="panel_ani_section" id="panelAni">
+  <div class="panel_ani">
+    <div class="images-wrapper">
+
+      <!-- STEP IMAGES -->
+      {Array.from({ length: 7 }).map((_, i) => (
+    <div class="panel_inner" style={`visibility:${i === 0 ? "visible" : "hidden"}`}>
+  <div class="image-container"> 
+    <picture class="panel-image">
+      <source srcset={`/images/panel-effect${i + 1}.jpg`} media="(min-width:1024px)" />
+      <source srcset={`/images/panel-effect8.jpg`} media="(min-width:640px)" />
+      <img src={`/images/panel-effect8.jpg`} />
+    </picture>
+
+    <div class="panel-hotspots">
+      <button class="hotspot" data-layer="Aluminum_Frame" style="--x:14%;--y:26%"></button>
+      <button class="hotspot" data-layer="Glass_Coating" style="--x:12%;--y:40%"></button>
+      <button class="hotspot" data-layer="Front_Encapsulant" style="--x:76%;--y:26%"></button>
+      <button class="hotspot" data-layer="Solar_Cell" style="--x:45%;--y:72%"></button>
+      <button class="hotspot" data-layer="Back_Encapsulate" style="--x:88%;--y:46%"></button>
+      <button class="hotspot" data-layer="Backsheet_Glass" style="--x:56%;--y:92%"></button>
+      <button class="hotspot" data-layer="Junction_Box" style="--x:78%;--y:76%"></button>
+    </div>
+  </div>
+</div>
+      ))}
+
+      <!-- FINAL PANEL -->
+      <div class="panel_inner panel-final" style="visibility:hidden">
+       
+        <div class="image-container"> 
+          <picture class="panel-image">
+            <source srcset={`/images/panel-effect8.jpg`} media="(min-width:1024px)" />
+            <source srcset={`/images/panel-effect8.jpg`} media="(min-width:640px)" />
+            <img src={`/images/panel-effect8.jpg`} />
+          </picture>
+
+          <div class="panel-hotspots">
+            <button class="hotspot" data-layer="Aluminum_Frame" style="--x:14%;--y:26%"></button>
+            <button class="hotspot" data-layer="Glass_Coating" style="--x:12%;--y:40%"></button>
+            <button class="hotspot" data-layer="Front_Encapsulant" style="--x:76%;--y:26%"></button>
+            <button class="hotspot" data-layer="Solar_Cell" style="--x:45%;--y:72%"></button>
+            <button class="hotspot" data-layer="Back_Encapsulate" style="--x:88%;--y:46%"></button>
+            <button class="hotspot" data-layer="Backsheet_Glass" style="--x:56%;--y:92%"></button>
+            <button class="hotspot" data-layer="Junction_Box" style="--x:78%;--y:76%"></button>
+          </div>
+        </div>
+
+
+        <div class="panel-main">
+          <div class="panel-timeline timeline-left" style="--gap:35px">
+            <div class="panel-left" data-layer="Aluminum_Frame" style="--line-w:260px;--y-offset:-30px">
+              <h3>{data.panel_layers.Aluminum_Frame.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div class="panel-left" data-layer="Glass_Coating" style="--line-w:150px;--y-offset:-10px">
+              <h3>{data.panel_layers.Glass_Coating.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div class="panel-left" data-layer="Solar_Cell" style="--line-w:240px;--y-offset:15px">
+              <h3>{data.panel_layers.Solar_Cell.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div class="panel-left" data-layer="Backsheet_Glass" style="--line-w:320px;--y-offset:30px">
+              <h3>{data.panel_layers.Backsheet_Glass.title}</h3>
+              <a>View Details</a>
+            </div>
+          </div>
+
+          <div class="panel-timeline timeline-right" style="--gap:45px">
+            <div class="panel-right" data-layer="Front_Encapsulant" style="--line-w:230px;--y-offset:-25px">
+              <h3>{data.panel_layers.Front_Encapsulant.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div class="panel-right" data-layer="Back_Encapsulate" style="--line-w:160px;--y-offset:-30px">
+              <h3>{data.panel_layers.Back_Encapsulate.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div class="panel-right" data-layer="Junction_Box" style="--line-w:195px;--y-offset:45px">
+              <h3>{data.panel_layers.Junction_Box.title}</h3>
+              <a>View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="detailModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">✕</button>
+      <div class="modal-flex">
+        <div class="modal-image-side">
+          <img id="modalImg" />
+        </div>
+        <div class="modal-text-side">
+          <div id="modalBody" class="modal-scroll-area"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script is:inline define:vars={{ layers: data.panel_layers }}>
+  const section = document.getElementById("panelAni");
+  const panels = section.querySelectorAll(".panel_inner");
+  const totalSteps = panels.length;
+
+  function update() {
+    const rect = section.getBoundingClientRect();
+    const progress = Math.min(Math.max(-rect.top / (rect.height - innerHeight), 0), 1);
+    const index = Math.min(totalSteps - 1, Math.floor(progress * totalSteps));
+
+    panels.forEach((p, i) => {
+      if (index === totalSteps - 1) {
+        p.style.visibility = i >= totalSteps - 2 ? "visible" : "hidden";
+      } else {
+        p.style.visibility = i === index ? "visible" : "hidden";
+      }
+    });
+  }
+
+  addEventListener("scroll", update, { passive: true });
+  update();
+
+  const layerInfo = {
+    Aluminum_Frame: { img: "/images/1.jpg", content: layers.Aluminum_Frame.content },
+    Glass_Coating: { img: "/images/2.jpg", content: layers.Glass_Coating.content },
+    Solar_Cell: { img: "/images/4.jpg", content: layers.Solar_Cell.content },
+    Backsheet_Glass: { img: "/images/6.jpg", content: layers.Backsheet_Glass.content },
+    Front_Encapsulant: { img: "/images/3.jpg", content: layers.Front_Encapsulant.content },
+    Back_Encapsulate: { img: "/images/5.jpg", content: layers.Back_Encapsulate.content },
+    Junction_Box: { img: "/images/7.jpg", content: layers.Junction_Box.content }
+  };
+
+  const modal = document.getElementById("detailModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalBody = document.getElementById("modalBody");
+
+  document.querySelectorAll("[data-layer]").forEach(el => {
+    el.onclick = () => {
+      const d = layerInfo[el.dataset.layer];
+      modalImg.src = d.img;
+      modalBody.innerHTML = d.content;
+      modal.classList.add("modal-active");
+      document.body.style.overflow = "hidden";
+    };
+  });
+
+  document.getElementById("closeModal").onclick = () => {
+    modal.classList.remove("modal-active");
+    document.body.style.overflow = "";
+  };
+</script>
+
+
+<style>
+
+  /* ==============================
+   PV INTRO (BEFORE IMAGE)
+================================ */
+.pv-intro {
+  width: 100%;
+  background: #fff;
+  padding: 80px 24px 40px;
+}
+
+.pv-intro-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pv-title {
+  font-size: 42px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 18px;
+}
+
+.pv-divider {
+  border: none;
+  height: 1px;
+  background: #c7d2fe;
+  margin: 0 0 28px;
+}
+
+.pv-desc {
+  max-width: 780px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .pv-title {
+    font-size: 34px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .pv-title {
+    font-size: 28px;
+  }
+
+  .pv-intro {
+    padding: 60px 20px 30px;
+  }
+}
+
+  :root {
+  --line-color: #89b4edff;
+  --box-bg: #ffffff;
+  --primary-blue: #0054c5;
+}
+
+/* ==============================
+   SECTION & STICKY CONTAINER
+================================ */
+.panel_ani_section {
+  position: relative;
+  height: 110vh;
+}
+
+.panel_ani {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: #fff;
+  overflow: hidden;
+}
+
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==============================
+   IMAGE PANELS
+================================ */
+.panel_inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.panel-image img {
+  width: 100%;
+  max-width: 45vw;
+  height: auto;
+  pointer-events: none;
+}
+
+/* ==============================
+   FINAL PANEL (TIMELINES)
+================================ */
+.panel-final {
+  z-index: 100;
+}
+
+.panel-main {
+  position: absolute;
+  inset: 0;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  pointer-events: auto;
+}
+
+/* ==============================
+   TIMELINE WRAPPERS
+================================ */
+.panel-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 20px);
+  z-index: 120;
+}
+
+/* ==============================
+   TIMELINE BOXES
+================================ */
+.panel-left,
+.panel-right {
+  position: relative;
+  width: 200px;
+  background: var(--box-bg);
+  border: 1.5px solid #c7d2fe;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transform: translateY(var(--y-offset, 0));
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.panel-left:hover,
+.panel-right:hover {
+  transform: translateY(var(--y-offset, 0)) scale(1.03);
+}
+
+.panel-left h3,
+.panel-right h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+}
+
+.panel-left a,
+.panel-right a {
+  font-size: 13px;
+  color: var(--primary-blue);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* ==============================
+   CONNECTOR LINES
+================================ */
+.panel-left::after,
+.panel-right::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: var(--line-w, 100px);
+  height: 2px;
+  background: var(--line-color);
+}
+
+.panel-left::before,
+.panel-right::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--line-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9);
+}
+
+.panel-left::after {
+  right: calc(var(--line-w, 100px) * -1);
+}
+
+.panel-left::before {
+  right: calc(var(--line-w, 100px) * -1 - 6px);
+}
+
+.panel-right::after {
+  left: calc(var(--line-w, 100px) * -1);
+}
+
+.panel-right::before {
+  left: calc(var(--line-w, 100px) * -1 - 6px);
+}
+
+/* ==============================
+   MODAL
+================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  width: 95%;
+  max-width: 1100px;
+  background: #fff;
+  position: relative;
+  padding: 40px;
+  max-height: 85vh;
+  border-radius: 12px;
+}
+
+.modal-flex {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+}
+
+.modal-image-side {
+  flex: 1;
+}
+
+.modal-image-side img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.modal-text-side {
+  flex: 1.2;
+}
+
+.modal-scroll-area {
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+/* ==============================
+   TABLET
+================================ */
+@media (max-width: 1024px) {
+  .panel-image img {
+    max-width: 65vw;
+  }
+
+  .panel-main {
+    padding: 0 20px;
+  }
+}
+
+/* ==============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .panel-image img {
+    max-width: 90vw;
+  }
+
+  /* ==============================
+   FINAL PANEL – DESKTOP ONLY
+================================ */
+
+/* Tablet + Mobile: IMAGE ONLY */
+@media (max-width: 1023px) {
+  .panel-final {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .panel-final .panel-main {
+    display: none; /* hide timelines */
+  }
+
+  .panel-final .panel-image img {
+    max-width: 90vw;
+  }
+}
+
+/* Desktop only */
+@media (min-width: 1024px) {
+  .panel-final .panel-main {
+    display: flex;
+  }
+
+  .panel-final .panel-image img {
+    max-width: 45vw;
+  }
+}
+
+  .panel-timeline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .panel-left,
+  .panel-right {
+    width: 150px;
+    transform: none !important;
+  }
+
+  .panel-left::before,
+  .panel-left::after,
+  .panel-right::before,
+  .panel-right::after {
+    display: none;
+  }
+
+  .modal-flex {
+    flex-direction: column;
+  }
+
+  .modal-scroll-area {
+    max-height: 45vh;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .panel-final .panel-main {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .panel-final {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+.panel-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.panel-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* YOUR hotspot – unchanged except scale-safe */
+.hotspot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+
+  width: clamp(20px, 4vw, 34px);
+  height: clamp(20px, 4vw, 34px);
+
+  border-radius: 50%;
+  background: var(--primary-blue);
+  border: none;
+  cursor: pointer;
+
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: pulse 1.6s infinite;
+}
+
+
+
+/* Plus symbol */
+.hotspot::before,
+.hotspot::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+}
+
+.hotspot::before {
+  width: 14px;
+  height: 2px;
+}
+
+.hotspot::after {
+  width: 2px;
+  height: 14px;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0,84,197,0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(0,84,197,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,84,197,0); }
+}
+
+/* ==============================
+   SHOW ONLY ON MOBILE/TABLET
+================================ */
+@media (min-width: 1024px) {
+  .panel-hotspots {
+    display: none;
+  }
+}
+
+/* Update these specific classes in your <style> tag */
+
+.panel_inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block; /* Crucial: Div becomes the size of the image */
+  line-height: 0;        /* Removes tiny bottom gap in some browsers */
+}
+
+.panel-image img {
+  width: 100%;
+  max-width: 45vw;       /* Desktop size */
+  height: auto;
+  display: block;
+}
+
+.panel-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;           /* This is now 100% of the IMAGE, not the screen */
+  height: 100%;          /* This is now 100% of the IMAGE, not the screen */
+  pointer-events: none;
+}
+
+/* Adjust image sizes for different screens */
+@media (max-width: 1024px) {
+  .panel-image img {
+    max-width: 80vw;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel-image img {
+    max-width: 95vw;
+  }
+}
+
+
+
+</style>
+
+  

@@ -1,0 +1,345 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="boms-section">
+  <div class="boms-container">
+    <h2 class="boms-title">
+      {data.method_bom_title} <br />
+      <span>{data.method_bom_title_span}</span>
+    </h2>
+    <div class="boms-left">
+      <div class="boms-card">
+        <h4>{data.method_bom_heading1}</h4>
+
+        <ul class="boms-list">
+          <li>
+            <span class="boms-check" aria-hidden="true">
+              <img src="/images/Icon_Check_DarkBlue.svg" />
+            </span>
+
+            <span class="boms-text">
+             {data.method_bom_heading1_text1}
+            </span>
+          </li>
+
+          <li>
+            <span class="boms-check" aria-hidden="true">
+              <img src="/images/Icon_Check_DarkBlue.svg" />
+            </span>
+
+            <span class="boms-text">
+              {data.method_bom_heading1_text2}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <img
+        src="/images/welcome-image.jpg"
+        alt={data.method_bom_heading1_imgalt}
+        class="boms-image"
+      />
+    </div>
+
+    <div class="boms-right">
+      <p class="boms-intro">
+        {data.method_bom_heading2}
+      </p>
+
+      <div class="boms-blue-card">
+        <span class="boms-check" aria-hidden="true">
+          <img src="/images/Icon_Check_KiwaBlue.svg" />
+        </span>
+        <p>
+          {data.method_bom_heading2_text1}
+          <a href={data.method_bom_heading2_text1_tclink} class="boms-link-pill">{data.method_bom_heading2_text1_tclinktext}</a>,
+          <a href={data.method_bom_heading2_text1_dhlink} class="boms-link-pill">{data.method_bom_heading2_text1_dhlinktext}</a>,
+          <a href={data.method_bom_heading2_text1_msslink} class="boms-link-pill">{data.method_bom_heading2_text1_msslinktext}</a> and
+          <a href={data.method_bom_heading2_text1_pidlink} class="boms-link-pill">{data.method_bom_heading2_text1_pidlinktext}</a>
+          {data.method_bom_heading2_text1_linktextafter}
+        </p>
+      </div>
+
+      <div class="boms-blue-card">
+        <span class="boms-check" aria-hidden="true">
+          <img src="/images/Icon_Check_KiwaBlue.svg" />
+        </span>
+        <p>
+          {data.method_bom_heading2_text2}
+          <a href={data.method_bom_heading2_text2_hsslink} class="boms-link-pill">{data.method_bom_heading2_text2_hsslinktext}</a>
+          {data.method_bom_heading2_text2_linktextafter}
+        </p>
+      </div>
+
+      <div class="boms-blue-card">
+        <span class="boms-check" aria-hidden="true">
+          <img src="/images/Icon_Check_KiwaBlue.svg" />
+        </span>
+        <p>
+          {data.method_bom_heading2_text3} <a href={data.method_bom_heading2_text3_lidlink} class="boms-link-pill"
+            >{data.method_bom_heading2_text3_lidlinktext}</a
+          >{data.method_bom_heading2_text3_linktextafter}
+        </p>
+      </div>
+
+      <div class="boms-blue-card">
+        <span class="boms-check" aria-hidden="true">
+          <img src="/images/Icon_Check_KiwaBlue.svg" />
+        </span>
+        <p>
+          {data.method_bom_heading2_text4} <a href={data.method_bom_heading2_text4_panlink} class="boms-link-pill"
+            >{data.method_bom_heading2_text4_panlinktext}</a
+          > {data.method_bom_heading2_text4_panlinktextafter} <a href={data.method_bom_heading2_text4_iamlink} class="boms-link-pill">{data.method_bom_heading2_text4_iamlinktext}</a> 
+         {data.method_bom_heading2_text4_iamlinktextafter}
+        </p>
+      </div>
+    </div>
+
+    <div class="boms-full-width">
+      {data.method_bom_para1}
+    </div>
+
+    <div class="boms-full-width">
+      {data.method_bom_para2}
+      <a
+        href={data.method_bom_paralink}
+        target="_blank"
+        class="boms-link">{data.method_bom_paralinktext}</a
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  .boms-section {
+    padding: 80px 20px;
+    background: #ffffff;
+  }
+
+  .boms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch; /* REQUIRED */
+  }
+
+  /* LEFT + RIGHT COLUMNS */
+  .boms-left,
+  .boms-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TITLE */
+  .boms-title {
+    font-size: 46.8px;
+    font-weight: 400;
+    color: #072643;
+    margin-bottom: 10px;
+    font-family: "Azo Sans", sans-serif;
+    grid-column: 1 / -1;
+  }
+
+  .boms-title span {
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  .boms-card {
+    border: 1px solid #dce3eb;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .boms-card h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #5a5b5e;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .boms-card ul {
+    padding-left: 0;
+  }
+
+  .boms-card li {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5a5b5e;
+    letter-spacing: 0.04em;
+    font-family: "Work Sans", sans-serif;
+  }
+  .boms-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .boms-list li {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    border: 1px solid #dce3eb;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+
+    font-size: 16px;
+    line-height: 1.7;
+    color: #5a5b5e;
+    letter-spacing: 0.04em;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .boms-check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+  }
+
+  .boms-text {
+    flex: 1;
+  }
+
+  .boms-image {
+    width: 100%;
+    max-height: 550px;
+    object-fit: cover;
+    margin-top: 30px;
+  }
+
+  .boms-check img,
+  .boms-check svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .boms-right {
+    background: #0054c5;
+    padding: 40px;
+    color: #ffffff;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* INTRO */
+  .boms-intro {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 0.02em;
+    font-family: "Work Sans", sans-serif;
+    margin: 0;
+  }
+
+  /* BLUE CARDS */
+  .boms-blue-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    background: #ffffff;
+    color: #5a5b5e;
+    padding: 16px 20px;
+
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .boms-blue-card .boms-check {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .boms-blue-card p {
+    margin: 0;
+  }
+
+  /* FULL WIDTH TEXT */
+  .boms-full-width {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #5a5b5e;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+  }
+  .boms-link-pill {
+    color: #0054c5;
+    text-decoration: none;
+  }
+
+  .boms-link-pill:hover {
+    color: #5a5b5e;
+  }
+
+  .boms-link {
+    color: #0054c5;
+    text-decoration: underline;
+  }
+
+  /* TABLET */
+  @media (max-width: 992px) {
+    .boms-container {
+      grid-template-columns: 1fr;
+    }
+
+    .boms-right {
+      margin-top: 0;
+    }
+
+    .boms-title {
+      font-size: 40px;
+    }
+    .boms-image {
+      max-height: 420px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .boms-section {
+      padding: 50px 16px;
+    }
+
+    .boms-title {
+      font-size: 32px;
+    }
+
+    .boms-card,
+    .boms-right {
+      padding: 24px;
+    }
+
+    .boms-blue-card {
+      font-size: 15px;
+    }
+
+    .boms-full-width {
+      font-size: 15px;
+    }
+    .boms-image {
+      max-height: 320px;
+    }
+  }
+</style>

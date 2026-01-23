@@ -1,0 +1,32 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="hero">
+  <!-- Background image -->
+  <img
+    src="/images/Potential-Induced-Degradation-banner.jpg"
+    alt={data.pid_alt_text}
+    class="hero-bg"
+  />
+
+  <!-- Blue overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>
+      {data.pid_head} <br/>
+      <span class="span">{data.pid_subhead}</span>
+    </h1>
+    <p>
+      {data.pid_description}
+    </p>
+  </div>
+</section>
+

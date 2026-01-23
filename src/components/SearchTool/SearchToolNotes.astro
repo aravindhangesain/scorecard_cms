@@ -1,0 +1,186 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="searchtoolnote" class="notes-section">
+  <div class="notes-container">
+    <!-- LEFT CONTENT -->
+    <div class="notes-text">
+      <h2>
+        {data.searchtool_notes_heading}<br />
+        <span>{data.searchtool_notes_heading_span}</span>
+      </h2>
+
+      <ul class="notes-list">
+        {data.searchtool_notes_list_1.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
+      <ol class="mss-list">
+        {data.searchtool_mss_sublist.map(item => (
+          <li>{item}</li>
+        ))}
+      </ol>
+
+      <ul class="notes-list">
+        {data.searchtool_notes_list_2.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="notes-image">
+      <img src="/images/Mechanical-Stress-Sequence-banner.jpg" alt={data.searchtool_image_alt} />
+    </div>
+  </div>
+</section>
+
+
+<style>
+  /* ==============================
+   SECTION
+============================== */
+  .notes-section {
+    background: #0052cc;
+    padding: clamp(48px, 6vw, 100px) 0;
+    font-family: "Inter", "Work Sans", sans-serif;
+  }
+
+  /* ==============================
+   LAYOUT
+============================== */
+  .notes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 5vw, 60px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+  }
+
+  /* ==============================
+   LEFT CONTENT
+============================== */
+  .notes-text {
+    max-width: 760px;
+  }
+
+  /* ==============================
+   HEADING
+============================== */
+  .notes-text h2 {
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.2;
+    margin-bottom: clamp(20px, 3vw, 32px);
+    color: #ffffff;
+    font-family: "Azo Sans", sans-serif;
+    font-weight: 400;
+    letter-spacing: -1.2px;
+  }
+
+  .notes-text h2 span {
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  /* ==============================
+   DASH BULLET LIST
+============================== */
+  .notes-list {
+    color: #ffffff;
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+    padding-left: 0;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .notes-list li {
+    list-style: "–  ";
+    margin-bottom: 12px;
+    padding-left: 6px;
+  }
+
+  /* ==============================
+   MSS NUMBERED SUB-LIST
+============================== */
+  .mss-list {
+    margin: 12px 0 28px;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: mss-counter;
+    color: #ffffff;
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    max-width: 720px;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .mss-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+  }
+
+  .mss-list li::before {
+    counter-increment: mss-counter;
+    content: counter(mss-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ffffff;
+  }
+
+  /* ==============================
+   IMAGE
+============================== */
+  .notes-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  /* ==============================
+   TABLET & BELOW
+============================== */
+  @media (max-width: 1024px) {
+    .notes-container {
+      grid-template-columns: 1fr;
+    }
+
+    .notes-image {
+      order: -1; /* image first on tablet/mobile */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .notes-text {
+      padding-left: 20px;
+      padding-right: 12px;
+    }
+  }
+
+  /* ==============================
+   MOBILE
+============================== */
+  @media (max-width: 480px) {
+    .notes-text h2 {
+      letter-spacing: -0.8px;
+    }
+
+    .mss-list li {
+      padding-left: 24px;
+    }
+  }
+</style>

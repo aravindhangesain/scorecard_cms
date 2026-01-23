@@ -1,0 +1,181 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const title = "Testing PV Module Reliability and Performance";
+
+---
+
+<section class="pqp-section">
+  <!-- Header -->
+  <div class="pqp-header">
+    <h1>{title}</h1>
+
+    <a href="#" class="pqp-btn">
+      Click here to view PQP Test Sequence Chart
+    </a>
+  </div>
+
+  <hr class="pqp-divider" />
+
+  <!-- Content -->
+  <div class="pqp-content">
+    <!-- Left Image -->
+    <div class="pqp-image">
+      <img
+        src="/images/2022/VMS14882-1.png"
+        alt="PVEL Testing PV Module"
+      />
+    </div>
+
+    <!-- Right Text -->
+    <div class="pqp-text">
+      <p>
+        PVEL’s PV Module PQP is a comprehensive suite of lab and field tests that
+        assess the bankability of PV modules.
+        <a href="#">Click here to view PQP test sequences.</a>
+        While the specific tests have changed over time, the same four
+        principles have guided PVEL’s PQP since it was first established in
+        2012:
+      </p>
+
+      <div class="pqp-item">
+        <h3>Empirical Data</h3>
+        <p>
+          The PQP provides empirical metrics for revenue and energy yield
+          modeling.
+        </p>
+      </div>
+
+      <div class="pqp-item">
+        <h3>Standard Processes</h3>
+        <p>
+          The PQP tests all BOMs in the same way with calibrated equipment and in
+          consistent test environments.
+        </p>
+      </div>
+
+      <div class="pqp-item">
+        <h3>No Hand-picked Samples</h3>
+        <p>
+          Auditors witness the production of all test samples and record BOM
+          details.
+        </p>
+      </div>
+
+      <div class="pqp-item">
+        <h3>Regular Program Updates</h3>
+        <p>
+          Test sequence updates provide data on new technologies and manufacturing techniques.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .pqp-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: "Georgia", serif;
+  background-color: rgba(223, 233, 247, 0.3);
+}
+
+.pqp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  
+}
+
+.pqp-header h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #111;
+  
+}
+
+.pqp-btn {
+  background: #7bb36a;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pqp-divider {
+  margin: 30px 0 50px;
+  border: none;
+  border-top: 1px solid #d8dbe5;
+}
+
+/* Layout */
+.pqp-content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Image */
+.pqp-image img {
+  width: 100%;
+  height: 80%;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Text */
+.pqp-text p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.pqp-text a {
+  color: #6aa84f;
+  text-decoration: underline;
+}
+
+/* Items */
+.pqp-item {
+  margin-top: 28px;
+}
+
+.pqp-item h3 {
+  font-family: "Georgia", serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4b5f8a;
+  border-bottom: 1px solid #d8dbe5;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.pqp-item p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pqp-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pqp-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>

@@ -1,0 +1,161 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="past-editions">
+    <div class="container">
+        <h2>
+            {data.past_editions_heading_line_1}<br />
+            <span>{data.past_editions_heading_highlight}</span>
+        </h2>
+
+        <p class="description">{data.past_editions_paragraph}</p>
+
+        <div class="editions-grid">
+            {
+                data.past_editions_list.map((edition) => (
+                    <a href={edition.url} class="edition">
+                        <span class="edition-text">{edition.text}</span>
+                        <span class="arrow">→</span>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .past-editions {
+        background: #0054c5;
+        color: #fff;
+        padding: 40px 0;
+    }
+
+    .past-editions .container {
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    .past-editions h2 {
+        font-size: 40px;
+        line-height: 41px;
+        margin-bottom: 20px;
+        font-family: "Azo Sans", sans-serif;
+        font-weight: 400;
+        letter-spacing: -1.5px;
+    }
+
+    .past-editions h2 span {
+        font-style: italic;
+        font-family: "Azo Sans", sans-serif;
+        font-weight: 800;
+    }
+
+    .description {
+        max-width: 1200px;
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 30px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .editions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-flow: column;
+        grid-template-rows: repeat(4, auto);
+        gap: 4px 60px;
+        max-width: 1200px;
+        margin-bottom: 20px;
+    }
+
+    .edition {
+        color: #80ffca;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Work Sans", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: opacity 0.3s ease;
+    }
+
+    .edition:hover {
+        opacity: 0.85;
+    }
+
+    .edition-text {
+        flex: 1;
+    }
+
+    .arrow {
+        font-size: 28px;
+        margin-left: 12px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .edition:hover .arrow {
+        transform: translateX(5px);
+    }
+
+    /* Below 1000px → SINGLE column */
+    /* Below 1000px → SINGLE column */
+    @media (max-width: 1000px) {
+        .past-editions h2 {
+            font-size: 36px;
+            line-height: 42px;
+        }
+
+        .description {
+            font-size: 17px;
+            line-height: 30px;
+        }
+
+        .editions-grid {
+            grid-template-columns: 1fr;
+            grid-auto-flow: row;
+            grid-template-rows: auto;
+            gap: 18px;
+        }
+
+        .edition {
+            font-size: 15px;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .arrow {
+            font-size: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .past-editions h2 {
+            font-size: 32px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .editions-grid {
+            grid-template-columns: 1fr;
+            grid-auto-flow: row;
+            grid-template-rows: auto;
+            gap: 18px;
+        }
+
+        .edition {
+            font-size: 14px;
+        }
+    }
+</style>

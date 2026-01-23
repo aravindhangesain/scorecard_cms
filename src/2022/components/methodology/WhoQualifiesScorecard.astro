@@ -1,0 +1,128 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="scorecard">
+  <div class="container">
+    <h1>Who Qualifies for the Scorecard</h1>
+
+    <div class="divider"></div>
+
+    <div class="content">
+      <div class="image">
+        <img
+          src="/images/2022/IMG_E1302-1-11.png"
+          alt="Solar panels"
+        />
+      </div>
+
+      <div class="text">
+        <p class="intro">
+          To be eligible for the Scorecard, manufacturers must have:
+        </p>
+
+        <div class="rule">
+          Completed the factory witness within 18 months of 2022.
+        </div>
+
+        <div class="rule">
+          Submitted all modules to all reliability tests.
+        </div>
+
+        <div class="rule">
+          Submitted at least two factory-witnessed PV module samples per test
+          sequence.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --bg: #1f2740;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.7);
+    --divider: rgba(255, 255, 255, 0.12);
+  }
+
+  .scorecard {
+    background: var(--bg);
+    color: var(--text);
+    padding: 96px 24px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--divider);
+    margin-bottom: 64px;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .image img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .text {
+    max-width: 420px;
+  }
+
+  .intro {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 5px;
+    
+  }
+
+  .rule {
+    padding: 24px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .rule:last-child {
+    border-bottom: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .content {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .text {
+      max-width: 100%;
+    }
+  }
+</style>

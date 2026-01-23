@@ -1,0 +1,266 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="methodology-hero">
+    <!-- Background image -->
+    <img
+        src="/images/Key-Takeaways-1.jpg"
+        alt="PQP Testing methodology"
+        class="hero-bg"
+    />
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+        <h2>
+            {data.method_pqp_title} <span>{data.method_pqp_title_span}</span>
+        </h2>
+
+        <p>
+            {data.method_pqp_paragraphs_1}
+        </p>
+
+        <p>
+            {data.method_pqp_paragraphs_2}
+        </p>
+
+        <a
+            class="hero-link"
+            href={data.method_pqp_link}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {data.method_pqp_link_text} <img
+                class="cta-arrow"
+                src="/images/Icon_Arrow_White.svg"
+            />
+        </a>
+    </div>
+</section>
+
+<style>
+    .methodology-hero {
+        position: relative;
+        width: 100%;
+        min-height: 65vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: #072643;
+        opacity: 0.8;
+    }
+
+    .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1300px;
+    width: 90%;
+    padding: 25px 40px 100px;
+    margin: 0 auto;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 65vh; /* important: gives space to push link down */
+}
+
+
+    .hero-content h2 {
+        font-size: 48px;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .hero-content h2 span {
+        font-style: italic;
+        font-weight: 800;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 1.2rem;
+        max-width: 1300px;
+        letter-spacing: 0.03em;
+        font-family: "Work Sans" sans-serif;
+        font-weight: 400;
+    }
+
+    .hero-link {
+    margin-top: auto; /* 🔑 pushes link to bottom */
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+}
+
+
+    .hero-link:hover {
+        opacity: 0.8;
+    }
+
+    /* Keep original image size */
+    .hero-link img.cta-arrow {
+        width: 60px; /* fixed size */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Hover animation: slide right */
+    .hero-link:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click animation */
+    .hero-link:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    .hero-link:hover img.cta-arrow {
+        animation: arrowSlide 0.4s ease forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-link img.cta-arrow {
+            transition: none;
+            animation: none;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .hero-content {
+            max-width: 1400px;
+        }
+    }
+
+    @media (max-width: 1366px) {
+        .hero-bg {
+            object-position: 65% center;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .hero-content {
+            padding: 40px 40px 80px;
+            max-width: 100%;
+        }
+
+        .hero-content h2 {
+            font-size: 42px;
+        }
+
+        .hero-link {
+            margin-top: 120px;
+        }
+        .hero-bg {
+            object-position: center top;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .methodology-hero {
+            min-height: auto;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            padding: 30px 24px 60px;
+        }
+
+        .hero-content h2 {
+            font-size: 34px;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .hero-link {
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+
+        .tp-arrow {
+            font-size: 1.2rem;
+        }
+        .hero-bg {
+            object-position: center 20%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content {
+            padding: 24px 16px 40px;
+        }
+
+        .hero-content h2 {
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        .hero-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hero-link {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .tp-arrow {
+            align-self: flex-end;
+        }
+
+        .hero-bg {
+            object-position: center 20%;
+        }
+    }
+</style>

@@ -1,0 +1,201 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+---
+
+<section class="download-section">
+    <div class="container">
+        <div class="content-box">
+            <h2 class="title">
+                {data.download_section_heading_line_1}<br />
+                <span class="highlight"
+                    >{data.download_section_heading_highlight}</span
+                >
+            </h2>
+            <p class="description">
+                {data.download_section_paragraph}
+            </p>
+            <a href={data.download_section_link_url} class="btn-download">
+                {data.download_section_link_text} <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="image-box">
+            <img
+                src="/images/welcome-image.jpg"
+                alt={data.download_section_image_alt}
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .download-section {
+        padding: 100px 0;
+        background-color: #ffffff;
+    }
+
+    .download-section .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    .content-box {
+        flex: 1;
+        max-width: 560px;
+    }
+
+    .title {
+        font-size: 52px;
+        font-weight: 400;
+        color: #072643;
+        line-height: 64px;
+        letter-spacing: -1.5px;
+        margin-bottom: 24px;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .highlight {
+        font-weight: 800;
+        font-style: italic;
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .description {
+        font-size: 17px;
+        line-height: 32px;
+        letter-spacing: 0.5px;
+        color: #072643;
+        margin-bottom: 40px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .btn-download {
+        display: inline-flex;
+        align-items: center;
+        padding: 14px 32px;
+        border: 2px solid #0054c5;
+        color: #0054c5;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .btn-download:hover {
+        background: #0054c5;
+        color: #ffffff;
+    }
+
+    .arrow {
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-download:hover .arrow {
+        transform: translateX(8px);
+    }
+
+    .image-box {
+        flex: 1;
+        max-width: 520px;
+    }
+
+    .image-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 2px;
+    }
+
+    @media (max-width: 1024px) {
+        .download-section {
+            padding: 80px 0;
+        }
+
+        .download-section .container {
+            padding: 0 40px;
+            gap: 60px;
+        }
+
+        .title {
+            font-size: 42px;
+            line-height: 54px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .download-section .container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 48px;
+        }
+
+        .content-box,
+        .image-box {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .download-section {
+            padding: 60px 0;
+        }
+
+        .download-section .container {
+            padding: 0 24px;
+        }
+
+        .title {
+            font-size: 34px;
+            line-height: 44px;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        .btn-download {
+            padding: 12px 24px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .download-section {
+            padding: 48px 0;
+        }
+
+        .title {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 24px;
+            margin-bottom: 32px;
+        }
+
+        .btn-download {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            padding: 14px 0;
+        }
+    }
+</style>

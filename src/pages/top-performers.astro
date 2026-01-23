@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import HeroBanner from "../components/SearchTool/HeroBannerSerach.astro";
+import SearchTable from "../components/SearchTool/SearchTable.astro";
+import SearchToolNotes from "../components/SearchTool/SearchToolNotes.astro";
+import CTA from "../components/CTA.astro";
+import SearchTableN from "../components/SearchTool/SearchTableN.astro";
+import Score from "../components/SearchTool/score.astro";
+
+
+---
+
+
+<MainLayout>
+    <HeroBanner/>
+    <div style="display:block; position:relative;">
+    <Score />
+    </div>
+    <SearchToolNotes/>
+    <CTA/>
+</MainLayout>
+
+

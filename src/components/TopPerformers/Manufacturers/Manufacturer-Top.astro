@@ -1,0 +1,2522 @@
+---
+/* Minimal JS, Astro-friendly */
+
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+---
+
+<section class="accordion-wrapper">
+    <!-- ACCORDION 1 (OPEN BY DEFAULT) -->
+    <section class="accordion">
+        <button class="tp-header" aria-expanded="true">
+            <h2>{data.manufacturer_Top_7}</h2>
+            <span class="tp-toggle">–</span>
+        </button>
+
+        <div class="tp-content">
+            <div class="tp-grid">
+                <!-- Jinko -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/JINKO.webp"
+                        alt="Jinko Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Jinko"
+                            : "/top-performers/?manuf_name=Jinko"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Phono -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/PHONO-SOLAR.webp"
+                        alt="Phono"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Phono Solar"
+                            : "/top-performers/?manuf_name=Phono Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- ZhShine solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/ZNSHINE.webp"
+                        alt="Znshine"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=ZNShine Solar"
+                            : "/top-performers/?manuf_name=ZNShine Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Talesun -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Talesun.webp"
+                        alt="Talesun"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Talesun"
+                            : "/top-performers/?manuf_name=Talesun"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Vsun -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/VSUN.webp"
+                        alt="Vsun"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=VSUN"
+                            : "/top-performers/?manuf_name=VSUN"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Jolywood -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/JOLYWOOD.webp"
+                        alt="Jolywood"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Jolywood"
+                            : "/top-performers/?manuf_name=Jolywood"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Waaree -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/WAAREE.webp"
+                        alt="Waaree"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Waaree"
+                            : "/top-performers/?manuf_name=Waaree"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- NE Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/NE-SOLAR.webp"
+                        alt="NE Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=NE Solar"
+                            : "/top-performers/?manuf_name=NE Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- TW Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/TONGWEI.webp"
+                        alt="TW Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=TW Solar"
+                            : "/top-performers/?manuf_name=TW Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION 2 -->
+    <section class="accordion">
+        <button class="tp-header" aria-expanded="false">
+            <h2>{data.manufacturer_Top_6}</h2>
+            <span class="tp-toggle">+</span>
+        </button>
+        <div class="tp-content">
+            <div class="tp-grid">
+                <!-- TrinaSolar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/TRINA.webp"
+                        alt="Trina Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Trina Solar"
+                            : "/top-performers/?manuf_name=Trina Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Qcells -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/QCELLS.webp"
+                        alt="Qcells"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Qcells"
+                            : "/top-performers/?manuf_name=Qcells"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Seraphim -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Seraphim.webp"
+                        alt="Znshine"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Seraphim"
+                            : "/top-performers/?manuf_name=Seraphim"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Elite Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/ELITE-SOLAR.webp"
+                        alt="Elite Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=EliTe Solar"
+                            : "/top-performers/?manuf_name=EliTe Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Canadiansolar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/CANADIAN_SOLAR.webp"
+                        alt="Canadian Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Canadian Solar"
+                            : "/top-performers/?manuf_name=Canadian Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Leapton -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/LEAPTON.webp"
+                        alt="LeapTon"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=LeapTon"
+                            : "/top-performers/?manuf_name=LeapTon"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- ReNew -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/RENEW.webp"
+                        alt="ReNew"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=ReNew"
+                            : "/top-performers/?manuf_name=ReNew"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Kalyon -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Kalyon-PV-1.webp"
+                        alt="Kalyon"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Kalyon"
+                            : "/top-performers/?manuf_name=Kalyon"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION 3 -->
+    <section class="accordion">
+        <button class="tp-header" aria-expanded="false">
+            <h2>{data.manufacturer_Top_5}</h2>
+            <span class="tp-toggle">+</span>
+        </button>
+        <div class="tp-content">
+            <div class="tp-grid">
+                <!-- JA Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/JA-SOLAR.webp"
+                        alt="JA Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=JA Solar"
+                            : "/top-performers/?manuf_name=JA Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- adani Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/ADANI.webp"
+                        alt="Adani Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Adani Solar"
+                            : "/top-performers/?manuf_name=Adani Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Longi -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/LONGI.webp"
+                        alt="Longi"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Longi"
+                            : "/top-performers/?manuf_name=Longi"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Maxeon -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/MAXEON.webp"
+                        alt="Maxeon"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Maxeon"
+                            : "/top-performers/?manuf_name=Maxeon"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Vikram Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/VIKRAM.webp"
+                        alt="Vikram Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Vikram Solar"
+                            : "/top-performers/?manuf_name=Vikram Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Yingli solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/YINGLI.webp"
+                        alt="Yingli Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Yingli Solar"
+                            : "/top-performers/?manuf_name=Yingli Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- DMEGC -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/DMEGC.webp"
+                        alt="DMEGC"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=DMEGC Solar"
+                            : "/top-performers/?manuf_name=DMEGC Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- HUASUN -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/HUASUN.webp"
+                        alt="HUASUN"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=HUASUN"
+                            : "/top-performers/?manuf_name=HUASUN"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Thornova -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/THORNOVA.webp"
+                        alt="Thornova"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Thornova"
+                            : "/top-performers/?manuf_name=Thornova"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- RenewSys -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/RenewSys-1.webp"
+                        alt="RenewSys"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=RenewSys"
+                            : "/top-performers/?manuf_name=RenewSys"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Ronma -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Ronma-1.webp"
+                        alt="Ronma"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Ronma"
+                            : "/top-performers/?manuf_name=Ronma"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION 4 -->
+    <section class="accordion">
+        <button class="tp-header" aria-expanded="false">
+            <h2>{data.manufacturer_Top_4}</h2>
+            <span class="tp-toggle">+</span>
+        </button>
+        <div class="tp-content">
+            <div class="tp-grid">
+                <!-- Astronergy -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/ASTRONERGY.webp"
+                        alt="Astronergy"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Astronergy"
+                            : "/top-performers/?manuf_name=Astronergy"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Silfab -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/SILFAB.webp"
+                        alt="Silfab Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Silfab Solar"
+                            : "/top-performers/?manuf_name=Silfab Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Heliene -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/HELIENE.webp"
+                        alt="Heliene"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Heliene"
+                            : "/top-performers/?manuf_name=Heliene"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- risen -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/RISEN.webp"
+                        alt="risen"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Risen Energy"
+                            : "/top-performers/?manuf_name=Risen Energy"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Aiko -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/AIKO.webp"
+                        alt="Aiko"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Aiko Solar"
+                            : "/top-performers/?manuf_name=Aiko Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- EMMVEE -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/EMMVEE.webp"
+                        alt="EMMVEE"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Emmvee"
+                            : "/top-performers/?manuf_name=Emmvee"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Premier Energies -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/PREMIER.webp"
+                        alt="Premier Energies"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Premier Energies"
+                            : "/top-performers/?manuf_name=Premier Energies"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Hansersun -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/HANERSUN.webp"
+                        alt="HanserSun"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=HanserSun"
+                            : "/top-performers/?manuf_name=HanserSun"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Runergy -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/RUNERGY.webp"
+                        alt="Runergy"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Runergy"
+                            : "/top-performers/?manuf_name=Runergy"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION 5 -->
+    <section class="accordion">
+        <button class="tp-header" aria-expanded="false">
+            <h2>{data.manufacturer_Top_3}</h2>
+            <span class="tp-toggle">+</span>
+        </button>
+        <div class="tp-content">
+            <div class="tp-grid">
+                <!-- GCL -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/GCL.webp"
+                        alt="GCL"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=GCL"
+                            : "/top-performers/?manuf_name=GCL"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- HD -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/HYUNDAI.webp"
+                        alt="HD"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=HD Hyundai"
+                            : "/top-performers/?manuf_name=HD Hyundai"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Seg -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/SEG.webp"
+                        alt="SEG"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=SEG Solar"
+                            : "/top-performers/?manuf_name=SEG Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- Mission Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/MISSION.webp"
+                        alt="Mission Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Mission Solar"
+                            : "/top-performers/?manuf_name=Mission Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- ReneSola -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Renesola-1.webp"
+                        alt="ReneSola"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=ReneSola"
+                            : "/top-performers/?manuf_name=ReneSola"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/DH-icon.svg"
+                            alt="Damp Heat"
+                            title="Damp Heat"
+                            data-link={isZh ? "/zh/damp-heat/" : "/damp-heat/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- TATA -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/TATA.webp"
+                        alt="TATA"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=TATA"
+                            : "/top-performers/?manuf_name=TATA"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- DAH -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/DAH-SOLAR.webp"
+                        alt="DAH"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=DAH Solar"
+                            : "/top-performers/?manuf_name=DAH Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Haitai Solar -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Haitai-1.webp"
+                        alt="Haitai Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Haitai Solar"
+                            : "/top-performers/?manuf_name=Haitai Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Jetion -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Jetion-Solar-1.webp"
+                        alt="Jetion Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Jetion Solar"
+                            : "/top-performers/?manuf_name=Jetion Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Rayzon -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/Rayzon.webp"
+                        alt="Rayzon Solar"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=Rayzon Solar"
+                            : "/top-performers/?manuf_name=Rayzon Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/TC-icon.svg"
+                            alt="Thermal Cycling"
+                            title="Thermal Cycling"
+                            data-link={isZh
+                                ? "/zh/thermal-cycling/"
+                                : "/thermal-cycling/"}
+                        />
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+
+                        <img
+                            src="/images/LIDLETID-icon.svg"
+                            alt="LIDLETID"
+                            title="LID+LETID"
+                            data-link={isZh ? "/zh/lid/" : "/lid/"}
+                        />
+                    </div>
+                </div>
+                <!-- Rec -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/REC.webp"
+                        alt="Rec"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=REC Group"
+                            : "/top-performers/?manuf_name=REC Group"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/PID-icon.svg"
+                            alt="PID"
+                            title="PID"
+                            data-link={isZh ? "/zh/pid/" : "/pid/"}
+                        />
+                        <img
+                            src="/images/PAN-icon.svg"
+                            alt="PAN"
+                            title="PAN Performance"
+                            data-link={isZh
+                                ? "/zh/pan-performance/"
+                                : "/pan-performance/"}
+                        />
+                    </div>
+                </div>
+                <!-- HT -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/HT-SAAE.webp"
+                        alt="HT-SAAE"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=HT-SAAE"
+                            : "/top-performers/?manuf_name=HT-SAAE"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/MSS-icon.svg"
+                            alt="Mechanical Stress Sequence"
+                            title="Mechanical Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/mechanical-stress-sequence/"
+                                : "/mechanical-stress-sequence/"}
+                        />
+                    </div>
+                </div>
+                <!-- AESOLAR -->
+                <div class="tp-card">
+                    <img
+                        src="/images/Manufactures/AE-Solar.webp"
+                        alt="AESOLAR"
+                        data-link={isZh
+                            ? "/zh/top-performers/?manuf_name=AE Solar"
+                            : "/top-performers/?manuf_name=AE Solar"}
+                    />
+                    <div class="tp-icons">
+                        <img
+                            src="/images/HSS-icon.svg"
+                            alt="HSS"
+                            title="Hail Stress Sequence"
+                            data-link={isZh
+                                ? "/zh/hail-stress-sequence/"
+                                : "/hail-stress-sequence/"}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script>
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach((accordion) => {
+        const header = accordion.querySelector(".tp-header");
+        const content = accordion.querySelector(".tp-content");
+        const toggle = accordion.querySelector(".tp-toggle");
+
+        // Set default open height
+        if (header.getAttribute("aria-expanded") === "true") {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+
+        header.addEventListener("click", () => {
+            const isOpen = header.getAttribute("aria-expanded") === "true";
+
+            // Close all accordions first
+            accordions.forEach((item) => {
+                item.querySelector(".tp-header").setAttribute(
+                    "aria-expanded",
+                    "false",
+                );
+                item.querySelector(".tp-toggle").textContent = "+";
+                item.querySelector(".tp-content").style.maxHeight = "0px";
+            });
+
+            // If it was closed, open it
+            if (!isOpen) {
+                header.setAttribute("aria-expanded", "true");
+                toggle.textContent = "–";
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+            // If it was open → stays closed (this fixes your issue)
+        });
+    });
+
+    // Common icon click handler
+    document.addEventListener("click", (e) => {
+        const icon = e.target.closest(".tp-icons img[data-link]");
+        if (!icon) return;
+
+        window.location.href = icon.dataset.link;
+    });
+</script>
+
+<script>
+    document.addEventListener("click", function (e) {
+        const target = e.target.closest("img[data-link]");
+        if (!target) return;
+
+        const url = target.getAttribute("data-link");
+        if (url) {
+            window.location.href = url;
+        }
+    });
+</script>
+
+<script>
+    // Fix initial open accordion height after images load
+    window.addEventListener("load", () => {
+        document
+            .querySelectorAll('.tp-header[aria-expanded="true"]')
+            .forEach((header) => {
+                const content = header
+                    .closest(".accordion")
+                    .querySelector(".tp-content");
+
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
+    });
+</script>
+
+<style>
+    .accordion-wrapper {
+        max-width: 1000px;
+        margin: clamp(50px, 6vw, 80px) auto;
+        padding: 0 clamp(16px, 4vw, 24px);
+    }
+
+    
+    .tp-header {
+        width: 100%;
+        padding: clamp(6px, 1.2vw, 8px) clamp(14px, 4vw, 20px);
+        background: #f0f0e0;
+        color: #0b2a4a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 14px;
+        transition:
+            background 0.3s ease,
+            color 0.3s ease;
+    }
+
+    .tp-header h2 {
+        font-size: clamp(14px, 1.6vw, 16px);
+        font-weight: 400;
+        margin: 0;
+        font-family: "Work Sans" sans-serif;
+        line-height: 20px;
+        
+    }
+
+    /* OPEN STATE */
+    .tp-header[aria-expanded="true"] {
+        background: #0054c5;
+        color: #fff;
+    }
+
+    .tp-toggle {
+        font-size: clamp(18px, 3vw, 22px);
+        font-weight: 600;
+    }
+
+    
+    .tp-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.35s ease;
+    }
+
+    .tp-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 20px);
+
+        
+        max-width: 1000px; 
+        margin: 0 auto; 
+        justify-items: center;
+
+        padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 20px);
+        text-align: center;
+    }
+
+    
+    .tp-card img {
+        max-height: clamp(60px, 8vw, 80px);
+        width: 100%;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    /* Icons */
+    .tp-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        margin-top: 16px;
+    }
+
+    .tp-icons img {
+        height: clamp(16px, 3vw, 18px);
+        width: auto;
+    }
+
+    .tp-icons img:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+    /* =========================
+   SMALL MOBILE
+========================= */
+    @media (max-width: 480px) {
+        .tp-header {
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .tp-header h2 {
+            line-height: 1.4;
+        }
+    }
+</style>

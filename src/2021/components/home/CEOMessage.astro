@@ -1,0 +1,117 @@
+<section class="ceo-section">
+  <div class="container">
+    <div class="content-box">
+
+      <h2 class="section-title gradient-text">
+        A Message from Our CEO
+      </h2>
+
+      <div class="content">
+        <!-- LEFT COLUMN -->
+        <div class="text">
+          <p>
+            The solar industry has seen unprecedented growth in the past decade.
+            The global manufacturing base has grown twentyfold, going from 20
+            gigawatts in 2010 to over 400 gigawatts today.
+          </p>
+
+          <p>
+            In a world of fake news, the challenge is finding the right data –
+            the data that matters. Watch the video. I’ll show you why.
+          </p>
+
+          <div class="signature">
+            <strong>Jenya Meydbray, CEO</strong><br />
+            <strong>PV Evolution Labs</strong>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN (reserved for video) -->
+        <div class="video-placeholder"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+    .ceo-section {
+  background: #eaf1fb;
+  padding: 70px 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content-box {
+  max-width: 1100px;
+}
+
+/* Two-column layout is preserved */
+.content {
+  display: grid;
+  grid-template-columns: 520px 520px;
+  gap: 60px;
+  align-items: start;
+}
+
+
+/* Left column text */
+.text {
+  max-width: 520px;
+}
+
+.gradient-text {
+  font-family: "Asap";
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 36px;
+
+  background: linear-gradient(to right, #1d243d, #369b47);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraphs */
+.text p {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #2b4258;
+  margin-bottom: 22px;
+}
+
+/* Signature */
+.signature {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d243d;
+   margin-top: 28px;
+}
+
+/* Empty column keeps layout balance */
+.video-placeholder {
+  min-height: 280px; /* optional, keeps visual rhythm */
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .text {
+    max-width: 100%;
+  }
+}
+
+</style>

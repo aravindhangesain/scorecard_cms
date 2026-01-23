@@ -1,0 +1,381 @@
+<footer class="site-footer">
+  <!-- TOP SIGNUP AREA -->
+  <section class="signup">
+    <div class="signup-container">
+      <h2>Sign up for email<br />updates</h2>
+
+      <!-- FORM WRAPPER FOR OVERLAP -->
+      <div class="form-wrapper">
+        <form class="signup-form">
+          <input type="email" placeholder="Email" required />
+
+          <p class="consent">
+            I would like to sign up for email updates from Kiwa PVEL. I
+            understand that I can unsubscribe at any time.
+            <a href="/privacy-policy">Click here</a> to read our Privacy Policy.
+          </p>
+
+          <label class="checkbox">
+            <input type="checkbox" />
+            <span>I agree to receive other communications from Kiwa PVEL.</span>
+          </label>
+
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN FOOTER -->
+  <section class="footer-main">
+    <div class="footer-container">
+      <div class="footer-left">
+        <!-- LOGO -->
+        <img src="/images/kiwa-pvel-logo.svg" alt="Kiwa PVEL" class="logo" />
+
+        <!-- LANGUAGE DROPDOWN -->
+        <div class="nav-item dropdown lang-dropdown footer-lang">
+          <a href="#" class="lang-toggle">
+            <img src="/images/en-us.png" class="flag" alt="English" />
+            <span>EN</span>
+
+            <svg
+              class="chevron"
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <div class="dropdown-menu lang-menu">
+            <a href="/" class="active-lang">
+              <img src="/images/en-us.png" class="flag" alt="English" />
+              <span>English</span>
+            </a>
+
+            <a href="/zh">
+              <img src="/images/china-flag.png" class="flag" alt="Chinese" />
+              <span>Chinese (Simplified)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact">
+          <h4>CONTACT US</h4>
+          <p>
+            Kiwa PVEL<br />
+            388 Devlin Road Napa, CA 94558<br />
+            (415) 320-7835<br />
+            <a href="mailto:pvel@kiwa.com">pvel@kiwa.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM BAR -->
+  <section class="footer-bottom">
+    ©2024 PVEL LLC ("Kiwa PVEL"). All rights reserved.
+  </section>
+</footer>
+
+<style>
+  /* ---------- SIGNUP SECTION ---------- */
+  .signup {
+    background: #eef7fb;
+    padding: 30px 20px 10px;
+    position: relative;
+  }
+
+  .signup-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .signup h2 {
+    font-size: 56px;
+    color: #56a7c5;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  /* ---------- FORM OVERLAP ---------- */
+  .form-wrapper {
+    position: relative;
+    transform: translateY(190px);
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+  }
+
+  .signup-form {
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+  }
+
+  .signup-form input[type="email"] {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background: #f1efed;
+    font-size: 15px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+  }
+
+  .signup-form input[type="email"]::placeholder {
+    color: #888;
+  }
+
+  .consent {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .consent a {
+    color: #00b3c6;
+    text-decoration: underline;
+  }
+
+  .consent a:hover {
+    color: #008fa3;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+
+  .checkbox input[type="checkbox"] {
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .checkbox span {
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .signup-form button {
+    width: 100%;
+    background: #00b3c6;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease;
+  }
+
+  .signup-form button:hover {
+    background: #008fa3;
+  }
+
+  /* ---------- MAIN FOOTER ---------- */
+  .footer-main {
+    background: #005a9e;
+    color: #fff;
+    padding: 30px 40px 60px;
+  }
+
+  .footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .footer-left {
+    max-width: 400px;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 25px;
+    filter: brightness(0) invert(1);
+  }
+
+  .language {
+    margin-bottom: 35px;
+    font-size: 14px;
+  }
+
+  .contact h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .contact p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .contact a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .contact a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .footer-bottom {
+    background: #00518a;
+    text-align: center;
+    padding: 22px 20px;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  /* Footer language dropdown */
+  .footer-lang {
+    margin: 20px 0 30px;
+  }
+
+  /* Toggle */
+  .footer-lang .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Flags */
+  .footer-lang .flag {
+    width: 20px;
+    height: auto;
+  }
+
+  /* Chevron */
+  .footer-lang .chevron {
+    transition: transform 0.25s ease;
+  }
+
+  /* Rotate on open */
+  .footer-lang:hover .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown */
+  .footer-lang .lang-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: #ffffff;
+    min-width: 220px;
+    padding: 6px 0;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: all 0.25s ease;
+    z-index: 20;
+  }
+
+  /* Show menu */
+  .footer-lang:hover .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Items */
+  .footer-lang .lang-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #072643;
+    text-decoration: none;
+  }
+
+  .footer-lang .lang-menu a:hover {
+    background: #f1f5f8;
+  }
+
+  /* Active */
+  .footer-lang .active-lang {
+    font-weight: 600;
+    background: #eef7fb;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px) {
+    .signup-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .form-wrapper {
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .signup h2 {
+      font-size: 42px;
+    }
+
+    .form-wrapper {
+      transform: translateY(40px);
+    }
+
+    .footer-main {
+      padding-top: 100px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .signup {
+      padding: 40px 20px 0;
+    }
+
+    .signup h2 {
+      font-size: 36px;
+    }
+
+    .form-wrapper {
+      transform: none;
+      margin-top: 20px;
+    }
+
+    .signup-form {
+      padding: 30px 24px;
+    }
+
+    .footer-main {
+      padding: 60px 20px 60px;
+    }
+  }
+</style>

@@ -1,0 +1,255 @@
+---
+import { getLang } from "../i18n/useLang";
+import en from "../i18n/ln.json";
+import zh from "../i18n/ln-eg.json";
+import { scorecardRoutes } from "../config/scorecardRoutes";
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+
+// Normalize helper
+const normalize = (path) => path.replace(/^\/zh/, "").replace(/\/$/, "");
+
+// Current path (language-agnostic)
+const currentPath = normalize(Astro.url.pathname);
+
+// Normalize routes
+const routes = scorecardRoutes.map(normalize);
+
+// Start page handling
+const START_PAGE = "/scorecard";
+let currentIndex = routes.indexOf(currentPath);
+if (currentPath === normalize(START_PAGE)) currentIndex = -1;
+
+// Compute next page
+const rawNextPage =
+  currentIndex < routes.length - 1 ? routes[currentIndex + 1] : null;
+
+// Re-apply language prefix
+const nextPage = rawNextPage
+  ? isZh
+    ? `/zh${rawNextPage}/`
+    : `${rawNextPage}/`
+  : null;
+---
+
+<section class="cta-container">
+  <div class="cta-box cta-left">
+    <h3>{data.cta_left_heading}</h3>
+    <a
+      href={data.cta_left_link_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta-link"
+    >
+      {data.cta_left_link_text}
+      <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+    </a>
+  </div>
+
+  <div class="cta-box cta-right">
+    <h3>{data.cta_right_heading}</h3>
+
+    {
+      nextPage ? (
+        <a href={nextPage} class="cta-link">
+          {data.cta_right_link_text}
+          <img class="cta-arrow" src="/images/Icon_Arrow_White.svg" />
+        </a>
+      ) : (
+        <a href="#" class="cta-link">
+          {data.cta_right_link_text}
+          <img class="cta-arrow" src="/images/Icon_Arrow_White.svg" />
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  /* =========================
+   CONTAINER
+========================= */
+  .cta-container {
+    display: flex;
+    gap: clamp(16px, 2vw, 24px);
+    margin: clamp(30px, 5vw, 60px) auto;
+    max-width: 1400px;
+    padding: 0 clamp(16px, 6vw, 92px);
+    font-family: "Work Sans", sans-serif;
+  }
+
+  /* =========================
+   CTA BOX
+========================= */
+  .cta-box {
+    flex: 1;
+    min-height: 280px;
+    padding: clamp(20px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 🔑 keeps content balanced */
+    align-items: flex-start;
+    border: 1px solid #e0e0e0;
+  }
+
+  /* Left box */
+  .cta-left {
+    background-color: #ffffff;
+    color: #111;
+  }
+
+  /* Right box */
+  .cta-right {
+    background-color: #0057b7;
+    color: #ffffff;
+  }
+
+  /* =========================
+   TEXT
+========================= */
+  .cta-left h3 {
+    font-family: "Azo Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(28px, 2.2vw, 26px);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-right h3 {
+    font-family: "Azo Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  /* =========================
+   LINKS
+========================= */
+  .cta-link {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 1.5vw, 18px);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    width: fit-content;
+  }
+
+  /* Arrow */
+  .cta-link span {
+    font-size: clamp(24px, 3vw, 42px);
+    transition: transform 0.25s ease;
+  }
+
+  /* Colors */
+  .cta-left .cta-link,
+  .cta-left .cta-link span {
+    color: #111;
+  }
+
+  .cta-right .cta-link,
+  .cta-right .cta-link span {
+    color: #ffffff;
+  }
+
+  /* Hover */
+  .cta-link:hover span {
+    transform: translateX(8px);
+  }
+
+  /* Keep original image size */
+  .cta-arrow {
+    width: 60px; /* fixed size */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  /* Hover animation: slide right */
+  .cta-link:hover .cta-arrow {
+    transform: translateX(8px); /* move right without scaling */
+  }
+
+  /* Click (active) animation: slide a little more */
+  .cta-link:active .cta-arrow {
+    transform: translateX(12px); /* more slide on click */
+  }
+
+  /* Optional: Bounce effect on hover */
+  @keyframes arrowBounce {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Use bounce instead of simple slide (optional) */
+  .cta-link:hover .cta-arrow {
+    animation: arrowBounce 0.4s ease forwards;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cta-arrow {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .cta-container {
+      max-width: 1200px; /* ↓ from 1400 */
+      padding: 0 48px; /* ↓ controlled padding */
+    }
+
+    .cta-box {
+      min-height: 220px; /* ↓ from 280 */
+      padding: 32px; /* ↓ tighter padding */
+    }
+
+    .cta-left {
+      flex: 1.1;
+    }
+
+    .cta-right {
+      flex: 0.9;
+    }
+  }
+
+  /* =========================
+   TABLET & MOBILE
+========================= */
+  @media (max-width: 768px) {
+    .cta-container {
+      flex-direction: column;
+    }
+
+    .cta-box {
+      min-height: 260px;
+    }
+  }
+  /* =========================
+   SMALL MOBILE
+========================= */
+  @media (max-width: 480px) {
+    .cta-box {
+      min-height: 240px;
+      padding: 24px;
+    }
+
+    .cta-left h3,
+    .cta-right h3 {
+      font-size: 28px;
+      line-height: 1.5;
+    }
+  }
+</style>

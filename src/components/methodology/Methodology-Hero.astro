@@ -1,0 +1,186 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+// const data = lang === "zh" ? zh : en;
+import data from "../../data/methodology.json";
+
+const { hero } = data;
+---
+<!-- 
+<section class="mhero">
+  <img
+    src="/images/methodology-hero-sub-banner.jpg"
+    alt="PV module testing methodology"
+    class="mhero-bg"
+  />
+
+  <div class="mhero-overlay"></div>
+
+  <div class="mhero-content">
+    <h1>{data.method_hero_title}</h1>
+    <p>
+      {data.method_hero_description}
+    </p>
+  </div>
+</section> -->
+<section class="hero">
+  <!-- Background image -->
+  <img
+    src={hero.backgroundImage.src}
+    alt={hero.backgroundImage.alt}
+    class="hero-bg"
+  />
+
+  <!-- Blue overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>{hero.title}</h1>
+    <p>{hero.description}</p>
+  </div>
+</section>
+
+<style>
+
+  /* Hero Section */
+.mhero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Background */
+.mhero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay */
+.mhero-overlay {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, #0054c5 60%, transparent);
+  opacity: 0.7;
+}
+
+/* Content */
+.mhero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 0 0 100px;
+  /* unchanged */
+  padding: 0 20px;
+  color: #fff;
+}
+
+/* Heading */
+.mhero-content h1 {
+  font-family: "Azo Sans", sans-serif;
+  font-weight: 300;
+  font-size: 80px;
+  /* unchanged */
+  font-style: normal;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  /* FIXED (was invalid) */
+  margin-top: 140px;
+}
+
+.mhero-content h1 span {
+  font-family: "Azo Sans", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  color: #80ffca;
+}
+
+/* Paragraph */
+.mhero-content p {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  max-width: 650px;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  margin-bottom: 50px;
+}
+
+/* ===================== */
+/* RESPONSIVE ONLY BELOW */
+/* ===================== */
+
+@media (min-width: 1201px) {
+  .mhero {
+
+    justify-content: center;
+  }
+
+  .mhero-content {
+    margin-right: 600px;
+  }
+}
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .mhero-content {
+    margin-left: 60px;
+  }
+
+  .mhero-content h1 {
+    font-size: 64px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .mhero-content {
+    margin-left: 40px;
+  }
+
+  .mhero-content h1 {
+    font-size: 52px;
+    margin-top: 100px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .mhero-content {
+    margin-left: 20px;
+  }
+
+  .mhero-content h1 {
+    font-size: 40px;
+    margin-top: 80px;
+  }
+
+  .mhero-content p {
+    font-size: 15px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .mhero-content {
+    margin-left: 16px;
+  }
+
+  .mhero-content h1 {
+    font-size: 32px;
+    margin-top: 60px;
+  }
+
+  .mhero-content p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+</style>

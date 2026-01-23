@@ -1,0 +1,217 @@
+<section class="newsletter-footer">
+  <div class="wrap footer-grid">
+    <!-- LEFT: Newsletter -->
+    <div class="footer-left">
+      <p class="footer-intro">
+        PVEL is the leading independent lab for the global downstream PV market.
+        Sign up to get the latest testing and industry news.
+      </p>
+
+      <label class="email-label" for="email">Email</label>
+      <input id="email" type="email" class="email-input" />
+
+      <p class="privacy-text">
+        I would like to sign up for email updates from Kiwa PVEL. I understand
+        that I can unsubscribe at any time. Click here to read our
+        <a href="#">Privacy Policy</a>.
+      </p>
+
+      <label class="checkbox">
+        <input type="checkbox" />
+        <span>I agree to receive other communications from Kiwa PVEL.</span>
+      </label>
+
+      <button class="submit-btn">SUBMIT</button>
+    </div>
+
+    <!-- RIGHT: Contact -->
+    <div class="footer-right">
+      <h4>CONTACT US</h4>
+
+      <address>
+        <strong>PVEL</strong><br />
+        388 Devlin Road<br />
+        Napa, CA 94558<br />
+        (415) 320-7835<br />
+        <a href="mailto:info@pvel.com">info@pvel.com</a>
+      </address>
+
+      <select class="language-select">
+        <option>🇬🇧 English</option>
+      </select>
+
+      <img
+        src="/images/2023/kiwa.webp"
+        alt="PVEL Kiwa logo"
+        class="footer-logo"
+      />
+    </div>
+  </div>
+</section>
+
+<footer class="copyright">
+  ©2023 PVEL LLC, a member of the Kiwa Group. All rights reserved.
+</footer>
+
+<style is:global>
+  /* ---------------- Base Layout ---------------- */
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------------- Newsletter Footer ---------------- */
+
+  .newsletter-footer {
+    background: #f3f7fe;
+    padding: 72px 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 120px;
+    align-items: start;
+  }
+
+  /* LEFT */
+
+  .footer-left {
+    max-width: 520px;
+  }
+
+  .footer-intro {
+    line-height: 1.6;
+    margin-bottom: 28px;
+    color: #1f2a44;
+  }
+
+  .email-label {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .email-input {
+    width: 100%;
+    max-width: 360px;
+    border: none;
+    border-bottom: 1px solid #5a6db2;
+    background: transparent;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-bottom-color: #0a5bd3;
+  }
+
+  .privacy-text {
+    font-size: 12px;
+    color: #4a5876;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .privacy-text a {
+    color: #0a5bd3;
+    text-decoration: none;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    color: #4a5876;
+    margin-bottom: 28px;
+  }
+
+  .submit-btn {
+    width: 360px;
+    max-width: 100%;
+    background: #44548c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* RIGHT */
+
+  .footer-right {
+    max-width: 320px;
+  }
+
+  .footer-right h4 {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #4c5aa6;
+    display: inline-block;
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+  }
+
+  .footer-right address {
+    font-style: normal;
+    line-height: 1.8;
+    color: #1f2a44;
+    margin-bottom: 24px;
+  }
+
+  .footer-right a {
+    color: #1f2a44;
+    text-decoration: none;
+  }
+
+  .language-select {
+    width: 220px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 32px;
+  }
+
+  .footer-logo {
+    width: 180px;
+    opacity: 0.9;
+  }
+
+  /* ---------------- Copyright ---------------- */
+
+  .copyright {
+    margin-top: 40px;
+    margin-bottom: 180px;
+    text-align: center;
+    padding: 22px 12px;
+    font-size: 13px;
+    background: #ffffff;
+    color: #1f2a44;
+  }
+
+  /* ---------------- Responsive ---------------- */
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .footer-right {
+      margin-top: 40px;
+    }
+
+    .newsletter-footer {
+      padding: 56px 0;
+    }
+  }
+</style>

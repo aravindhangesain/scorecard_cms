@@ -1,0 +1,233 @@
+---
+import { getLang } from "../../../2024/data/useLang";
+import en from "../../../2024/data/ln.json";      // English
+import zh from "../../../2024/data/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="top-performers">
+  <div class="tp-container">
+    <!-- ROW 1 -->
+    <div class="tp-content">
+      <h2 class="tp-heading">
+        {data.top_performers_heading} <strong>{data.top_performers_heading_strong}</strong>
+      </h2>
+
+      <div class="tp-subtitle">{data.top_performers_subtitle}<br/> {data.top_performers_subtitle1}</div>
+
+      <p class="tp-text">
+        {data.top_performers_paragraph_1}
+        <br /><br />
+        
+        
+      </p>
+    </div>
+
+    <!-- CTA button -->
+    <div class="tp-cta-wrap">
+      <a class="tp-cta" href={data.top_performers_cta_url}>
+        {data.top_performers_cta_text}
+        <!-- <img class="cta-arrow" src="/images/Icon_Arrow_White.svg" /> -->
+         <span>→</span>
+      </a>
+    </div>
+
+    <!-- GIF -->
+    <div class="gif-wrap">
+      <img src="../../../../public/2024/gifs/View-Top-Performers.gif" alt={data.top_performers_gif_alt} />
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .top-performers {
+    background: #ffffff;
+    color: #ffffff;
+    padding: clamp(40px, 3vw, 80px) 0 0;
+  }
+
+  /* Container */
+  .tp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 6vw, 100px);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  /* Text */
+  .tp-heading {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-family: "Azo Sans", sans-serif;
+    color: #005da1;
+  }
+
+  .tp-heading strong {
+    font-style: italic;
+    font-weight: 800;
+  }
+
+  .tp-subtitle {
+    font-size: clamp(18px, 2.4vw, 25px);
+    margin-bottom: 1.25rem;
+    font-family: "Azo Sans", sans-serif;
+    color: black;
+  }
+
+  .tp-text {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 600px;
+    font-family: "Work Sans", sans-serif;
+     color: black;
+  }
+
+  .tp-text a {
+    color: #ffffff; /* or any highlight color */
+    text-decoration: underline;
+  }
+
+  .tp-text a:hover {
+    color: #cfe0ff;
+  }
+
+  /* CTA */
+  .tp-cta-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+  }
+
+  .tp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00aec5;
+    text-decoration: none;
+  }
+
+  .tp-cta span {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+
+  .tp-cta:hover span {
+    transform: translateX(4px);
+  }
+
+  /* GIF */
+  .gif-wrap {
+    grid-column: 1 / -1;
+    /* text-align: center; */
+    margin-top: clamp(24px, 5vw, 40px);
+  }
+
+  .gif-wrap img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  /* Keep original image size */
+  .tp-cta img.cta-arrow {
+    width: 60px; /* fixed size */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  /* Hover animation: slide right */
+  .tp-cta:hover img.cta-arrow {
+    transform: translateX(8px); /* slide right */
+  }
+
+  /* Click (active) animation: slide a little more */
+  .tp-cta:active img.cta-arrow {
+    transform: translateX(12px); /* more slide on click */
+  }
+
+  /* Optional: Bounce effect on hover */
+  @keyframes arrowBounce {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Apply bounce on hover */
+  .tp-cta:hover img.cta-arrow {
+    animation: arrowBounce 0.4s ease forwards;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .tp-cta img.cta-arrow {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  /* =========================
+   TABLET
+========================= */
+
+  @media (min-width: 1400px) {
+    .tp-container {
+      width: 1300px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .tp-container {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  /* =========================
+   MOBILE
+========================= */
+  @media (max-width: 768px) {
+    .tp-container {
+      grid-template-columns: 1fr;
+    }
+
+    .tp-cta-wrap {
+      justify-content: flex-start;
+      margin-top: 20px;
+    }
+
+    .tp-text {
+      max-width: 100%;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE
+========================= */
+  @media (max-width: 480px) {
+    .tp-heading {
+      font-size: 1.8rem;
+    }
+
+    .tp-cta {
+      font-size: 14px;
+      gap: 10px;
+    }
+  }
+</style>

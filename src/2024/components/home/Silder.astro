@@ -1,0 +1,194 @@
+---
+// props
+const { images = [], slides = [], interval = 5000 } = Astro.props;
+---
+<section class="bg-slider" data-interval={interval}>
+  {slides.map((slide, index) => (
+    <div
+      class={`slide ${index === 0 ? "active" : ""}`}
+      style={`background-image: url(${images[index]})`}
+    >
+      <div class="overlay">
+        <div class="text-content">
+          <p>{slide.text}</p>
+          <span class="author">
+            <strong>{slide.author_name}</strong><br />
+            {slide.author_designation}
+          </span>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <div class="dots">
+    {slides.map((_, index) => (
+      <span class={`dot ${index === 0 ? "active" : ""}`} data-index={index}></span>
+    ))}
+  </div>
+</section>
+
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".bg-slider");
+  const slides = slider.querySelectorAll(".slide");
+  const dots = slider.querySelectorAll(".dot");
+  const intervalTime = Number(slider.dataset.interval) || 5000;
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((s, i) => s.classList.toggle("active", i === index));
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    current = index;
+  }
+
+  let slideInterval = setInterval(() => {
+    showSlide((current + 1) % slides.length);
+  }, intervalTime);
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      showSlide(Number(dot.dataset.index));
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => {
+        showSlide((current + 1) % slides.length);
+      }, intervalTime);
+    });
+  });
+});
+</script>
+
+
+<style>
+  .bg-slider {
+    position: relative;
+    width: 100%;
+    min-height: 80svh; /* ✅ better than vh */
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.08);
+    transition:
+      opacity 1s ease-in-out,
+      transform 8s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    padding: clamp(16px, 5vw, 64px);
+
+    overflow-y: auto; /* ✅ prevents hidden content */
+  }
+
+  .text-content {
+    max-width: min(90%, 820px);
+    max-height: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Work Sans", sans-serif;
+
+    font-size: clamp(15px, 1.8vw, 22px);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ✅ QUOTE — THIS FIXES IT */
+  .text-content p {
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Author */
+  .text-content :global(.author strong) {
+    display: block;
+    font-size: clamp(15px, 1.4vw, 18px);
+    margin-top: clamp(24px, 4vh, 40px);
+    font-weight: 600;
+  }
+
+  .text-content :global(.author) {
+    display: block;
+    margin-top: 1px;
+    font-size: clamp(13px, 1.2vw, 14px);
+    font-style: normal;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: clamp(16px, 4vh, 32px);
+    width: 100%;
+    text-align: center;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .dot.active {
+    background: #ffffff;
+  }
+
+  @media (min-width: 1600px) {
+    .text-content {
+      max-width: 900px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bg-slider {
+      min-height: 70vh;
+    }
+
+    .text-content {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-height: 520px) {
+    .bg-slider {
+      min-height: 120svh; /* ✅ avoid clipping */
+    }
+
+    .overlay {
+      align-items: flex-start;
+      padding-top: 48px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bg-slider {
+      min-height: 90vh;
+    }
+
+    .dots {
+      bottom: 12px;
+    }
+    .text-content {
+      font-size: 15px;
+    }
+  }
+</style>

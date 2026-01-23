@@ -1,0 +1,110 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json"; // English
+import zh from "../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="scorecard-hero">
+  <div class="container">
+    <!-- Heading -->
+    <h1 class="hero-title" style="transform: translateY(0em); opacity: 1;">
+      The 2022 PV<br />
+      Module Reliability<br />
+      Scorecard is here
+    </h1>
+
+    <hr class="hero-divider" />
+
+    <!-- Description -->
+    <p class="hero-description">
+      The 8th Edition of PVEL's PV Module Reliability Scorecard features 25
+      manufacturers and celebrates technical advances despite challenging market
+      conditions.
+    </p>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">↓</div>
+  </div>
+
+  <!-- Hero Image -->
+  <img class="hero-img" src="/images/2022/Houser_pvel.jpg" alt="Houser Pvel" />
+</section>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .scorecard-hero {
+    padding: 6rem 0 0;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 0;
+  }
+
+  .hero-title {
+    font-family: Libre Bodoni Medium;
+    font-size: 85px;
+    font-weight: 600;
+    line-height: 61.6px
+    margin-bottom: 2rem;
+    letter-spacing: 0;
+  }
+
+  .hero-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2rem 0;
+  }
+
+  .hero-description {
+    max-width: 520px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #222;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(90vh + 2rem);
+    width: 42px;
+    height: 42px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #555;
+    background: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.75rem;
+    }
+  }
+  .hero-img {
+    height: 90vh;
+    width: 210vh;
+  }
+
+  /* Optional: responsive safety */
+  @media (max-width: 1024px) {
+    .hero-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>

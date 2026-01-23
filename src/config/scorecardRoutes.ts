@@ -1,0 +1,16 @@
+export const scorecardRoutes = [
+  "/methodology/",
+  "/thermal-cycling/",
+  "/damp-heat/",
+  "/mechanical-stress-sequence/",
+  "/hail-stress-sequence/",
+  "/pid/",
+  "/lidletid/",
+  "/pan-performance/",
+  "/uvid/",
+  "/backsheet-durability-sequence/",
+  "/iam/",
+  "/failures/",
+  "/top-performers/",
+  "/manufacturers/",
+];

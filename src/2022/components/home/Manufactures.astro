@@ -1,0 +1,196 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const cards = data.home_cards;
+---
+
+
+<section class="resilience">
+  <div class="container">
+    <h1 class="title">Resilience of Manufacturers</h1>
+    <hr class="divider" />
+
+    <p class="intro">
+      Manufacturers overcame significant challenges last year, from instability in the raw
+      material supply chain to logistics bottlenecks. Explore examples of resilience from
+      Alex Barrows, Head of PV at Exawatt.
+    </p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab" data-tab="raw">Raw Material Challenges</button>
+      <button class="tab active" data-tab="shipping">Shipping Challenges</button>
+    </div>
+
+    <!-- CONTENT WRAPPER -->
+  <div class="tab-wrapper">
+
+    <!-- RAW MATERIAL (IMAGE LEFT, TEXT RIGHT) -->
+    <div class="tab-content active" id="raw">
+      <div class="image">
+        <img src="/images/2022/shutterstock_1862083165-1.png" alt="Raw Material" />
+      </div>
+
+      <div class="text">
+        <h3>Raw Material Challenges: PV Glass</h3>
+        <p>
+          In late 2020 PV glass prices spiked due to higher demand and production
+          constraints.
+        </p>
+        <ul>
+          <li>Increased demand for glass/glass modules</li>
+          <li>Temporary production declines</li>
+        </ul>
+        <p>
+          Prices stabilized in early 2021 as capacity increased.
+        </p>
+        <a class="link" href="#">View Chart from Exawatt</a>
+      </div>
+    </div>
+
+    <!-- SHIPPING (TEXT LEFT, IMAGE RIGHT) -->
+    <div class="tab-content" id="shipping">
+      <div class="text">
+        <h3>Shipping Challenges: More Power per Container</h3>
+        <p>
+          Global ocean shipping costs increased by ~600% since early 2020.
+        </p>
+        <p>
+          Larger wafers helped offset costs with higher packing density.
+        </p>
+        <p>
+          Power per container exceeded 340 kW in Q1 2022.
+        </p>
+        <a class="link" href="#">View Chart from Exawatt</a>
+      </div>
+
+      <div class="image">
+        <img src="/images/2022/Shipment-Power-Class.png" alt="Shipping" />
+      </div>
+    </div>
+  </div> <!-- END CONTENT WRAPPER -->
+  </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(target).classList.add("active");
+    });
+  });
+</script>
+
+
+<style>
+.resilience {
+  padding: 5rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 2.75rem;
+}
+
+.divider {
+  margin: 2rem 0 3rem;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.intro {
+  max-width: 800px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  border-bottom: 2px solid #6fbf73;
+  font-weight: 600;
+}
+
+.content {
+  position: relative;
+}
+
+.tab-content {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.tab-content.active {
+  display: grid;
+}
+
+.text h3 {
+  font-family: Georgia, serif;
+  margin-bottom: 1.5rem;
+}
+
+.text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.text ul {
+  margin-left: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.link {
+  color: #6fbf73;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .tab-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+

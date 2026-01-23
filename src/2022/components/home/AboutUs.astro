@@ -1,0 +1,128 @@
+<section class="about-us">
+  <div class="container">
+    <!-- Header -->
+    <div class="header-row">
+      <h2>About Us</h2>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+
+    <hr />
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Text -->
+      <div class="text">
+        <p>
+          PV Evolution Labs (PVEL) is the leading independent lab of the downstream
+          solar market and a member of the Kiwa Group.
+        </p>
+
+        <p>
+          Our testing and technical services help mitigate risk, optimize financing
+          and improve system performance throughout the solar project lifecycle.
+        </p>
+      </div>
+
+      <!-- Image -->
+      <div class="image-wrap">
+        <img src="/images/2022/AboutUsHome.png" alt="PVEL Facility" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section background */
+.about-us {
+  background: #1f2540;
+  padding: 90px 0;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header row */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Heading */
+.header-row h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Button */
+.learn-more {
+  background: #5CB66A;
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.learn-more:hover {
+  background: #5CB66A;
+}
+
+/* Divider */
+hr {
+  margin: 28px 0 60px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Content layout */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Text */
+.text {
+  max-width: 520px;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  color: #f3f4f6;
+}
+
+/* Image */
+.image-wrap {
+  flex-shrink: 0;
+}
+
+.image-wrap img {
+  width: 520px;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .image-wrap img {
+    width: 100%;
+  }
+}
+</style>

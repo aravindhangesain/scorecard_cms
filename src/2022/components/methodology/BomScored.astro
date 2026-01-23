@@ -1,0 +1,169 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="scored">
+  <div class="container">
+    <h1>How BOMs are Scored</h1>
+
+    <div class="divider"></div>
+
+    <div class="content">
+      <!-- LEFT COLUMN: IMAGES -->
+      <div class="images">
+        <img
+          src="/images/2022/Houser.png"
+          alt="PV module laboratory testing"
+          class="image primary"
+        />
+
+        <img
+          src="/images/2022/VMS14878-1.png"
+          alt="PV module inspection"
+          class="image secondary"
+        />
+      </div>
+
+      <!-- RIGHT COLUMN: TEXT -->
+      <div class="text">
+        <p class="lead">
+          The 2022 PV Module Reliability Scorecard shows Top Performers for six
+          PQP test categories.
+        </p>
+
+        <p>
+          Top Performers are determined by averaging the results of every BOM
+          tested by PVEL that is sold under the same model type. Top Performers
+          in each of the reliability tests appearing in the Scorecard must have
+          &lt; 2% power degradation following the particular test. PAN
+          Performance Top Performers must place in the top quartile for energy
+          yield in PVEL’s PVsyst simulations.
+        </p>
+
+        <p>
+          PVEL’s scoring methodology is consistent over time.
+          <br />
+          <a href="#" class="link">Click here to view past Scorecards.</a>
+        </p>
+
+        <p>
+          An example of a module with high levels of degradation is provided for
+          each reliability test, complete with electroluminescence (EL) images
+          and flash test results on each reliability test result page, and
+          visual inspection images where appropriate.
+        </p>
+
+        <p>
+          Not all products or model types are represented in every test.
+          Manufacturers with top results can choose not to be listed in the
+          Scorecard. In some cases, test results were not available at the time
+          of publication.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scored {
+    background: #ffffff;
+    padding: 96px 24px;
+    color: #111;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: serif;
+    font-size: 46px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #ececec;
+    margin-bottom: 72px;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* Images */
+  .images {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .image {
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .primary {
+    aspect-ratio: 16 / 9;
+  }
+
+  .secondary {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Text */
+  .text {
+    max-width: 480px;
+  }
+
+  .lead {
+    font-family: serif;
+    font-size: 62px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: #222;
+  }
+
+  .link {
+    color: #6aa84f;
+    text-decoration: underline;
+  }
+
+  .link:hover {
+    text-decoration: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .content {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .text {
+      max-width: 100%;
+    }
+  }
+</style>

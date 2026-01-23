@@ -1,0 +1,1364 @@
+---
+const years = [
+    2025, 2024, 2023, 2023, 2022, 2021, 2020, 2019, 2017, 2016, 2014,
+];
+
+const manufacturers = [
+    // 1
+    {
+        name: "Jinko Solar",
+        logo: "/images/Manufactures/JINKO.webp",
+        location: "Haining, China; Shangrao, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+        ],
+        url: "https://www.jinkosolar.com/en/",
+    },
+    // 2
+    {
+        name: "Trina Solar",
+        logo: "/images/Manufactures/TRINA.webp",
+        location: "Changzhou, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+        ],
+        url: "https://www.trinasolar.com/us/",
+    },
+    // 3
+    {
+        name: "JA Solar",
+        logo: "/images/Manufactures/JA-SOLAR.webp",
+        location: "Hefei, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+        ],
+        url: "https://www.jasolar.com/",
+    },
+    // 4
+    {
+        name: "Qcells",
+        logo: "/images/Manufactures/QCELLS.webp",
+        location: "Jincheon-gun, South Korea",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+        ],
+        url: "https://us.qcells.com/",
+    },
+    // 5
+    {
+        name: "Astronergy",
+        logo: "/images/Manufactures/ASTRONERGY.webp",
+        location: "Haining, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+        ],
+        url: "https://www.astronergy.com/",
+    },
+    // 6
+    {
+        name: "REC",
+        logo: "/images/Manufactures/REC.webp",
+        location: "Singapore, Singapore",
+        years: [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+        ],
+        url: "https://www.recgroup.com/en",
+    },
+    // 7
+    {
+        name: "Adani Solar",
+        logo: "/images/Manufactures/ADANI.webp",
+        location: "Mundra, India",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.adanisolar.com/",
+    },
+    // 8
+    {
+        name: "Longi Solar",
+        logo: "/images/Manufactures/LONGI.webp",
+        location: "Xi'an, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+        ],
+        url: "https://www.longi.com/en/",
+    },
+    // 9
+    {
+        name: "Maxeon Solar",
+        logo: "/images/Manufactures/MAXEON.webp",
+        location: "YiXing, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+        ],
+        url: "https://www.maxeon.com/home",
+    },
+    // 10
+    {
+        name: "Phono",
+        logo: "/images/Manufactures/PHONO-SOLAR.webp",
+        location: "Nanjing, China; Zhangjiagang, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            false,
+        ],
+        url: "https://www.phonosolar.com/",
+    },
+    // 11
+    {
+        name: "Vikram Solar",
+        logo: "/images/Manufactures/VIKRAM.webp",
+        location: "Kolkata, India",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+        ],
+        url: "https://www.vikramsolar.com/",
+    },
+    // 12
+    {
+        name: "GCL",
+        logo: "/images/Manufactures/GCL.webp",
+        location: "Hefei, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+        ],
+        url: "http://gcl-power.com/",
+    },
+    // 13
+    {
+        name: "HT-SAAE",
+        logo: "/images/Manufactures/HT-SAAE.webp",
+        location: "Nangtong, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://htsolar.com.tr/",
+    },
+    // 14
+    {
+        name: "Silfab Solar",
+        logo: "/images/Manufactures/SILFAB.webp",
+        location: "Burlington, USA",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+        ],
+        url: "https://silfabsolar.com/",
+    },
+    // 15
+    {
+        name: "Yingli Solar",
+        logo: "/images/Manufactures/YINGLI.webp",
+        location: "Ninghe, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+        ],
+        url: "https://www.yinglisolar.com/en/",
+    },
+    // 16
+    {
+        name: "ZNShine Solar",
+        logo: "/images/Manufactures/ZNSHINE.webp",
+        location: "Batam, Indonesia",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            false,
+        ],
+        url: "https://www.znshinesolar.com/",
+    },
+    // 17
+    {
+        name: "Seraphim Solar",
+        logo: "/images/Manufactures/Seraphim.webp",
+        location: "Fuyang, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+        ],
+        url: "https://www.seraphim-energy.cn/",
+    },
+    // 18
+    {
+        name: "DMEGC Solar",
+        logo: "/images/Manufactures/DMEGC.webp",
+        location: "Lianyungang, China; Suqian, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.dmegcsolar.com/",
+    },
+    // 19
+    {
+        name: "Elite Solar",
+        logo: "/images/Manufactures/ELITE-SOLAR.webp",
+        location:
+            "Ponhea Lueu, Cambodia; Jiaxing, China; Ningbo, China; Batam, Indonesia",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.elite-solar.com/",
+    },
+    // 20
+    {
+        name: "HD",
+        logo: "/images/Manufactures/HYUNDAI.webp",
+        location: "Eumseong-gun, South Korea",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+        ],
+        url: "https://eng.hd-hyundaies.co.kr/",
+    },
+    // 21
+    {
+        name: "Heliene",
+        logo: "/images/Manufactures/HELIENE.webp",
+        location: "Mountain Iron, USA",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://heliene.com/",
+    },
+    // 22
+    {
+        name: "risen",
+        logo: "/images/Manufactures/RISEN.webp",
+        location: "Ningbo, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.risen.com/",
+    },
+    // 23
+    {
+        name: "Talesun",
+        logo: "/images/Manufactures/Talesun.webp",
+        location: "Changshu, China",
+        years: [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+        ],
+        url: "https://www.talesun.com/",
+    },
+    // 24
+    {
+        name: "VSUN",
+        logo: "/images/Manufactures/VSUN.webp",
+        location: "Yen Phong, Vietnam",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.vsun-solar.com/",
+    },
+    // 25
+    {
+        name: "Canadian Solar",
+        logo: "/images/Manufactures/CANADIAN_SOLAR.webp",
+        location: "Changshu, China; Mesquite, USA",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.csisolar.com/na",
+    },
+    // 26
+    {
+        name: "Jollywood",
+        logo: "/images/Manufactures/JOLYWOOD.webp",
+        location: "Taizhou, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.jolywood.com/en/index/index",
+    },
+    // 27
+    {
+        name: "SEG",
+        logo: "/images/Manufactures/SEG.webp",
+        location: "Yancheng, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.segsolar.com/",
+    },
+    // 28
+    {
+        name: "Waaree",
+        logo: "/images/Manufactures/WAAREE.webp",
+        location: "Chikhli, India",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.waaree.com/",
+    },
+    // 29
+    {
+        name: "Aiko",
+        logo: "/images/Manufactures/AIKO.webp",
+        location: "Yiwu, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.aikosolar.com/",
+    },
+    // 30
+    {
+        name: "EMMVEE",
+        logo: "/images/Manufactures/EMMVEE.webp",
+        location: "Bangalore, India",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://emmvee.com/",
+    },
+    // 31
+    {
+        name: "Huasun",
+        logo: "/images/Manufactures/HUASUN.webp",
+        location: "Hefei, China; Xuancheng, China",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.huasunsolar.com/",
+    },
+    // 32
+    {
+        name: "Premier Energies",
+        logo: "/images/Manufactures/PREMIER.webp",
+        location: "Rangareddy, India",
+        years: [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.premierenergies.com/",
+    },
+    // 33
+    {
+        name: "AESolar",
+        logo: "/images/Manufactures/AE-Solar.webp",
+        location: "Hongze, China",
+        years: [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://ae-solar.com/",
+    },
+    // 34
+    {
+        name: "Hanersun",
+        logo: "/images/Manufactures/HANERSUN.webp",
+        location: "Yangzhou, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.hanersun.com/",
+    },
+    // 35
+    {
+        name: "Leapton",
+        logo: "/images/Manufactures/LEAPTON.webp",
+        location: "Changshu, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.leaptonpv.com/",
+    },
+    // 36
+    {
+        name: "Mission Solar",
+        logo: "/images/Manufactures/MISSION.webp",
+        location: "San Antonio, USA",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.missionsolar.com/",
+    },
+    // 37
+    {
+        name: "NE Solar",
+        logo: "/images/Manufactures/NE-SOLAR.webp",
+        location: "Batam, Indonesia",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://nesolar.com.kh/",
+    },
+    // 38
+    {
+        name: "RENew",
+        logo: "/images/Manufactures/RENEW.webp",
+        location: "Dholera, India; Jaipur, India",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.renew.com/",
+    },
+    // 39
+    {
+        name: "Renesola",
+        logo: "/images/Manufactures/Renesola-1.webp",
+        location: "Nantong, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+        ],
+        url: "https://www.renesola-energy.com/",
+    },
+    // 40
+    {
+        name: "Runergy",
+        logo: "/images/Manufactures/RUNERGY.webp",
+        location: "Yancheng, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.runergy.com/",
+    },
+    // 41
+    {
+        name: "TATA",
+        logo: "/images/Manufactures/TATA.webp",
+        location: "Tirunelveli, India",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.tatapowerrenewables.com/",
+    },
+    // 42
+    {
+        name: "Thornova",
+        logo: "/images/Manufactures/THORNOVA.webp",
+        location: "Lu'an, China; Chuzhou, China; Wuxi, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.thornova-solar.com/",
+    },
+    // 43
+    {
+        name: "TW Solar",
+        logo: "/images/Manufactures/TONGWEI.webp",
+        location: "Chengdu, China",
+        years: [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.tongwei.cn/",
+    },
+    // 44
+    {
+        name: "DAH Solar",
+        logo: "/images/Manufactures/DAH-SOLAR.webp",
+        location: "Hefei, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://en.dahsolar.com/",
+    },
+    // 45
+    {
+        name: "Haitai Solar",
+        logo: "/images/Manufactures/Haitai-1.webp",
+        location: "Tangshan, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.haitai-solar.cn/",
+    },
+    // 46
+    {
+        name: "Jetion Solar",
+        logo: "/images/Manufactures/Jetion-Solar-1.webp",
+        location: "Haian, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.jetionsolar.com/",
+    },
+    // 47
+    {
+        name: "Kalyon",
+        logo: "/images/Manufactures/Kalyon-PV-1.webp",
+        location: "Ankara, Turkey",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://kalyonpv.com/",
+    },
+    // 48
+    {
+        name: "Rayzon Solar",
+        logo: "/images/Manufactures/Rayzon.webp",
+        location: "Karanj, India",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://rayzonsolar.com/",
+    },
+    // 49
+    {
+        name: "RenewSys",
+        logo: "/images/Manufactures/RenewSys-1.webp",
+        location: "Hyderabad, India",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "https://www.renewsysworld.com/",
+    },
+    // 50
+    {
+        name: "Ronma Solar",
+        logo: "/images/Manufactures/Ronma-1.webp",
+        location: "Jinhua, China",
+        years: [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        ],
+        url: "http://ronmasolar.com/",
+    },
+];
+---
+
+<section class="manufacturer-table">
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="sticky-col">Manufacturer</th>
+
+                    {years.map((year) => <th>{year}</th>)}
+
+                    <th>Factory City and Country for 2025 Top Performer BOMs</th
+                    >
+                </tr>
+            </thead>
+
+            <tbody>
+                {
+                    manufacturers.map((data) => (
+                        <tr class="table-row">
+                            <td class="sticky-col manufacturer">
+                                <img
+                                    src={data.logo}
+                                    alt={data.name}
+                                    data-link={data.url}
+                                    class="hoverClass"
+                                />
+                            </td>
+
+                            {data.years.map((isAvailable) => (
+                                <td class="check">
+                                    {isAvailable ? (
+                                        <img
+                                            src="/images/check-icon.svg"
+                                            class="check-icon-small"
+                                            alt="✓"
+                                        />
+                                    ) : (
+                                        ""
+                                    )}
+                                </td>
+                            ))}
+
+                            <td class="location">{data.location}</td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-footer">
+        <div class="rows-per-page">
+            <label for="row_number_change">Results per page</label>
+            <select id="row_number_change">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+
+        <nav class="pagination-nav">
+            <ul class="pagination" id="pagination"></ul>
+        </nav>
+    </div>
+</section>
+
+<script>
+    const rowsPerPageSelect = document.getElementById("row_number_change");
+    const rows = Array.from(document.querySelectorAll(".table-row"));
+    const pagination = document.getElementById("pagination");
+
+    let currentPage = 1;
+    let rowsPerPage = parseInt(rowsPerPageSelect.value);
+
+    function renderTable() {
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        rows.forEach((row, index) => {
+            row.style.display = index >= start && index < end ? "" : "none";
+        });
+    }
+
+    function renderPagination() {
+        pagination.innerHTML = "";
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
+
+        // Previous
+        const prev = document.createElement("li");
+        prev.textContent = "‹ Previous";
+        prev.className = currentPage === 1 ? "disabled" : "";
+        prev.onclick = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                update();
+            }
+        };
+        pagination.appendChild(prev);
+
+        // Page Numbers
+        const maxPagesToShow = 5;
+        let startPage = Math.max(
+            1,
+            currentPage - Math.floor(maxPagesToShow / 2),
+        );
+        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+        if (endPage - startPage < maxPagesToShow - 1)
+            startPage = Math.max(1, endPage - maxPagesToShow + 1);
+
+        if (startPage > 1) {
+            const li = document.createElement("li");
+            li.textContent = "1";
+            li.onclick = (e) => {
+                e.preventDefault();
+                currentPage = 1;
+                update();
+            };
+            pagination.appendChild(li);
+            if (startPage > 2) {
+                const dots = document.createElement("li");
+                dots.className = "dots";
+                dots.textContent = "...";
+                pagination.appendChild(dots);
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const li = document.createElement("li");
+            if (i === currentPage) li.classList.add("active");
+            const a = document.createElement("a");
+            a.href = "#";
+            a.textContent = i;
+            a.onclick = (e) => {
+                e.preventDefault();
+                currentPage = i;
+                update();
+            };
+            li.appendChild(a);
+            pagination.appendChild(li);
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const dots = document.createElement("li");
+                dots.className = "dots";
+                dots.textContent = "...";
+                pagination.appendChild(dots);
+            }
+            const li = document.createElement("li");
+            li.textContent = totalPages;
+            li.onclick = (e) => {
+                e.preventDefault();
+                currentPage = totalPages;
+                update();
+            };
+            pagination.appendChild(li);
+        }
+
+        // Next
+        const next = document.createElement("li");
+        next.innerHTML = `Next ›`;
+        next.className = currentPage === totalPages ? "disabled" : "";
+        next.onclick = () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                update();
+            }
+        };
+        pagination.appendChild(next);
+    }
+
+    function update() {
+        renderTable();
+        renderPagination();
+    }
+
+    // Event listener for rows per page change
+    rowsPerPageSelect.addEventListener("change", () => {
+        rowsPerPage = parseInt(rowsPerPageSelect.value);
+        currentPage = 1;
+        update();
+    });
+
+    // Initial render
+    update();
+</script>
+
+<style>
+    .manufacturer-table {
+        padding: 17px 12px;
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        position: relative;
+        margin-top: 40px;
+    }
+
+    table {
+        border-collapse: collapse;
+        min-width: 1200px;
+        width: 100%;
+    }
+
+    thead th {
+        padding: 16px;
+        font-size: 14px;
+        font-weight: 200;
+        text-transform: uppercase;
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "Work Sans", sans-serif;
+        line-height: 14px;
+    }
+
+    tbody td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #eef1f4;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .sticky-col {
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 2;
+        text-align: left;
+        min-width: 200px;
+    }
+
+    thead .sticky-col {
+        z-index: 3;
+    }
+
+    .manufacturer img {
+        max-height: 60px;
+        object-fit: contain;
+    }
+
+    .check {
+        color: #1a73e8;
+        font-size: 18px;
+    }
+
+    .location {
+        text-align: left;
+        color: #4b5563;
+    }
+
+    
+
+    .hoverClass {
+        cursor: pointer;
+    }
+    /* Pagination Styles */
+
+    :global(.pagination-footer) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 40px !important;
+        margin-top: 40px !important;
+        font-family: "Work Sans", sans-serif !important;
+        color: #343434 !important;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    /* 2. Results per page dropdown box */
+    :global(.rows-numebr-sec) {
+        display: flex !important;
+        padding: 20px 0 !important;
+        align-items: center !important;
+        gap: 12px !important;
+        color: #666 !important;
+    }
+
+    :global(.row_numeber_change) {
+        border: 1px solid #cbd5e0 !important;
+        border-radius: 4px !important;
+        padding: 6px 10px !important;
+        background-color: white !important;
+        color: #666 !important;
+        padding: 20px 0 !important;
+        outline: none !important;
+        cursor: pointer !important;
+    }
+
+    :global(.pagination) {
+        display: flex !important;
+        flex-direction: row !important;
+        list-style: none !important; /* This removes the dots */
+        padding: 0 !important;
+        margin: 0 !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    :global(.pagination li) {
+        display: flex !important;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    :global(.pagination li a) {
+        text-decoration: none !important;
+        color: #2d3748 !important;
+        min-width: 32px !important;
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 2px !important;
+        font-size: 14px !important;
+    }
+
+    /* 4. ACTIVE STATE: The exact blue box for the current page */
+    :global(.pagination li.active a) {
+        background-color: #2b5797 !important; /* Exact blue from screenshot */
+        color: white !important;
+        font-weight: 600 !important;
+    }
+
+    /* 5. PREVIOUS/NEXT Styling */
+    :global(.pagination li.prev-icon a) {
+        color: #a0aec0 !important; /* Light gray for "Previous" */
+        width: auto !important;
+        padding-right: 15px !important;
+    }
+
+    :global(.pagination li.next-icon a) {
+        color: #0054c5 !important; /* Blue for "Next" */
+        font-weight: 600 !important;
+        width: auto !important;
+        padding-left: 15px !important;
+    }
+
+    /* 6. The Chevron (>) styling */
+    :global(.nav-arrow) {
+        margin-left: 8px !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        line-height: 1 !important;
+    }
+
+    /* Dots (...) styling */
+    :global(.pagination li.dots) {
+        color: #a0aec0 !important;
+        padding: 0 5px !important;
+    }
+</style>

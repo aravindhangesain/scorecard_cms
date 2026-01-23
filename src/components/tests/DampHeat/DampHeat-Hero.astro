@@ -1,0 +1,33 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+
+<section class="hero">
+  <!-- Background image -->
+  <img
+    src="/images/Damp-Heat-banner-1.jpg"
+    alt="PV module testing methodology"
+    class="hero-bg"
+  />
+
+  <!-- Blue overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>
+      {data.dampheat_titleline1} <br/>
+      <span class="span">{data.dampheat_titlehighlight || data.dampheat_titleline2}</span>
+    </h1>
+    <p>
+      {data.dampheat_description}
+    </p>
+  </div>
+</section>
+

@@ -1,0 +1,135 @@
+---
+---
+<section class="failures-section">
+  <div class="failures-container">
+
+    <!-- Section title -->
+    <h2 class="failures-title">PV Module Failures</h2>
+
+    <!-- Two-column content -->
+    <div class="failures-grid">
+
+      <!-- LEFT: Text -->
+      <div class="failures-text">
+        <p>
+          Reliable PV module performance depends on stringent manufacturing
+          process controls and well-made components. When manufacturers
+          overlook quality assurance and quality control steps or use
+          substandard materials, premature failure in modules is likely
+          to occur.
+        </p>
+
+        <p>
+          Today’s projects use technologies and components that did not exist
+          25 years ago. Though the long-term reliability of new PV module
+          designs cannot be proven with field data, PVEL’s laboratory testing
+          simulates and accelerates environmental conditions to replicate
+          field failures.
+        </p>
+      </div>
+
+      <!-- RIGHT: Image -->
+      <div class="failures-image">
+        <div class="image-card">
+            <img
+            src="../../../../public/2021/images/INTRO-IEA-PVPS-Failure-Chart_REV.jpg"
+            alt="Click here to enlarge the Image"
+            loading="lazy"
+            />
+        </div>
+
+        <p class="image-caption">
+            SOURCE: IEA PVPS 2014; LETID AND BACKSHEET FAILURE ADDED BY PVEL, 2019
+        </p>
+        </div>
+
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section wrapper */
+.failures-section {
+  background: #ffffff;
+  padding: 96px 0;
+  color: #24324a;
+}
+
+/* Container */
+.failures-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Title */
+.failures-title {
+  font-family: "Asap";
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+/* Grid layout */
+.failures-grid {
+  display: grid;
+  grid-template-columns: 460px 520px;
+  gap: 80px;
+  justify-content: center;
+  align-items: start;
+}
+
+/* Text */
+.failures-text p {
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight:400;
+  line-height: 24px;
+  margin-bottom: 28px;
+}
+
+.image-card {
+  background: #ffffff;
+  padding: 12px;                   
+  border-radius: 4px;
+  width: 92%;                     
+  margin: 0 auto;
+
+  box-shadow:
+    0 8px 18px rgba(36, 50, 74, 0.12),
+    0 2px 4px rgba(36, 50, 74, 0.08);
+}
+
+/* Image itself */
+.image-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption */
+.image-caption {
+  font-family: "Asap";
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  color: #24324a;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .failures-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .failures-title {
+    font-size: 28px;
+    margin-bottom: 48px;
+  }
+}
+</style>

@@ -1,0 +1,141 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json";      // English
+import zh from "../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+<section class="TC-hero">
+  <img src="/images/methodology-hero-sub-banner.jpg" alt={data.st_hero_image_alt} class="hero-bg" />
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>
+      {data.st_hero_heading_line_1}<br />
+      {data.st_hero_heading_line_2}<br />
+      <span class="searchtool">{data.st_hero_heading_highlight}</span>
+    </h1>
+
+    <p>
+      {data.st_hero_paragraph} 
+      <a href={data.st_hero_paragraph_link_url}>{data.st_hero_paragraph_link_text}</a>.
+    </p>
+  </div>
+</section>
+
+
+<style>
+  .TC-hero {
+    position: relative;
+    display: flex;
+    /* align-items: center;    */
+    min-height: 720px;
+    height: clamp(754px, 55vh, 520px);
+
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:  cover;
+    object-position: bottom;
+  }
+
+  /* Overlay */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: #0054c5;
+    opacity: 0.5;
+  }
+
+  /* Content */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin-left: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    color: #ffffff;
+  }
+
+  /* Heading */
+  .hero-content h1 {
+    font-size: 78px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    font-family: "Azo Sans" sans-serif;
+  }
+
+  .searchtool {
+    color: #80ffca;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  /* Paragraph */
+  .hero-content p {
+    max-width: 700px;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+  }
+
+  .hero-content p a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  @media (min-width: 1201px) {
+    .TC-hero {
+      justify-content: center;
+    }
+
+    .hero-content {
+      margin-right: 600px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content {
+      margin-left: 60px;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .TC-hero {
+      min-height: 520px;
+    }
+
+    .hero-content {
+      margin-left: 0;
+      padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 42px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 34px;
+    }
+  }
+</style>

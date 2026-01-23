@@ -1,0 +1,114 @@
+<section class="growth-section">
+  <div class="growth-container">
+
+    <!-- CENTERED HEADING -->
+    <h2 class="growth-title">
+      Unprecedented Growth Brings Unprecedented Challenges
+    </h2>
+
+    <!-- TWO-COLUMN CONTENT -->
+    <div class="growth-grid">
+
+      <!-- LEFT: TEXT -->
+      <div class="growth-text">
+        <p class="intro">
+          With 100 million cells soldered per day, we are seeing degradation
+          rates &gt;15%. This is only the beginning.
+        </p>
+
+        <div class="big-number">
+          1,000,000,000+
+        </div>
+
+        <p class="note">
+          To address climate change, we will need to reach at least
+          1 billion cells per day.
+          <strong>Quality cannot be sacrificed</strong> for scale.
+        </p>
+      </div>
+
+      <!-- RIGHT: IMAGE SPACE (EMPTY ON PURPOSE) -->
+      <div class="image-placeholder"></div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+    /* Section */
+.growth-section {
+  background: linear-gradient(135deg, #2b3556 0%, #3a4a7a 100%);
+  padding: 72px 0;
+  color: #ffffff;
+}
+
+/* Container */
+.growth-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Title */
+.growth-title {
+  font-family: "Asap";
+  font-size: 25.6px;
+  font-weight: 600;
+  text-align: center; 
+  margin-bottom: 56px;
+  line-height: 32px;
+}
+
+/* Grid */
+.growth-grid {
+  display: grid;
+  grid-template-columns: 440px 520px; 
+  gap: 80px;
+  justify-content: center; 
+  align-items: stretch;
+}
+
+/* Text column */
+.growth-text {
+  max-width: 440px;
+}
+
+/* Paragraphs */
+.intro,
+.note {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Big number */
+.big-number {
+  font-family: "Asap";
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+/* Image placeholder */
+.image-placeholder {
+  min-height: 240px;
+}
+/* Mobile */
+@media (max-width: 900px) {
+  .growth-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .growth-title {
+    font-size: 30px;
+    margin-bottom: 48px;
+  }
+
+  .growth-text {
+    max-width: 100%;
+  }
+}
+
+</style>

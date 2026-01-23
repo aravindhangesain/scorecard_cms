@@ -1,0 +1,197 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section id="TestSpotlight" class="Fail-spotlight">
+    <div class="Fail-container">
+        <div class="Fail-header">
+            <div class="Fail-title">
+                <h2>
+                    {data.fail_stats_title}<br />
+                    <span>{data.fail_stats_span}</span>
+                </h2>
+            </div>
+
+            <div class="Fail-description">
+                <p>
+                    {data.fail_stats_desc_p1}
+                    <br />
+                    <br />
+                    {data.fail_stats_desc_p2}
+                </p>
+            </div>
+        </div>
+        
+        <div class="Fail-cards">
+            <div class="Fail-card">
+                <div class="Fail-card-image">
+                    <img
+                        src="/images/failure_graph_1.png"
+                        alt={data.fail_stats_chart_1_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+                <p class="Fail-card-caption">
+                    {data.fail_stats_chart_1_alt}
+                </p>
+            </div>
+        </div>
+        
+        <br/>
+        <br/>
+        
+        <div>
+            <p class="fail-para">
+                {data.fail_stats_history_text}
+            </p>
+        </div>
+        
+        <br/>
+        <br/>
+
+        
+
+        <div class="Fail-cards">
+            <div class="Fail-card">
+                <div class="Fail-card-image">
+                    <img
+                        src="/images/Failures-02.jpg"
+                        alt={data.fail_stats_chart_2_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+                <p class="Fail-card-caption">
+                    {data.fail_stats_chart_2_alt}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .Fail-spotlight {
+        padding: 40px;
+        background: #ffffff;
+    }
+
+    .Fail-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .Fail-header {
+        display: grid;
+        grid-template-columns: 1fr 1.9fr;
+        gap: 40px;
+        margin-bottom: clamp(20px, 4vw, 40px);
+    }
+
+    .Fail-title h2 {
+       font-size: 46.8px;
+        font-weight: 400;
+        line-height: 57.8px;
+        color: #072643;
+        margin-bottom: 2rem;
+        font-family: "Azo Sans" sans-serif;
+        text-align: left;
+        letter-spacing: -1.5px;
+    }
+
+    .Fail-title span {
+        font-weight: 700;
+        font-style: italic;
+        font-family: "Azo Sans"sans-serif;
+    }
+
+    .Fail-description p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.01em;
+    }
+
+    .Fail-cards {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Fail-card {
+        width: 100%;
+        max-width: 1200px;
+        text-align: center;
+    }
+
+    .Fail-card-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: clamp(8px, 2vw, 16px);
+    }
+
+    .Fail-card-image img {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        border-radius: 4px;
+    }
+    .fail-para{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.01em;
+    }
+
+    .Fail-card-caption {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 400;
+        color: #072643;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: "Work Sans",sans-serif;
+    }
+
+    @media (max-width: 1024px) {
+        .Fail-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Fail-header {
+            text-align: left;
+        }
+
+        .Fail-card-caption {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .Fail-title h2 {
+            font-size: 28px;
+        }
+
+        .Fail-description p {
+            font-size: 14px;
+        }
+
+        .Fail-card-caption {
+            font-size: 13px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

@@ -1,0 +1,168 @@
+<section class="tc-hero">
+  <div class="tc-container">
+    <!-- Top row -->
+    <div class="tc-header">
+      <h1>Thermal <br/> Cycling</h1>
+
+      <p class="tc-intro">
+        <bold style="font-weight: bold;">PVEL’s Thermal Cycling (TC)</bold> test assesses a PV module’s ability to withstand changes in temperature.
+        While ambient temperatures vary daily and seasonally in most solar markets, 
+        top-performing TC results are most critical in locations where temperatures are much lower at night than during the day, 
+        such as desert environments and high-altitude regions.
+      </p>
+    </div>
+
+    <hr class="tc-divider" />
+  </div>
+
+  <!-- Center arrow -->
+  <div class="scroll-indicator">↓</div>
+</section>
+
+<section class="tc-content">
+  <div class="tc-container tc-content-grid">
+
+    <!-- Left image -->
+    <div class="tc-image">
+      <img
+        src="/images/2022/TC-PV.png"
+        alt="Thermal Cycling"
+      />
+    </div>
+
+    <!-- Right text -->
+    <div class="tc-text">
+      <p>
+        PV module components expand or contract as temperatures change. The expected amount of expansion or contraction is expressed
+        with a number called a thermal expansion coefficient. Thermal expansion coefficients vary by component, e.g. cells versus cell
+        interconnects. As module temperature changes during the day, this variation in thermal expansion coefficients can create stresses
+        internal to the module that damage components, particularly the solder bonds of cells. Solder bond fatigue can dramatically
+        decrease performance.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+  /* Base reset */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Shared container */
+  .tc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* =====================
+   HERO SECTION
+===================== */
+  .tc-hero {
+    background: #ffffff;
+    position: relative;
+    padding-bottom: 5rem;
+    padding: 14rem 0;
+  }
+
+  /* Header layout */
+  .tc-header {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Title */
+  .tc-header h1 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 5.5rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+  }
+
+  /* Right paragraph */
+  .tc-intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #222;
+    margin-top: 1.5rem;
+  }
+
+  /* Divider */
+  .tc-divider {
+    border: none;
+    border-top: 1px solid #ececec;
+    margin-top: 1rem;
+  }
+
+  /* Scroll arrow */
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: -22px;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    border: 1px solid #bbb;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 0 0;
+  }
+
+  .tc-content {
+  background-color: rgba(223, 233, 247, 0.5);
+  padding: 6rem 0;
+}
+
+/* Two-column layout */
+.tc-content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* Image styling */
+.tc-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Text styling */
+.tc-text p {
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #222;
+  margin: 0;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media (max-width: 900px) {
+  .tc-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .tc-text p {
+    max-width: 100%;
+  }
+}
+
+</style>

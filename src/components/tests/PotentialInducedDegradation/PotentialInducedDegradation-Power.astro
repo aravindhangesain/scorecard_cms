@@ -1,0 +1,388 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+---
+
+<section id="PowerDegration" class="Pid-boms">
+    <div class="Pid-boms-container">
+        <div class="Pid-boms-left">
+            <h2>
+                {data.pid_boms_title_main}<br />
+                <span>{data.pid_boms_title_span}</span>
+            </h2>
+
+            <div class="chart-wrapper">
+                <img
+                    src="/images/PID-1.jpg"
+                    alt={data.pid_boms_title_span}
+                    class="modal-trigger"
+                    title="Click to Enlarge the image"
+                />
+            </div>
+        </div>
+
+        <a
+            href={isZh
+                ? "/zh/top-performers/?pqp_test=PID"
+                : "/top-performers/?pqp_test=PID"}
+            class="pid-boms-link"
+        >
+            <div class="Pid-boms-right">
+                <img
+                    class="badge-img"
+                    src="/images/Kiwa-PVEL-2025-TP-Mark-2.svg"
+                    alt={data.pid_boms_badge_alt}
+                />
+
+                <div class="cta">
+                    <h4>
+                        {data.pid_boms_cta_title}
+                    </h4>
+                    <p>
+                        {data.pid_boms_cta_p}
+                    </p>
+                </div>
+            </div>
+        </a>
+
+        <div>
+            <p class="footnote-left">
+                {data.pid_boms_footnote_1}
+            </p>
+            <p class="footnote-left1">
+                {data.pid_boms_footnote_2}
+            </p>
+
+            <a
+                href={data.pid_boms_plot_guide_url}
+                target="_blank"
+                class="text-link"
+            >
+                {data.pid_boms_plot_guide}
+            </a>
+        </div>
+
+        <div class="footnote-row">
+            <a
+                class="footnote"
+                href="https://www.kiwa.com/pvel/pqp/Pid"
+                target="_blank"
+            >
+                {data.pid_boms_pqp_link_text}
+            </a>
+
+            <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+        </div>
+
+        <div class="reference">
+            <p>
+                <sup>1</sup>
+                {data.pid_reference_text}
+                <a
+                    href="https://doi.org/10.1051/epjpv/2025004"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    {data.pid_reference_link_text}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .Pid-boms {
+        padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+        background: #ffffff;
+    }
+
+    .Pid-boms-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2.2fr 0.8fr;
+        gap: clamp(2rem, 3vw, 5rem);
+        align-items: start;
+    }
+
+    .Pid-boms-left h2 {
+        font-size: 46.8px;
+        line-height: 57.8px;
+        color: #072643;
+        margin-bottom: 2rem;
+        font-family: "Azo Sans" sans-serif;
+        font-weight: 400;
+        text-align: left;
+        letter-spacing: -1.5px;
+    }
+
+    .Pid-boms-left h2 span {
+        font-weight: 800;
+        font-family: "Azo Sans" sans-serif;
+        font-style: italic;
+    }
+
+    .chart-wrapper img {
+        width: 100%;
+        display: block;
+    }
+
+    .pid-boms-link {
+        display: contents;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Footnotes */
+    .footnote-left {
+        font-size: 12px;
+        color: #072643;
+        line-height: 21px;
+        font-family: "Work Sans", sans-serif;
+        width: 80%;
+    }
+    .footnote-left1 {
+        font-size: 12px;
+        color: #072643;
+        line-height: 21px;
+        font-family: "Work Sans", sans-serif;
+        width: 80%;
+        margin-top: 40px;
+    }
+
+    .footnote-row {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .footnote-row .footnote {
+        font-size: 14px;
+        max-width: 85%;
+        line-height: 18px;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        color: #072643;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .arrow-link {
+        font-size: clamp(24px, 4vw, 32px);
+        color: #072643;
+        text-decoration: none;
+        flex-shrink: 0;
+        font-weight: 400;
+        line-height: 18px;
+    }
+
+    .Pid-boms-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    .badge-img {
+        width: clamp(180px, 25vw, 240px);
+        height: auto;
+        /* margin-bottom: 2rem; */
+    }
+
+    .cta h4 {
+        font-size: 24px;
+        color: #282828;
+        letter-spacing: -1.5px;
+        margin-bottom: 1rem;
+        line-height: 32px;
+        font-family: "Azo Sans", sans-serif;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .cta p {
+        font-size: 16px;
+        color: #282828;
+        font-weight: 400;
+        max-width: 200px;
+        line-height: 28px;
+        font-family: "Work Sans", sans-serif;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    /* Animated underline for footnote link */
+
+
+    .text-link {
+        color: #072643;
+        text-decoration: none;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        font-family: "Work Sans", sans-serif;
+        margin-top: 20px;
+        padding-bottom: 4px;
+
+        line-height: 21px;
+        /* underline using background */
+        background-image: linear-gradient(#072643, #072643);
+        background-repeat: no-repeat;
+        background-size: 100% 1.5px;
+        background-position: 100% 100%;
+
+        transition: background-size 0.4s ease;
+    }
+
+    /* hover: underline disappears left → right */
+    .text-link:hover {
+        background-size: 0% 1.5px;
+    }
+
+    .reference {
+        grid-column: 1 / -1;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .reference p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        width: 100%;
+    }
+
+    .reference sup {
+        font-size: 0.5em;
+        vertical-align: super;
+        margin-right: 4px;
+    }
+
+    .reference a {
+        color: #0054c5;
+        text-decoration: none;
+    }
+
+    .reference a:hover {
+        text-decoration: underline;
+    }
+
+    /* Keep arrow size fixed */
+    .footnote-row img.cta-arrow {
+        width: 60px; /* keep original size */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Slide on hover */
+    .footnote-row:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click feedback */
+    .footnote-row:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .footnote-row img.cta-arrow {
+            transition: none;
+            animation: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .Pid-boms-container {
+            grid-template-columns: 1fr;
+        }
+
+        .Pid-boms-right {
+            margin-top: 0; /* REMOVE fixed spacing */
+        }
+
+        .footnote-row .footnote {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Pid-boms {
+            padding: 3rem 1.25rem;
+        }
+
+        .Pid-boms-left h2 {
+            text-align: left;
+        }
+
+        .chart-wrapper img {
+            margin: 0 auto 1.5rem;
+        }
+
+        .Pid-boms-right {
+            margin-top: 2rem;
+        }
+
+        .cta p {
+            max-width: 100%;
+        }
+
+        .footnote-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .arrow-link {
+            align-self: flex-end;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .Pid-boms-left h2 {
+            font-size: 28px;
+            line-height: 1.25;
+        }
+
+        .badge-img {
+            width: 150px;
+        }
+
+        .cta h4 {
+            font-size: 20px;
+        }
+
+        .reference p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

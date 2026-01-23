@@ -1,0 +1,257 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="scorecard-hero">
+    <!-- Background image -->
+    <img
+        src="/images/Key-Takeaways-1.jpg"
+        alt={data.historical_hero_image_alt}
+        class="scorecard-bg"
+    />
+
+    <!-- Overlay -->
+    <div class="scorecard-overlay"></div>
+
+    <!-- Content -->
+    <div class="scorecard-content">
+        <h2>
+            {data.historical_hero_heading_line_1}<br />
+            <span>{data.historical_hero_heading_highlight}</span>
+        </h2>
+
+        <p>{data.historical_hero_paragraph}</p>
+
+        <a class="scorecard-link" href={data.historical_hero_link_url}>
+            {data.historical_hero_link_text}
+            <img class="cta-arrow" src="/images/Icon_Arrow_White.svg" />
+        </a>
+    </div>
+</section>
+
+<style>
+    .scorecard-hero {
+        position: relative;
+        width: 100%;
+        min-height: 28vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .scorecard-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .scorecard-overlay {
+        position: absolute;
+        inset: 0;
+        background: #072643;
+        opacity: 0.8;
+    }
+
+    .scorecard-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+        padding: 25px 40px 60px;
+        margin: 0;
+        color: #fff;
+        text-align: left;
+    }
+
+    .scorecard-content h2 {
+        font-size: 48px;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .scorecard-content h2 span {
+        font-style: italic;
+        font-weight: 800;
+        font-family: "Azo Sans", sans-serif;
+    }
+
+    .scorecard-content p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 1.2rem;
+        max-width: 1000px;
+        letter-spacing: 0.03em;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+    }
+
+    .scorecard-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1100px;
+        margin-top: 100px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 600;
+        line-height: 18px;
+    }
+
+    .scorecard-link:hover {
+        opacity: 0.8;
+    }
+
+    /* Keep arrow size fixed */
+    .scorecard-link img.cta-arrow {
+        width: 60px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Slide on hover */
+    .scorecard-link:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click feedback */
+    .scorecard-link:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .scorecard-link img.cta-arrow {
+            transition: none;
+            animation: none;
+        }
+    }
+
+    /* Ultra-wide screens */
+    @media (min-width: 1600px) {
+        .scorecard-hero {
+            justify-content: center;
+        }
+
+        .scorecard-content {
+            margin-right: 300px;
+            padding-left: 200px;
+        }
+    }
+
+    /* Large desktops */
+    @media (min-width: 1400px) and (max-width: 1599px) {
+        .scorecard-content {
+            padding-left: 150px;
+        }
+    }
+
+    /* Standard desktops */
+    @media (min-width: 1025px) and (max-width: 1399px) {
+        .scorecard-content {
+            padding-left: 100px;
+        }
+    }
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+        .scorecard-content {
+            padding: 40px 40px 80px;
+            max-width: 100%;
+        }
+
+        .scorecard-content h2 {
+            font-size: 42px;
+        }
+
+        .scorecard-link {
+            margin-top: 120px;
+        }
+
+        .scorecard-bg {
+            object-position: center top;
+        }
+    }
+
+    /* Small tablets */
+    @media (max-width: 768px) {
+        .scorecard-hero {
+            min-height: auto;
+            padding: 0px;
+        }
+
+        .scorecard-content {
+            padding: 30px 24px 60px;
+        }
+
+        .scorecard-content h2 {
+            font-size: 34px;
+        }
+
+        .scorecard-content p {
+            font-size: 1rem;
+        }
+
+        .scorecard-link {
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+
+        .scorecard-bg {
+            object-position: center 20%;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+        .scorecard-content {
+            padding: 24px 16px 40px;
+        }
+
+        .scorecard-content h2 {
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        .scorecard-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scorecard-link {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .scorecard-link img.cta-arrow {
+            align-self: flex-end;
+        }
+
+        .scorecard-bg {
+            object-position: center 20%;
+        }
+    }
+</style>

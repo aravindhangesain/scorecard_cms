@@ -1,0 +1,133 @@
+---
+import { getLang } from "../../data/useLang";
+import en from "../../data/ln.json";      // English
+import zh from "../../data/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="home_hero">
+  <video
+    class="hero-video"  
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source src="/videos/home-bg.mp4" type="video/mp4" />
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+    <h1>
+      {data.home_hero_title} <br />
+      <span>{data.home_hero_highlight}</span>
+    </h1>
+
+    <a class="btn" href="#welcome">
+      {data.home_hero_cta}
+      <span class="btn-icon">→</span>
+    </a>
+  </div>
+</section>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .home_hero {
+    position: relative;
+    min-height: 100vh; /* better mobile viewport handling */
+    width: 100%;
+    overflow: hidden;
+    color: white;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: #0054c5;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 40px);
+    min-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .home_hero h1 {
+    font-family: "Azo Sans", sans-serif;
+    font-weight: 300;
+    font-size: clamp(32px, 6vw, 80px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin: 0;
+  }
+
+  .home_hero h1 span {
+    font-weight: 800;
+    font-style: italic;
+    color: #80ffca;
+  }
+
+  .btn {
+    margin-top: clamp(24px, 4vh, 64px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    width: fit-content;
+    border: 2px solid #fff;
+    background-color: #00AEC5;
+    color: white;
+    text-decoration: none;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  
+
+  @media (max-width: 768px) {
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .home_hero h1 {
+      font-size: clamp(28px, 8vw, 40px);
+    }
+  }
+
+  /* Landscape phones */
+  @media (max-height: 500px) {
+    .home_hero {
+      min-height: 40vh;
+    }
+  }
+</style>

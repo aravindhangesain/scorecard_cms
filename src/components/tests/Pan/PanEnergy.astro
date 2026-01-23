@@ -1,0 +1,314 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+const isZh = lang === "zh";
+---
+
+<section id="energyYields" class="Pan-boms">
+    <div class="Pan-boms-container">
+        <!-- LEFT SIDE -->
+        <div class="Pan-boms-left">
+            <h2>
+                {data.pan_title1}<br />
+                <span>{data.pan_title2}</span>
+            </h2>
+
+            <div class="chart-wrapper">
+                <img
+                    src="/images/PAN-charts.jpg"
+                    alt={data.panleftchart_alt1}
+                    class="modal-trigger"
+                    title={data.panleftchart_title1}
+                />
+                <img
+                    src="/images/pan-chart-2.jpg"
+                    alt={data.panleftchart_alt2}
+                    class="modal-trigger"
+                    title={data.panleftchart_title2}
+                />
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <a
+            href={isZh
+                ? "/zh/top-performers/?pqp_test=PAN"
+                : "/top-performers/?pqp_test=PAN"}
+            class="pan-boms-link"
+        >
+            <div class="Pan-boms-right">
+                <img
+                    class="badge-img"
+                    src="/images/Kiwa-PVEL-2025-TP-Mark-2.svg"
+                    alt={data.panrightchart_alt}
+                />
+
+                <div class="cta">
+                    <h4>{data.pancta_title1}</h4>
+                    <p>
+                        {data.pancta_description}
+                    </p>
+                </div>
+            </div>
+        </a>
+
+        <div>
+            <p class="footnote-left">
+                {data.panfootnote_text}
+            </p>
+
+            <a
+                href={data.panfootnotetext_link_url}
+                target="_blank"
+                class="text-link"
+            >
+                {data.panfootnotetext_link}
+            </a>
+        </div>
+
+        <!-- FULL WIDTH FOOTNOTE ROW -->
+        <div class="footnote-row">
+            <a
+                class="footnote"
+                href={data.panfootnoterow_texturl}
+                target="_blank"
+            >
+                {data.panfootnoterow_text}
+            </a>
+
+            <img class="cta-arrow" src="/images/Icon_Arrow_Black.svg" />
+        </div>
+    </div>
+</section>
+
+<style>
+    .Pan-boms {
+        padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+        background: #ffffff;
+    }
+
+    .Pan-boms-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2.2fr 0.8fr;
+        gap: 10px;
+        align-items: start;
+    }
+
+    .Pan-boms-left h2 {
+        font-size: 46.8px;
+        line-height: 57.8px;
+        color: #072643;
+        margin-bottom: 2rem;
+        font-family: "Azo Sans" sans-serif;
+        font-weight: 400;
+        text-align: left;
+        letter-spacing: -1.5px;
+    }
+
+    .Pan-boms-left h2 span {
+        font-weight: 800;
+        font-style: italic;
+        font-family: "Azo Sans", sans-serif;
+    }
+    .chart-wrapper {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .chart-wrapper img {
+        width: 50%;
+        height: auto;
+        display: block;
+    }
+
+    .pan-boms-link {
+        display: contents;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Footnotes */
+    .footnote-left {
+        font-size: 12px;
+        color: #072643;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 400;
+        width: 85%;
+    }
+
+    .footnote-row {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footnote-row .footnote {
+        font-size: 14px;
+        max-width: 90%;
+        line-height: 18px;
+        letter-spacing: normal;
+        font-family: "Work Sans", sans-serif;
+        color: #072643;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .Pan-boms-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    .badge-img {
+        width: clamp(180px, 25vw, 240px);
+        height: auto;
+        /* margin-bottom: 2rem; */
+    }
+
+    .cta h4 {
+        font-size: 24px;
+        color: #282828;
+        letter-spacing: -1.5px;
+        margin-bottom: 1rem;
+        line-height: 32px;
+        font-family: "Azo Sans", sans-serif;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .cta p {
+        font-size: 16px;
+        color: #282828;
+        font-weight: 400;
+        max-width: 250px;
+        line-height: 28px;
+        font-family: "Work Sans", sans-serif;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .text-link {
+        color: #072643;
+        text-decoration: none;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        font-family: "Work Sans", sans-serif;
+        margin-top: 20px;
+
+        line-height: 21px;
+        padding-bottom: 4px;
+        /* underline using background */
+        background-image: linear-gradient(#072643, #072643);
+        background-repeat: no-repeat;
+        background-size: 100% 1.5px;
+        background-position: 100% 100%;
+
+        transition: background-size 0.4s ease;
+    }
+
+    /* hover: underline disappears left → right */
+    .text-link:hover {
+        background-size: 0% 1.5px;
+    }
+
+    /* Keep arrow size fixed */
+    .footnote-row img.cta-arrow {
+        width: 60px; /* keep original size */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    /* Slide on hover */
+    .footnote-row:hover img.cta-arrow {
+        transform: translateX(8px);
+    }
+
+    /* Click feedback */
+    .footnote-row:active img.cta-arrow {
+        transform: translateX(12px);
+    }
+
+    @keyframes arrowSlide {
+        0% {
+            transform: translateX(0);
+        }
+        60% {
+            transform: translateX(12px);
+        }
+        100% {
+            transform: translateX(8px);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .Pan-boms-container {
+            grid-template-columns: 1fr;
+        }
+
+        .Pan-boms-right {
+            margin-top: 3rem;
+        }
+
+        .footnote-row .footnote {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Pan-boms {
+            padding: 3rem 1.25rem;
+        }
+
+        .Pan-boms-left h2 {
+            text-align: left;
+        }
+
+        .Pan-boms-right {
+            margin-top: 2.5rem;
+        }
+
+        .cta p {
+            max-width: 100%;
+        }
+
+        .footnote-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .arrow-link {
+            align-self: flex-end;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .Pan-boms-left h2 {
+            font-size: 28px;
+        }
+
+        .badge-img {
+            width: 160px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

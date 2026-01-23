@@ -1,0 +1,122 @@
+<div id="imgModal" class="modal">
+  
+  <div class="close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </div>
+
+  <div class="modal-wrapper">
+    <img class="modal-content" id="modalImage" />
+    <div id="modalCaption"></div>
+  </div>
+  
+</div>
+
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    /* Dark overlay background */
+    background: rgba(0, 0, 0, 0.8); 
+    z-index: 9999;
+    
+    /* Center the content */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px; /* Gap to ensure image doesn't touch edges */
+  }
+
+  /* WRAPPER: Just holds the image and caption */
+  .modal-wrapper {
+    position: relative;
+    max-width: 100%;
+    max-height: 90vh; /* Leave room for margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoom 0.3s ease;
+  }
+
+  .modal-content {
+    display: block;
+    width: auto;
+    height: auto;
+    
+    /* Allow image to be as big as the screen allows */
+    max-width: 100%; 
+    max-height: 85vh; 
+    
+    object-fit: contain;
+    background: #fff; /* White bg behind image if transparent */
+    
+  }
+
+  @keyframes zoom {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* CLOSE ICON: Fixed to the Viewport (Screen) */
+  .close {
+    position: absolute; /* Fixed relative to the .modal container (the screen) */
+    top: 20px;
+    right: 30px;
+    
+    z-index: 10001;
+    cursor: pointer;
+    color: #ffffff; /* Light grey like the screenshot */
+    transition: color 0.2s ease;
+    
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close:hover {
+      color: #fff; /* White on hover */
+  }
+
+  .close svg {
+      width: 36px; /* Large, thin X */
+      height: 36px;
+  }
+
+  #modalCaption {
+    color: #ccc;
+    margin-top: 15px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+</style>
+
+<script is:inline>
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalCaption = document.getElementById("modalCaption");
+  const closeBtn = modal.querySelector(".close");
+
+  document.addEventListener("click", (e) => {
+    const img = e.target.closest(".modal-trigger");
+    if (!img) return;
+
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+    modalCaption.innerHTML = img.dataset.caption || img.alt || "";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    // Close if clicking the background area
+    if (e.target === modal) modal.style.display = "none";
+  });
+</script>

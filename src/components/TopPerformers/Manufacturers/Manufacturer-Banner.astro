@@ -1,0 +1,209 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json"; // English
+import zh from "../../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+<section class="Manufacturer-hero">
+  <!-- Background image -->
+  <img
+    src="/images/methodology-hero-sub-banner.jpg"
+    alt={data.manufacturer_hero_image_alt}
+    class="hero-bg"
+  />
+
+  <!-- Blue overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>
+      {data.manufacturer_hero_heading_line_1}<br />
+      <span class="heat">{data.manufacturer_hero_heading_highlight}</span>
+    </h1>
+
+    <p>
+      {data.manufacturer_hero_paragraph}
+      <a href={data.manufacturer_hero_paragraph_link_url}
+        >{data.manufacturer_hero_paragraph_link_text}</a
+      >
+      {data.manufacturer_hero_paragraph_continued}
+    </p>
+  </div>
+</section>
+
+<style>
+  .Manufacturer-hero {
+    position: relative;
+    display: flex;
+    /* align-items: center;    */
+    min-height: 720px;
+    height: clamp(754px, 55vh, 520px);
+
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:  cover;
+    object-position: bottom;
+  }
+
+
+  /* Overlay */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: #0054c5;
+    opacity: 0.5;
+  }
+
+  /* Content */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin-left: 50px;
+    color: #fff;
+  }
+
+  .hero-content h1 {
+    font-size: 80px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 94px;
+    letter-spacing: -1.5px;
+    margin-top: 130px;
+    color: #fff;
+    font-family: "Azo Sans";
+  }
+
+  .hero-content h1 .heat {
+    color: #80ffca;
+    font-style: italic;
+    font-weight: 800;
+    font-family: "Azo Sans" sans-serif;
+  }
+
+  /* Paragraph */
+  .hero-content p {
+    max-width: 800px;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  
+
+  .hero-content a {
+    color: #fff;
+    text-decoration: none;
+
+    /* underline */
+    background-image: linear-gradient(#fff, #fff);
+    background-repeat: no-repeat;
+
+    /* ALWAYS anchored to the right */
+    background-position: 100% 100%;
+    background-size: 100% 1.5px;
+
+    padding-bottom: 2px;
+
+    transition: background-size 0.4s ease;
+  }
+
+  /* hover: shrink toward left */
+  .hero-content a:hover {
+    background-size: 0% 1.5px;
+  }
+  @media (min-width: 1201px) {
+    .Manufacturer-hero {
+      justify-content: center;
+    }
+
+    .hero-content {
+      margin-right: 400px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content {
+      margin-left: 40px;
+    }
+
+    .hero-content p {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .Manufacturer-hero {
+      min-height: auto;
+      padding: 80px 20px;
+      text-align: left;
+    }
+
+    .hero-content {
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      line-height: 1.15;
+    }
+
+    .hero-content p {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 36px;
+    }
+
+    .hero-content p {
+      font-size: 14px;
+      letter-spacing: 0.03em;
+    }
+  }
+
+  /* =========================
+   SMALL TABLET / LARGE MOBILE
+   481px – 590px
+========================= */
+  @media (min-width: 481px) and (max-width: 590px) {
+    .Manufacturer-hero {
+      padding: 60px 24px;
+      min-height: 520px;
+    }
+
+    .hero-content {
+      margin-left: 24px;
+      max-width: 90%;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 80px;
+    }
+
+    .hero-content p {
+      max-width: 100%;
+      font-size: 15px;
+      line-height: 26px;
+    }
+  }
+</style>

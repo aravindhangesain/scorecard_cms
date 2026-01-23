@@ -1,0 +1,244 @@
+---
+import { getLang } from "../../../2024/data/useLang";
+import en from "../../../2024/data/ln.json";
+import zh from "../../../2024/data/ln-eg.json";
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+const cards = [
+  {
+    heading: "Record Numbers",
+    title: "A big increase in the number of Top Performers.",
+    para: "The 2024 Scorecard features more manufacturers than ever before, including 20 manufacturers who are first time Top Performers. The Top Performer page has been redesigned to better recognize manufacturers who are Top Performers in multiple tests.",
+  },
+  {
+    heading: "Limited All Stars",
+    title: "Being a Top Performer in all tests is exceedingly rare.",
+    para: "Less than 6% of the models listed as Top Performers achieved this status in all reliability tests (TC, DH, MSS, HSS, PID and LID+LETID), and only four models were Top Performers in those plus PAN performance.",
+  },
+  {
+    heading: "Test Trends",
+    title: "Some tests were great; others have gotten worse.",
+    para: "PAN performance improved and the MSS and LID+LETID results continued to be strong, but the number of lower performing outliers in TC and DH have increased.",
+  },
+  {
+    heading: "Failures Spike",
+    title: "More Top Performers but also more failures.",
+    para: "66% of module manufacturers experienced at least one test failure, the highest percentage ever reported.",
+  },
+];
+---
+
+<section class="key-takeaways">
+  <div class="key-container">
+    <!-- LEFT -->
+    <div class="key-left">
+      <h2>
+        {data.home_key_year}<br />
+        <span>{data.home_key_text}</span>
+      </h2>
+
+      <img
+        src="../../../2024/images/Welcome-Message-Image-scaled.jpeg"
+        alt="Key Takeaways"
+      />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="key-right">
+      <!-- TABS -->
+      <div class="key-tabs">
+        {
+          cards.map((card, index) => (
+            <button
+              class={`tab ${index === 0 ? "active" : ""}`}
+              data-title={card.title}
+              data-para={card.para}
+            >
+              {card.heading}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- CONTENT -->
+      <div class="key-content">
+        <h3 id="key-title">{cards[0].title}</h3>
+        <p id="key-para">{cards[0].para}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:client>
+  const tabs = document.querySelectorAll(".tab");
+  const titleEl = document.getElementById("key-title");
+  const paraEl = document.getElementById("key-para");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      titleEl.textContent = tab.dataset.title;
+      paraEl.textContent = tab.dataset.para;
+    });
+  });
+</script>
+
+<style>
+  .key-takeaways {
+    background: #f4f9fc;
+    padding: 80px 0;
+  }
+
+  .key-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* LEFT */
+  .key-left h2 {
+    font-size: 48px;
+    color: #0b5fa5;
+    line-height: 1.2;
+  }
+
+  .key-left h2 span {
+    font-weight: 700;
+  }
+
+  .key-left img {
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  /* RIGHT */
+  .key-tabs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .key-tabs .tab {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #777;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .key-tabs .tab.active {
+    color: #111;
+    border-color: #7b8fb3;
+    font-weight: 600;
+  }
+
+  .key-content h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #111;
+  }
+
+  .key-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* ---------- TABLET ---------- */
+  @media (max-width: 1024px) {
+    .key-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 0 24px;
+    }
+
+    .key-left h2 {
+      font-size: 40px;
+    }
+
+    .key-content h3 {
+      font-size: 32px;
+    }
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 768px) {
+    .key-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 0 20px;
+    }
+
+    /* Stack order */
+    .key-left {
+      order: 1;
+    }
+
+    .key-right {
+      order: 2;
+    }
+
+    /* Title */
+    .key-left h2 {
+      font-size: 32px;
+    }
+
+    .key-left img {
+      margin-top: 20px;
+    }
+
+    /* TABS → GRID */
+    .key-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 40px;
+      margin-bottom: 32px;
+    }
+
+    .key-tabs .tab {
+      text-align: left;
+      font-size: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #cfd8ea;
+      color: #666;
+    }
+
+    .key-tabs .tab.active {
+      border-color: #7b8fb3;
+      color: #111;
+      font-weight: 600;
+    }
+
+    /* Content */
+    .key-content h3 {
+      font-size: 26px;
+      line-height: 1.3;
+    }
+
+    .key-content p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+
+  /* ---------- SMALL MOBILE ---------- */
+  @media (max-width: 480px) {
+    .key-left h2 {
+      font-size: 28px;
+    }
+
+    .key-content h3 {
+      font-size: 24px;
+    }
+  }
+</style>

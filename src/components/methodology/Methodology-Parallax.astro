@@ -1,0 +1,1001 @@
+---
+import { getLang } from "../../i18n/useLang";
+import en from "../../i18n/ln.json"; // English
+import zh from "../../i18n/ln-eg.json"; // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+
+const desktopLayers = data.panel_layers;
+const tabletLayers = data.tablet_panel_layers;
+
+const hotspotConfig = [
+  { id: "Aluminum_Frame", x: "14%", y: "26%" },
+  { id: "Glass_Coating", x: "12%", y: "40%" },
+  { id: "Front_Encapsulant", x: "76%", y: "26%" },
+  { id: "Solar_Cell", x: "45%", y: "72%" },
+  { id: "Back_Encapsulate", x: "88%", y: "46%" },
+  { id: "Backsheet_Glass", x: "56%", y: "92%" },
+  { id: "Junction_Box", x: "78%", y: "76%" },
+];
+---
+
+<section class="panel_ani_section" id="panelAni">
+  <div class="panel_ani">
+    <div class="images-wrapper">
+      <!-- STEP IMAGES -->
+      {
+        Array.from({ length: 7 }).map((_, i) => (
+          <div
+            class="panel_inner"
+            style={`visibility:${i === 0 ? "visible" : "hidden"}`}
+          >
+            <div class="image-container">
+              <picture class="panel-image">
+                <source
+                  srcset={`/images/panel-effect${i + 1}.jpg`}
+                  media="(min-width:1228px)"
+                />
+                <source
+                  srcset={`/images/panel-effect8.jpg`}
+                  media="(min-width:640px)"
+                />
+                <img src={`/images/panel-effect8.jpg`} />
+              </picture>
+              <div class="panel-hotspots">
+                {hotspotConfig.map((spot) => (
+                  <button
+                    class="hotspot"
+                    style={`--x:${spot.x};--y:${spot.y}`}
+                    data-id={spot.id}
+                    data-title={spot.id.replace(/_/g, " ")}
+                    data-content={tabletLayers[spot.id].content}
+                  >
+                    <span class="plus-icon" />
+
+                    <div class="tooltip">
+                      <div
+                        class="tooltip-content"
+                        set:html={tabletLayers[spot.id].content}
+                      />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      <!-- FINAL PANEL -->
+      <div class="panel_inner panel-final" style="visibility:hidden">
+        <div class="image-container">
+          <picture class="panel-image">
+            <source
+              srcset={`/images/panel-effect8.jpg`}
+              media="(min-width:1024px)"
+            />
+            <source
+              srcset={`/images/panel-effect8.jpg`}
+              media="(min-width:640px)"
+            />
+            <img src={`/images/panel-effect8.jpg`} />
+          </picture>
+
+          <div class="panel-hotspots">
+            {
+              hotspotConfig.map((spot) => (
+                <button
+                  class="hotspot"
+                  style={`--x:${spot.x};--y:${spot.y}`}
+                  data-id={spot.id}
+                  data-title={spot.id.replace(/_/g, " ")}
+                  data-content={tabletLayers[spot.id].content}
+                >
+                  <span class="plus-icon" />
+
+                  <div class="tooltip">
+                    <div
+                      class="tooltip-content"
+                      set:html={tabletLayers[spot.id].content}
+                    />
+                  </div>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="panel-main">
+          <div class="panel-timeline" style="--gap:35px">
+            <div
+              class="panel-left"
+              data-layer="Aluminum_Frame"
+              style="--line-w:10vw;--y-offset:40px"
+            >
+              <h3>{data.panel_layers.Aluminum_Frame.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div
+              class="panel-left"
+              data-layer="Glass_Coating"
+              style="--line-w:17vw;--y-offset:20px"
+            >
+              <h3>{data.panel_layers.Glass_Coating.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div
+              class="panel-left"
+              data-layer="Solar_Cell"
+              style="--line-w:17vw;--y-offset:15px"
+            >
+              <h3>{data.panel_layers.Solar_Cell.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div
+              class="panel-left"
+              data-layer="Backsheet_Glass"
+              style="--line-w:17vw;--y-offset:10px"
+            >
+              <h3>{data.panel_layers.Backsheet_Glass.title}</h3>
+              <a>View Details</a>
+            </div>
+          </div>
+
+          <div class="panel-timeline" style="--gap:45px">
+            <div
+              class="panel-right"
+              data-layer="Front_Encapsulant"
+              style="--line-w:14.5vw;--y-offset:-10px"
+            >
+              <h3>{data.panel_layers.Front_Encapsulant.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div
+              class="panel-right"
+              data-layer="Back_Encapsulate"
+              style="--line-w:10vw;--y-offset:-20px"
+            >
+              <h3>{data.panel_layers.Back_Encapsulate.title}</h3>
+              <a>View Details</a>
+            </div>
+            <div
+              class="panel-right"
+              data-layer="Junction_Box"
+               style="--y-offset:35px"
+            >
+              <h3>{data.panel_layers.Junction_Box.title}</h3>
+              <a>View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="detailModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">✕</button>
+
+      <div class="modal-flex">
+        <div class="modal-image-side">
+          <img id="modalImg" src="" alt="Detail View" />
+        </div>
+
+        <div class="modal-text-side">
+          <div id="modalBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-popup-overlay" class="mobile-popup-overlay">
+    <div class="mobile-popup-inner">
+      <button id="mobile-popup-close" class="mobile-close-btn">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13 1L1 13M1 1L13 13"
+            stroke="#0054C5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <div class="mobile-popup-title"></div>
+      <div id="mobile-popup-desc" class="mobile-desc-text"></div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ layers: data.panel_layers }}>
+  // --- 1. Animation Logic ---
+  const section = document.getElementById("panelAni");
+  const panels = section.querySelectorAll(".panel_inner");
+  const totalSteps = panels.length;
+
+  function update() {
+    const rect = section.getBoundingClientRect();
+    const scrollDistance = rect.height - window.innerHeight;
+
+    // Calculate progress
+    const rawProgress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
+    const animationZone = 0.4; // Animation plays in first 40%
+    const adjustedProgress = Math.min(rawProgress / animationZone, 1);
+
+    const index = Math.min(
+      totalSteps - 1,
+      Math.floor(adjustedProgress * totalSteps),
+    );
+
+    panels.forEach((p, i) => {
+      if (index === totalSteps - 1) {
+        // Show final panel (and previous one to prevent flicker)
+        p.style.visibility = i >= totalSteps - 2 ? "visible" : "hidden";
+        p.style.opacity = i >= totalSteps - 2 ? "1" : "0";
+      } else {
+        p.style.visibility = i === index ? "visible" : "hidden";
+        p.style.opacity = i === index ? "1" : "0";
+      }
+    });
+  }
+
+  window.addEventListener("scroll", () => requestAnimationFrame(update), {
+    passive: true,
+  });
+  // Run once on load to set initial state
+  update();
+
+  // --- 2. Data & Modal Logic ---
+  const layerInfo = {
+    Aluminum_Frame: {
+      img: "/images/1.jpg",
+      content: layers.Aluminum_Frame.content,
+    },
+    Glass_Coating: {
+      img: "/images/2.jpg",
+      content: layers.Glass_Coating.content,
+    },
+    Solar_Cell: { img: "/images/4.jpg", content: layers.Solar_Cell.content },
+    Backsheet_Glass: {
+      img: "/images/6.jpg",
+      content: layers.Backsheet_Glass.content,
+    },
+    Front_Encapsulant: {
+      img: "/images/3.jpg",
+      content: layers.Front_Encapsulant.content,
+    },
+    Back_Encapsulate: {
+      img: "/images/5.jpg",
+      content: layers.Back_Encapsulate.content,
+    },
+    Junction_Box: {
+      img: "/images/7.jpg",
+      content: layers.Junction_Box.content,
+    },
+  };
+
+  const modal = document.getElementById("detailModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalBody = document.getElementById("modalBody");
+
+  // Helper to close modal
+  function removeModal() {
+    modal.classList.remove("modal-active");
+    document.body.style.overflow = ""; // Enable body scroll again
+  }
+
+  // Open Modal Logic
+  document.querySelectorAll("[data-layer]").forEach((el) => {
+    el.onclick = () => {
+      const d = layerInfo[el.dataset.layer];
+      const isMobile = window.innerWidth < 690;
+
+      modalBody.innerHTML = d.content;
+
+      if (isMobile) {
+        modalImg.parentElement.style.display = "none";
+        modalBody.parentElement.style.flex = "1";
+      } else {
+        modalImg.src = d.img;
+        modalImg.parentElement.style.display = "block";
+        modalBody.parentElement.style.flex = "1.2";
+      }
+
+      modal.classList.add("modal-active");
+      document.body.style.overflow = "hidden"; // Lock scroll
+    };
+  });
+
+  // Close Button Logic
+  document.getElementById("closeModal").onclick = removeModal;
+
+  // --- 3. Window Resize Logic ---
+  window.addEventListener("resize", () => {
+    // If screen shrinks below 1300px, close modal
+    if (window.innerWidth < 1300 && modal.classList.contains("modal-active")) {
+      removeModal();
+    }
+  });
+
+  // --- 4. Scroll Detection to Close Modal ---
+  // (These are now correctly OUTSIDE the resize listener)
+
+  // Detect Mouse Wheel (Desktop)
+  window.addEventListener("wheel", (e) => {
+    if (modal.classList.contains("modal-active") && e.deltaY > 0) {
+      removeModal();
+    }
+  });
+
+  // Detect Swipe (Mobile)
+  let startY = 0;
+
+  window.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  });
+
+  window.addEventListener("touchmove", (e) => {
+    if (!modal.classList.contains("modal-active")) return;
+
+    const currentY = e.touches[0].clientY;
+
+    // If finger moves UP (startY > currentY), user is scrolling down
+    if (startY - currentY > 10) {
+      removeModal();
+    }
+  });
+  // --- MOBILE POPUP LOGIC ---
+  const mPopup = document.getElementById("mobile-popup-overlay");
+  const mClose = document.getElementById("mobile-popup-close");
+  const mTitle = document.getElementById("mobile-popup-title");
+  const mDesc = document.getElementById("mobile-popup-desc");
+
+  // 1. Select all hotspots
+  const allHotspots = document.querySelectorAll(".hotspot");
+
+  allHotspots.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      // Increase this to 1024 or 1200 to test on tablets/desktop-resize
+      if (window.innerWidth < 1024) { 
+        e.preventDefault();
+        e.stopPropagation();
+
+        const title = btn.getAttribute("data-title");
+        const content = btn.getAttribute("data-content");
+
+        // Use 'if' checks to prevent crashing if elements are missing
+        if (mTitle) mTitle.textContent = title;
+        if (mDesc) mDesc.innerHTML = content;
+
+        if (mPopup) {
+            mPopup.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+      }
+    });
+  });
+
+  // 6. Close Function
+  if (mClose) {
+    mClose.addEventListener("click", () => {
+      mPopup.classList.remove("active");
+      document.body.style.overflow = ""; // Resume scrolling
+    });
+  }
+  window.addEventListener("resize", () => {
+    // If width is greater than 700px AND the popup is currently open
+    if (window.innerWidth > 700 && mPopup && mPopup.classList.contains("active")) {
+      mPopup.classList.remove("active");
+      document.body.style.overflow = ""; // Re-enable scrolling
+    }
+  });
+</script>
+
+<style>
+  :root {
+    --line-color: #89b4edff;
+    --box-bg: #ffffff;
+    --primary-blue: #0054c5;
+  }
+
+  /* ==============================
+   SECTION & STICKY CONTAINER
+================================ */
+  .panel_ani_section {
+    position: relative;
+    height: 260vh;
+  }
+
+  .panel_ani {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .images-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ==============================
+   IMAGE PANELS
+================================ */
+  .panel_inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+  }
+
+  /* ==============================
+   FINAL PANEL (DESKTOP)
+================================ */
+  .panel-final {
+    z-index: 100;
+  }
+
+  .panel-main {
+    position: absolute;
+    inset: 0;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ==============================
+   TIMELINES
+================================ */
+  .panel-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap, 20px);
+  }
+
+  .panel-left,
+  .panel-right {
+    position: relative;
+    width: 180px;
+    background: var(--box-bg);
+    border: 1.5px solid #c7d2fe;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    transform: translateY(var(--y-offset, 0));
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  
+
+  .panel-left h3,
+  .panel-right h3 {
+    font-family: "Azo Sans", sans-serif;
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #000;
+    display: block;
+    cursor: text;
+  }
+
+  .panel-left a,
+  .panel-right a {
+    font-size: 13px;
+    color: var(--primary-blue);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .panel-left:hover a,
+.panel-right:hover a {
+  color: #5a5b5e; /* Change to your desired gray */
+  text-decoration: underline; /* Optional: removes underline on hover */
+}
+
+  /* ==============================
+   CONNECTOR LINES
+================================ */
+  .panel-left::after,
+  .panel-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: max(0px, var(--line-w));
+    height: 1px;
+    background: var(--line-color);
+  }
+
+  .panel-left::before,
+  .panel-right::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--line-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .panel-left::after {
+    left: 100%;
+  }
+  .panel-left::before {
+    left: calc(100% + clamp(50px, var(--line-w), 600px));
+    transform: translate(-50%, -50%);
+  }
+
+  .panel-right::after {
+    right: 100%;
+  }
+  .panel-right::before {
+    right: calc(100% + clamp(50px, var(--line-w), 600px));
+    transform: translate(50%, -50%);
+  }
+
+  /* Default (Desktop 1366–1440) */
+.panel-right {
+  --line-w: 14vw;
+}
+
+/* Large screens (≥1600px) */
+@media (min-width: 1600px) {
+  .panel-right {
+    --line-w: 12vw;
+  }
+}
+
+
+  /* ==============================
+   HOTSPOTS (MOBILE/TABLET)
+================================ */
+  .panel-hotspots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hotspot {
+    cursor: pointer;
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: clamp(20px, 4vw, 34px);
+    height: clamp(20px, 4vw, 34px);
+    border-radius: 50%;
+    background: var(--primary-blue);
+    border: none;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 1.6s infinite;
+  }
+
+  .plus-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    position: relative;
+
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  /* White Cross lines */
+  .plus-icon::before,
+  .plus-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; /* White lines */
+  }
+  .plus-icon::before {
+    width: 2px;
+    height: 16px;
+  }
+  .plus-icon::after {
+    width: 16px;
+    height: 2px;
+  }
+
+  @media (max-width: 768px) {
+  /* Vertical Line - Mobile */
+  .plus-icon::before {
+    height: 10px; 
+  }
+
+  /* Horizontal Line - Mobile */
+  .plus-icon::after {
+    width: 10px; 
+  }
+}
+  /* Rotate on Hover */
+  .hotspot:hover .plus-icon {
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  /* 3. The "Card" Tooltip */
+  .tooltip {
+    position: absolute;
+    bottom: 140%; /* Pushes it up above the button */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Start slightly lower */
+
+    width: 280px; /* Fixed width like the screenshot card */
+    background: #fff; /* White background */
+    padding: 16px 20px;
+    border-radius: 8px;
+   
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+    pointer-events: none;
+    text-align: left; /* Align text to left like screenshot */
+    color: #333;
+  }
+
+  /* Typography for Tooltip */
+  .tooltip-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #000;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+  }
+
+  .tooltip-content {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #666666;
+  }
+  .tooltip-content strong {
+    font-family: "Work Sans", sans-serif;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+
+  @media (min-width: 700px) and (max-width: 1300px) {
+  .hotspot:hover .tooltip {
+    opacity: 1;
+    visibility: visible; /* Changed from 'hidden' to 'visible' to show it */
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+    z-index: 100;
+  }
+}
+
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 84, 197, 0.6);
+    }
+    70% {
+      box-shadow: 0 0 0 14px rgba(0, 84, 197, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 84, 197, 0);
+    }
+  }
+
+  /* ==============================
+   MODAL
+================================ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* White background */
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    display: block; /* changed from flex to block to allow full height grid */
+  }
+
+  .modal-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* 2. Container (Full Size) */
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+  }
+
+  .modal-flex {
+    display: grid;
+    /* Equal width columns */
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Left Side: Image */
+  .modal-image-side {
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* Optional light background for image area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .modal-image-side img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+
+  /* Right Side: Content */
+  .modal-text-side {
+    padding: 80px 100px 40px 60px; /* Large padding for readability */
+    overflow-y: auto; /* Allow text to scroll if it's too long */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center text vertically */
+  }
+
+  /* 3. Close Button (Top Right with Spacing) */
+  .close-btn {
+    position: absolute;
+    top: 10px; /* Spacing from top */
+    right: 10px; /* Spacing from right side of content */
+    width: 44px;
+    height: 44px;
+    background-color: #2656d0;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.2s ease;
+  }
+
+  .close-btn:hover {
+    transform: scale(1.1);
+  }
+  /* === TYPOGRAPHY FOR INJECTED JSON CONTENT === */
+  .modal-text-side {
+    text-align: left;
+  }
+
+  /* Matches <h3>Frame</h3> inside JSON */
+  .modal-text-side :global(h3) {
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #5a5b5e; /* Dark Gray Heading */
+    margin-top: 30px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .modal-text-side :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  /* Matches <p>Description...</p> inside JSON */
+  .modal-text-side :global(p) {
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #5a5b5e; /* Standard Text Gray */
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  /* Matches <p class="italic"> inside JSON */
+  .modal-text-side :global(.italic) {
+    font-style: italic;
+    color: #5a5b5e;
+    margin-bottom: 30px; /* Space before next heading */
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Matches <p class="bom-stat"> inside JSON */
+  .modal-text-side :global(.bom-stat) {
+    font-weight: 400;
+    color: #5a5b5e;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* ==============================
+   RESPONSIVE
+================================ */
+  @media (max-width: 1222px) {
+    .panel-main {
+      display: none;
+    }
+    .panel-image img {
+      max-width: 90vw;
+    }
+    .modal-flex {
+      flex-direction: column;
+    }
+  }
+
+  @media (min-width: 1222px) {
+    .panel-hotspots {
+      display: none;
+    }
+  }
+
+  /* ==============================
+   MOBILE + TABLET ONLY
+================================ */
+  @media (max-width: 1023px) {
+    .panel-image img {
+      width: 100%;
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .modal-content {
+      width: 95%;
+      padding: 25px;
+      background: #fff;
+      height: 90vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .modal-flex {
+      grid-template-columns: 1fr; /* Stack on tablet/mobile */
+      display: block;
+    }
+    .close-btn {
+      top: 15px;
+      right: 15px;
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+    .modal-image-side img {
+      max-height: 250px;
+      margin: 0 auto;
+    }
+  }
+
+  /* ==============================
+   MOBILE POPUP STYLES
+================================ */
+  .mobile-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff; /* Pure white background */
+    z-index: 2147483647; /* Highest possible Z-index */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-popup-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 1. The Button Container */
+.mobile-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #0054c5; /* Reduced border thickness for a cleaner look */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+/* 2. The Icon (SVG) Inside */
+.mobile-close-btn svg {
+  width: 12px;  /* Reduces the visual size of the X */
+  height: 10px;
+  
+}
+
+/* 3. The Lines of the X */
+.mobile-close-btn svg path {
+  stroke-width: 1.5px; /* Makes the X lines thinner so it doesn't look like a blob */
+}
+
+  /* Typography */
+  #mobile-popup-title {
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #555;
+    margin: 0 0 10px 0;
+    text-transform: capitalize;
+  }
+
+  .mobile-desc-text {
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+    margin-bottom: 15px;
+  }
+
+  /* Hide extra HTML inside description if necessary */
+  .mobile-desc-text h3 {
+    display: none;
+  }
+
+  .mobile-popup-score {
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    color: #555;
+    font-weight: 500;
+  }
+</style>

@@ -1,0 +1,204 @@
+<section class="wtm-section">
+  <div class="wtm-container">
+
+    <!-- Header -->
+    <h2 class="wtm-title">Why Testing Matters</h2>
+    <hr class="wtm-divider" />
+
+    <!-- Two column layout -->
+    <div class="wtm-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="wtm-left">
+
+        <p class="wtm-lead">
+          <strong>
+            PV module warranty claims are a challenge for asset owners, even when there
+            is clear evidence from a class action lawsuit that the supplier is at fault.
+          </strong>
+        </p>
+
+        <p>
+          When a 100kW commercial PV system in California was underperforming by more
+          than 90% – resulting in losses of &gt;$1,000 per month – the asset owner
+          struggled for nearly a year to receive reimbursement even though its BP Solar
+          modules were subject to a class action lawsuit.
+        </p>
+
+        <p>
+          The lawsuit stipulates that BP Solar is only required to replace all modules in
+          systems with &gt;20% failure rates. A replacement inverter that can detect arc
+          faults is provided when PV systems do not meet the 20% threshold.
+        </p>
+
+        <p>
+          BP Solar stopped producing PV modules in 2011, so the asset owner’s claim was
+          handled by a third party. They determined that two of &gt;700 modules were
+          eligible for replacement under the lawsuit: only modules with visible hotspots,
+          burn marks and diode failures were covered.
+        </p>
+
+        <p>
+          The asset owner pursued a claim based on BP Solar’s performance warranty
+          instead. He learned that:
+        </p>
+
+        <ul>
+          <li>
+            Only module-level testing conducted by an independent third party is accepted
+            as evidence of performance loss. String or system-level data are not
+            considered.
+          </li>
+          <li>
+            Costs related to the inspection, installation, removal, reinstallation and
+            transportation of PV modules are not covered.
+          </li>
+          <li>
+            Financial losses due to system underperformance are not reimbursable.
+          </li>
+        </ul>
+
+        <p>
+          The asset owner ultimately contacted PVEL for testing. We found that seven of
+          ten randomly selected modules had burn marks and corrosion on the backsheet
+          and showed clear signs of junction box defects. PV module underperformance
+          ranged from 43% to 90%.
+        </p>
+
+        <hr class="wtm-sub-divider" />
+
+        <p class="wtm-highlight">
+          <strong>
+            PVEL’s thermal cycling test would have identified these defects, but it was
+            not conducted prior to installation.
+          </strong>
+        </p>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="wtm-right">
+
+        <figure class="wtm-figure">
+          <img src="/images/2022/Performance-over-Time2.png" alt="System-Level Performance Over Time" />
+        </figure>
+
+        <figure class="wtm-figure">
+          <img src="/images/2022/junction-box.png" alt="Junction box moisture ingress" />
+          <figcaption>
+            Manufacturing defects allowed the ingress of moisture into module junction
+            boxes.
+          </figcaption>
+        </figure>
+
+        <figure class="wtm-figure">
+          <img src="/images/2022/Impact-EL.png" alt="EL image showing performance loss" />
+          <figcaption>
+            As the dark EL image above indicates, all PV modules tested by PVEL suffered
+            from severe performance loss.
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    /* =====================
+   WHY TESTING MATTERS
+===================== */
+
+.wtm-section {
+  background: #ffffff;
+  padding: 6rem 0;
+}
+
+.wtm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Title */
+.wtm-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.wtm-divider {
+  border: none;
+  border-top: 1px solid #5b6fb3;
+  margin-bottom: 4rem;
+}
+
+/* Grid */
+.wtm-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.5fr;
+  gap: 5rem;
+}
+
+/* LEFT COLUMN */
+.wtm-left p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+.wtm-lead {
+  font-size: 1.1rem;
+}
+
+.wtm-left ul {
+  margin: 1.5rem 0 2rem 1.2rem;
+}
+
+.wtm-left li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.wtm-sub-divider {
+  border: none;
+  border-top: 1px solid #e5e7ef;
+  margin: 3rem 0 2rem;
+}
+
+.wtm-highlight {
+  font-size: 1.05rem;
+}
+
+/* RIGHT COLUMN */
+.wtm-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.wtm-figure img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+.wtm-figure figcaption {
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media (max-width: 900px) {
+  .wtm-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>

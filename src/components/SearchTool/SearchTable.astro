@@ -1,0 +1,344 @@
+<section class="search-page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="filters-label">Filters</div>
+    <button id="clearFilters" class="clear">Clear Filter</button>
+    <div id="activeChips" class="chips"></div>
+    <button id="exportCSV" class="export">Export CSV</button>
+  </div>
+
+  <div class="layout">
+
+    <!-- FILTERS -->
+    <aside class="filters">
+      <details class="filter-group" open>
+        <summary>Manufacturer</summary>
+        <div class="filter-body" id="filter-manufacturer"></div>
+      </details>
+
+      <details class="filter-group">
+        <summary>Module Design</summary>
+        <div class="filter-body" id="filter-moduleDesign"></div>
+      </details>
+
+      <details class="filter-group">
+        <summary>Cell Technology</summary>
+        <div class="filter-body" id="filter-cellTech"></div>
+      </details>
+
+      <details class="filter-group">
+        <summary>Power Range</summary>
+        <div class="filter-body" id="filter-powerRange"></div>
+      </details>
+
+      <details class="filter-group">
+        <summary>Wafer Size</summary>
+        <div class="filter-body" id="filter-waferSize"></div>
+      </details>
+
+      <details class="filter-group">
+        <summary>Factory</summary>
+        <div class="filter-body" id="filter-factory"></div>
+      </details>
+    </aside>
+
+    <!-- TABLE -->
+    <div class="table-container">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Manufacturer</th>
+              <th>Model</th>
+              <th>TC</th>
+              <th>DH</th>
+              <th>MSS</th>
+              <th>HSS</th>
+              <th>PID</th>
+              <th>LID + LETID</th>
+              <th>Module Design</th>
+              <th>Cell Tech</th>
+              <th>Power Range</th>
+              <th>Wafer Size</th>
+              <th>Factory</th>
+              <th>BOM ID</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="pagination" class="pagination-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline type="module">
+const data = await fetch("/data/top-perfomers.json").then(r => r.json());
+
+const tbody = document.getElementById("tableBody");
+const chips = document.getElementById("activeChips");
+
+let filtered = [...data];
+let page = 1;
+let pageSize = 10;
+
+const filters = {
+  manufacturer: "filter-manufacturer",
+  moduleDesign: "filter-moduleDesign",
+  cellTech: "filter-cellTech",
+  powerRange: "filter-powerRange",
+  waferSize: "filter-waferSize",
+  factory: "filter-factory"
+};
+
+const uniq = k => [...new Set(data.map(d => d[k]).filter(Boolean))];
+
+/* RENDER FILTER LISTS */
+Object.entries(filters).forEach(([key, id]) => {
+  document.getElementById(id).innerHTML = uniq(key).map(v => `
+    <label class="opt">
+      <input type="checkbox" data-key="${key}" value="${v}">
+      <span class="box"></span>
+      <span>${v}</span>
+    </label>
+  `).join("");
+});
+
+/* APPLY FILTERS */
+document.addEventListener("change", () => applyFilters());
+
+function applyFilters() {
+  const active = {};
+  document.querySelectorAll("[data-key]:checked").forEach(cb => {
+    active[cb.dataset.key] ??= [];
+    active[cb.dataset.key].push(cb.value);
+  });
+
+  filtered = data.filter(row =>
+    Object.entries(active).every(([k, v]) => v.includes(row[k]))
+  );
+
+  renderChips(active);
+  page = 1;
+  render();
+}
+
+/* CLEAR FILTERS */
+document.getElementById("clearFilters").onclick = () => {
+  document.querySelectorAll("[data-key]").forEach(cb => cb.checked = false);
+  filtered = [...data];
+  chips.innerHTML = "";
+  page = 1;
+  render();
+};
+
+/* CHIPS */
+function renderChips(active) {
+  chips.innerHTML = "";
+  Object.entries(active).forEach(([k, vals]) => {
+    vals.forEach(v => {
+      const c = document.createElement("div");
+      c.className = "chip";
+      c.innerHTML = `${v}<button>×</button>`;
+      c.querySelector("button").onclick = () => {
+        document.querySelector(`input[data-key="${k}"][value="${v}"]`).checked = false;
+        applyFilters();
+      };
+      chips.appendChild(c);
+    });
+  });
+}
+
+/* TABLE */
+function renderTable() {
+  tbody.innerHTML = "";
+  const start = (page - 1) * pageSize;
+  filtered.slice(start, start + pageSize).forEach(r => {
+    tbody.insertAdjacentHTML("beforeend", `
+      <tr>
+        <td>${r.manufacturer}</td>
+        <td>${r.model}</td>
+        <td class="center">${r.tc || "—"}</td>
+        <td class="center">${r.dh || "—"}</td>
+        <td class="center">${r.mss || "—"}</td>
+        <td class="center">${r.hss || "—"}</td>
+        <td class="center">${r.pid || "—"}</td>
+        <td class="center">${r.lid || "—"}</td>
+        <td>${r.moduleDesign}</td>
+        <td>${r.cellTech}</td>
+        <td>${r.powerRange}</td>
+        <td>${r.waferSize}</td>
+        <td>${r.factory}</td>
+        <td>${r.bomId}</td>
+      </tr>
+    `);
+  });
+}
+
+/* PAGINATION */
+function renderPagination() {
+  const total = Math.ceil(filtered.length / pageSize);
+  const el = document.getElementById("pagination");
+  if (total <= 1) return el.innerHTML = "";
+
+  el.innerHTML = `
+    <div class="pager">
+      <span>Results per page</span>
+      <select id="pageSize">
+        ${[10,20,50].map(n => `<option ${n===pageSize?"selected":""}>${n}</option>`).join("")}
+      </select>
+      <button ${page===1?"disabled":""} id="prev">Previous</button>
+      <span class="active">${page}</span>
+      <button ${page===total?"disabled":""} id="next">Next</button>
+    </div>
+  `;
+
+  el.querySelector("#prev").onclick = () => { page--; render(); };
+  el.querySelector("#next").onclick = () => { page++; render(); };
+  el.querySelector("#pageSize").onchange = e => {
+    pageSize = +e.target.value;
+    page = 1;
+    render();
+  };
+}
+
+/* CSV DOWNLOAD */
+document.getElementById("exportCSV").onclick = () => {
+  const headers = Object.keys(data[0]).join(",");
+  const rows = filtered.map(r => Object.values(r).join(","));
+  const csv = [headers, ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "top-performers.csv";
+  a.click();
+};
+
+function render() {
+  renderTable();
+  renderPagination();
+}
+
+render();
+</script>
+
+<style>
+.search-page {
+  font-family: "Work Sans", system-ui, sans-serif;
+  color: #072643;
+}
+
+/* TOP BAR */
+.top-bar {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 20px;
+  border-bottom:1px solid #e5e7eb;
+}
+.filters-label {
+  background:#6b7280;
+  color:#fff;
+  padding:6px 14px;
+  font-weight:600;
+}
+.clear { border:none; background:none; color:red; cursor:pointer; }
+.export {
+  margin-left:auto;
+  border:1px solid #1d4ed8;
+  padding:6px 14px;
+  color:#1d4ed8;
+  background:#fff;
+}
+
+/* LAYOUT */
+.layout {
+  display:grid;
+  grid-template-columns:320px 1fr;
+  min-height:0;
+}
+
+/* FILTERS */
+.filters {
+  border-right:1px solid #e5e7eb;
+  padding:16px;
+  overflow-y:auto;
+}
+.filter-group {
+  border-bottom:1px solid #e5e7eb;
+  padding:12px 0;
+}
+.filter-group summary {
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+}
+.filter-group summary::after { content:"+"; }
+.filter-group[open] summary::after { content:"−"; }
+.filter-body {
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.opt { display:flex; align-items:center; gap:10px; }
+.opt input { display:none; }
+.box {
+  width:16px;
+  height:16px;
+  border:2px solid #1d4ed8;
+  border-radius:3px;
+}
+.opt input:checked + .box { background:#1d4ed8; }
+
+/* TABLE */
+.table-wrap {
+  overflow:auto;
+}
+table {
+  border-collapse:collapse;
+  width:1600px;
+}
+th, td {
+  padding:8px 10px;
+  border-bottom:1px solid #e5e7eb;
+  white-space:nowrap;
+  text-align:left;
+}
+th {
+  position:sticky;
+  top:0;
+  background:#f9fafb;
+  font-weight:800;
+}
+.center { text-align:center; color:#1d4ed8; font-weight:600; }
+
+/* CHIPS */
+.chips { display:flex; gap:8px; flex-wrap:wrap; }
+.chip {
+  background:#f3f4f6;
+  padding:4px 8px;
+  border-radius:4px;
+}
+.chip button { border:none; background:none; color:red; cursor:pointer; }
+
+/* PAGINATION */
+.pagination-bar {
+  border-top:1px solid #e5e7eb;
+  padding:12px;
+  display:flex;
+  justify-content:center;
+}
+.pager { display:flex; gap:12px; align-items:center; }
+.pager .active {
+  background:#1d4ed8;
+  color:#fff;
+  padding:4px 10px;
+  border-radius:4px;
+}
+</style>

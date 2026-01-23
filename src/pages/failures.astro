@@ -1,0 +1,26 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import FailureBanner from "../components/tests/Failures/FailuresHeroBanner.astro";
+import FailureTypes from "../components/tests/Failures/FailureTypes.astro";
+import Failurekeytake from "../components/tests/Failures/FailureKeytakeaway.astro";
+import Failurepqp from "../components/tests/Failures/FailurePqpStats.astro";
+
+
+import CTA from "../components/CTA.astro";
+
+---
+
+<MainLayout
+    title="Failures in Testing | Kiwa PVEL PV Module Reliability Scorecard"
+    description="The most common type of PV module failure in Kiwa PVEL's lab testing is safety, followed closely by power degradation and visual inspection defects."
+    canonical="https://scorecard.pvel.com/failures/"
+>
+    <FailureBanner />
+    <FailureTypes />
+    <Failurekeytake />
+    <Failurepqp />
+    
+    
+
+    <CTA />
+</MainLayout>

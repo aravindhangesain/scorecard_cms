@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import DampHeatHero from "../../components/tests/DampHeat/DampHeat-Hero.astro"
+import DampHeatKeyTakeAway from "../../components/tests/DampHeat/DampHeat-KeyTakeAway.astro"
+import DampHeatSpotLight from "../../components/tests/DampHeat/DampHeat-SpotLight.astro"
+import DampHeatPowerDegration from "../../components/tests/DampHeat/DampHeat-power.astro"
+import CTA from "../../components/CTA.astro";
+
+---
+
+<MainLayout
+  title="Damp Heat Test | Kiwa PVEL PV Module Reliability Scorecard"
+  description="Kiwa PVEL’s Damp Heat (DH) test evaluates the impact of heat and humidity on PV module reliability. Learn more about the test."
+  canonical="https://scorecard.pvel.com/damp-heat/"
+>
+  <DampHeatHero/>
+  <DampHeatKeyTakeAway />
+  <DampHeatSpotLight />
+  <DampHeatPowerDegration />
+  <CTA />
+
+</MainLayout>

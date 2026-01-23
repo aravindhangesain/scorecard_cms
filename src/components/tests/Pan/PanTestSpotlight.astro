@@ -1,0 +1,168 @@
+---
+import { getLang } from "../../../i18n/useLang";
+import en from "../../../i18n/ln.json";      // English
+import zh from "../../../i18n/ln-eg.json";   // Chinese
+
+const lang = getLang(Astro);
+const data = lang === "zh" ? zh : en;
+---
+
+
+<section id="TestSpotlight" class="Pan-spotlight">
+    <div class="Pan-container">
+        <!-- HEADER -->
+        <div class="Pan-header">
+            <div class="Pan-title">
+                <h2>
+                    {data.panspotlightheader_title1}<br />
+                    <span>{data.panspotlightheader_title2}</span>
+                </h2>
+            </div>
+
+            <div class="Pan-description">
+                <p>
+                    {data.panspotlightheader_description}
+                </p>
+            </div>
+        </div>
+        <div class="Pan-cards">
+            <div class="Pan-card">
+                <div class="Pan-card-image">
+                    <img
+                        src="/images/PAN-Test-Result-Spotlight.jpg"
+                        alt={data.panspotlightcard_alt}
+                        class="modal-trigger"
+                    />
+                </div>
+
+                <p class="Pan-card-caption">
+                    {data.panspotlightcard_caption}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .Pan-spotlight {
+        padding: clamp(40px, 6vw, 80px) 20px;
+        background: #ffffff;
+    }
+
+    .Pan-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+  
+
+    .Pan-header {
+        display: grid;
+        grid-template-columns: 1fr 1.9fr;
+        gap: 40px;
+        margin-bottom: clamp(20px, 4vw, 40px);
+    }
+
+    .Pan-title h2 {
+        font-size: clamp(32px, 4.5vw, 48px);
+        font-weight: 400;
+        line-height: 1.2;
+        color: #072643;
+        font-family: "Azo Sans"sans-serif;
+    }
+
+    .Pan-title span {
+        font-weight: 700;
+        font-style: italic;
+        font-family: "Azo Sans"sans-serif;
+    }
+
+    .Pan-description p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #072643;
+        font-family: "Work Sans", sans-serif;
+        letter-spacing: 0.02em;
+    }
+
+    
+
+    .Pan-cards {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Pan-card {
+        width: 100%;
+        max-width: 1200px;
+        text-align: center;
+    }
+
+    .Pan-card-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: clamp(8px, 2vw, 16px);
+        
+    }
+
+    .Pan-card-image img {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    
+    .Pan-card-caption {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #072643;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: "Azo Sans" sans-serif;
+    }
+
+    
+
+    @media (max-width: 1024px) {
+        .Pan-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    
+
+    @media (max-width: 768px) {
+        .Pan-header {
+            text-align: left;
+        }
+
+        .Pan-card-caption {
+            max-width: 100%;
+        }
+    }
+
+    
+
+    @media (max-width: 480px) {
+        .Pan-title h2 {
+            font-size: 28px;
+        }
+
+        .Pan-description p {
+            font-size: 14px;
+        }
+
+        .Pan-card-caption {
+            font-size: 13px;
+        }
+    }
+
+    /* Cursor */
+    .modal-trigger {
+        cursor: pointer;
+    }
+</style>

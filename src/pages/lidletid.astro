@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import LidBanner from "../components/tests/Lid/LidHeroBanner.astro";
+import LidTestSpotLight from "../components/tests/Lid/LidTestSpotLight.astro";
+import LidKeyTakeAway from "../components/tests/Lid/LidKeyTakeaways.astro";
+import LidPower from "../components/tests/Lid/LidPower.astro";
+
+import CTA from "../components/CTA.astro";
+---
+
+<MainLayout
+    title="LID + LETID | Kiwa PVEL PV Module Reliability Scorecard"
+    description=""
+    canonical="https://scorecard.pvel.com/lid/"
+>
+    <LidBanner />
+    <LidKeyTakeAway />
+    <LidTestSpotLight />
+    <LidPower />
+    
+
+    <CTA />
+</MainLayout>
