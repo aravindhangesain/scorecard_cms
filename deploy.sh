@@ -3,7 +3,7 @@ set -e
 
 export PATH=/usr/bin:/bin:/usr/local/bin
 
-cd /var/www/astro/lsdb_score_card
+cd /var/www/astro-test/scorecard_cms
 
 echo "---- DEPLOY START $(date) ----"
 
