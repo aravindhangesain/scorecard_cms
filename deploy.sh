@@ -26,6 +26,10 @@ cd /var/www/astro-test/scorecard_cms
 
 echo "---- DEPLOY START $(date) ----"
 
+git reset --hard
+git clean -fd
+
+
 git pull origin main
 npm install
 node scripts/updateMethodology.cjs
