@@ -1,18 +1,9 @@
 import fs from "fs";
 import path from "path";
-import https from "https";
 
-// ---------------- CONFIG ----------------
 const dataDir = path.resolve("src/data");
 const activeFile = path.join(dataDir, "methodology.json");
 const tempNewFile = path.join(dataDir, "methodology.new.json");
-
-// GitHub repo info
-const repoOwner = "aravindhangesain";
-const repoName = "scorecard_cms";
-const branch = "main";
-const filePathInRepo = "src/data/methodology.json";
-const GITHUB_TOKEN = "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"; // your token
 
 // ---------- VALIDATION FUNCTION ----------
 function validateJson(oldData, newData) {
@@ -39,103 +30,54 @@ function validateJson(oldData, newData) {
   }
 }
 
-// ---------- HELPER: GitHub API Request ----------
-function githubRequest(options, data) {
-  return new Promise((resolve, reject) => {
-    const req = https.request(options, res => {
-      let body = "";
-      res.on("data", chunk => (body += chunk));
-      res.on("end", () => {
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          resolve(JSON.parse(body));
-        } else {
-          reject(new Error(`GitHub API Error: ${res.statusCode} ${body}`));
-        }
-      });
-    });
-    req.on("error", reject);
-    if (data) req.write(JSON.stringify(data));
-    req.end();
-  });
+// 1. Ensure file exists
+if (!fs.existsSync(activeFile)) {
+  console.error("methodology.json not found");
+  process.exit(1);
 }
 
-// ---------- MAIN FUNCTION ----------
-async function updateMethodology() {
-  try {
-    // 1. Ensure active file exists
-    if (!fs.existsSync(activeFile)) {
-      console.error("❌ methodology.json not found in src/data");
-      process.exit(1);
-    }
+// 2. Copy new file for validation
+fs.copyFileSync(activeFile, tempNewFile);
 
-    // 2. Archive current active file
-    const files = fs.readdirSync(dataDir);
-    const versionedFiles = files
-      .map(f => f.match(/methodology\.v(\d+)\.json/))
-      .filter(Boolean)
-      .map(m => Number(m[1]));
+try {
+  const oldVersions = fs
+    .readdirSync(dataDir)
+    .filter(f => f.match(/methodology\.v\d+\.json/));
 
-    const nextVersion = versionedFiles.length ? Math.max(...versionedFiles) + 1 : 1;
-    const archiveFile = path.join(dataDir, `methodology.v${nextVersion}.json`);
-    fs.copyFileSync(activeFile, archiveFile);
-    console.log(`✅ Archived: methodology.v${nextVersion}.json`);
+  const latestVersion = oldVersions.length
+    ? Math.max(...oldVersions.map(v => Number(v.match(/\d+/)[0])))
+    : 0;
 
-    // 3. (Optional) Validate new file against previous version
-    const previousFile =
-      versionedFiles.length > 0
-        ? path.join(dataDir, `methodology.v${Math.max(...versionedFiles)}.json`)
-        : null;
+  const previousFile =
+    latestVersion > 0
+      ? path.join(dataDir, `methodology.v${latestVersion}.json`)
+      : null;
 
-    if (previousFile && fs.existsSync(previousFile)) {
-      const oldData = JSON.parse(fs.readFileSync(previousFile, "utf-8"));
-      const newData = JSON.parse(fs.readFileSync(activeFile, "utf-8")); // use your current file
-      validateJson(oldData, newData);
-    }
-
-    // 4. Push updated file to GitHub
-    const content = fs.readFileSync(activeFile, "utf-8");
-    const base64Content = Buffer.from(content).toString("base64");
-
-    // Get current file SHA
-    const getOptions = {
-      hostname: "api.github.com",
-      path: `/repos/${repoOwner}/${repoName}/contents/${filePathInRepo}?ref=${branch}`,
-      method: "GET",
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-        "User-Agent": "Node.js",
-        Accept: "application/vnd.github.v3+json",
-      },
-    };
-
-    const fileData = await githubRequest(getOptions);
-    const sha = fileData.sha;
-
-    // Update file
-    const putOptions = {
-      hostname: "api.github.com",
-      path: `/repos/${repoOwner}/${repoName}/contents/${filePathInRepo}`,
-      method: "PUT",
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-        "User-Agent": "Node.js",
-        Accept: "application/vnd.github.v3+json",
-      },
-    };
-
-    const bodyData = {
-      message: `Update methodology.json via script`,
-      content: base64Content,
-      sha: sha,
-      branch: branch,
-    };
-
-    const result = await githubRequest(putOptions, bodyData);
-    console.log("✅ File updated on GitHub:", result.content.html_url);
-  } catch (err) {
-    console.error("❌ Failed to update:", err.message);
+  if (previousFile && fs.existsSync(previousFile)) {
+    const oldData = JSON.parse(fs.readFileSync(previousFile, "utf-8"));
+    const newData = JSON.parse(fs.readFileSync(tempNewFile, "utf-8"));
+    validateJson(oldData, newData);
   }
+} catch (err) {
+  console.error("Update blocked:", err.message);
+  fs.unlinkSync(tempNewFile);
+  process.exit(1);
 }
 
-// Run the update
-updateMethodology();
+// 3. Archive current active file
+const files = fs.readdirSync(dataDir);
+const versions = files
+  .map(f => f.match(/methodology\.v(\d+)\.json/))
+  .filter(Boolean)
+  .map(m => Number(m[1]));
+
+const nextVersion = versions.length ? Math.max(...versions) + 1 : 1;
+
+const archiveFile = path.join(dataDir, `methodology.v${nextVersion}.json`);
+fs.copyFileSync(activeFile, archiveFile);
+console.log(`Archived: methodology.v${nextVersion}.json`);
+
+// 4. Activate new file
+fs.renameSync(tempNewFile, activeFile);
+
+console.log("methodology.json updated successfully");
