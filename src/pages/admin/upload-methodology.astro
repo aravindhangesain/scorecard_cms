@@ -1,0 +1,99 @@
+---
+/* Simple admin upload page */
+---
+
+<style>
+  .upload-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fa;
+    font-family: system-ui, sans-serif;
+  }
+
+  .upload-card {
+    background: #ffffff;
+    padding: 32px;
+    width: 360px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .upload-card h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .upload-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #1e4fd8;
+  }
+
+  #status {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+</style>
+
+<div class="upload-wrapper">
+  <div class="upload-card">
+    <h1>Upload Methodology</h1>
+    <p>Select a JSON file to update methodology data.</p>
+
+    <form id="uploadForm">
+      <input type="file" name="file" accept="application/json" required />
+      <button type="submit">Upload JSON</button>
+      <div id="status"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("uploadForm");
+  const status = document.getElementById("status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    status.textContent = "Uploading…";
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("http://localhost:3001/upload-methodology", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+
+      status.textContent = res.ok
+        ? `✅ Upload successful (v${data.version})`
+        : `❌ ${data.error}`;
+    } catch {
+      status.textContent = "❌ Server not reachable";
+    }
+  });
+</script>
