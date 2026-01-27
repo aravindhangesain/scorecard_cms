@@ -28,6 +28,7 @@ echo "---- DEPLOY START $(date) ----"
 
 git pull origin main
 npm install
+node scripts/updateMethodology.cjs
 npm run build
 
 echo "---- DEPLOY END $(date) ----"
