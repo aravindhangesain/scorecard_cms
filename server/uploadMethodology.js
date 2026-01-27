@@ -2,12 +2,14 @@ import express from "express";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
+import cors from "cors";
+
 
 const app = express();
 const PORT = 3001;
 
 app.use(express.json());
-app.use(require("cors")());
+app.use(cors());
 
 // ---- PATHS ----
 const dataDir = path.resolve("src/data");
