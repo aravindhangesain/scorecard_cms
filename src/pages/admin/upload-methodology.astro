@@ -82,7 +82,7 @@
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("http://localhost:3001/upload-methodology", {
+      const res = await fetch("/upload-methodology", {
         method: "POST",
         body: formData
       });
@@ -92,8 +92,9 @@
       status.textContent = res.ok
         ? `✅ Upload successful (v${data.version})`
         : `❌ ${data.error}`;
-    } catch {
+    } catch (err) {
       status.textContent = "❌ Server not reachable";
     }
   });
 </script>
+
