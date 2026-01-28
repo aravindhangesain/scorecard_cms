@@ -19,21 +19,41 @@
 # echo "---- DEPLOY END $(date) ----"
 
 
+# #!/bin/bash
+# set -e
+
+# cd /var/www/astro-test/scorecard_cms
+
+# echo "---- DEPLOY START $(date) ----"
+
+# git reset --hard
+# git clean -fd
+
+
+# git pull origin main
+# npm install
+# node scripts/updateMethodology.cjs
+# npm run build
+
+# echo "---- DEPLOY END $(date) ----"
+
 #!/bin/bash
 set -e
 
 cd /var/www/astro-test/scorecard_cms
 
-echo "---- DEPLOY START $(date) ----"
-
+echo "Step 1: Cleanup at $(date)"
 git reset --hard
 git clean -fd
 
-
+echo "Step 2: Pulling from Git..."
 git pull origin main
+
+echo "Step 3: Installing Dependencies..."
 npm install
-node scripts/updateMethodology.cjs
+
+echo "Step 4: Building Astro..."
 npm run build
 
-echo "---- DEPLOY END $(date) ----"
+echo "DONE: $(date)"
 
