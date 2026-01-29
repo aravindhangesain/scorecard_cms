@@ -1,5 +1,8 @@
 ---
-/* Simple admin upload page */
+/*
+  Admin – Upload Methodology JSON
+  Calls Python (Flask) backend via Nginx proxy
+*/
 ---
 
 <style>
@@ -47,8 +50,9 @@
     cursor: pointer;
   }
 
-  button:hover {
-    background: #1e4fd8;
+  button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
   }
 
   #status {
@@ -63,7 +67,12 @@
     <p>Select a JSON file to update methodology data.</p>
 
     <form id="uploadForm">
-      <input type="file" name="file" accept="application/json" required />
+      <input
+        type="file"
+        name="file"
+        accept="application/json"
+        required
+      />
       <button type="submit">Upload JSON</button>
       <div id="status"></div>
     </form>
@@ -73,28 +82,39 @@
 <script>
   const form = document.getElementById("uploadForm");
   const status = document.getElementById("status");
+  const button = form.querySelector("button");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     status.textContent = "Uploading…";
+    button.disabled = true;
 
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("/upload-methodology", {
+      const res = await fetch("/api/upload-methodology", {
         method: "POST",
         body: formData
       });
 
+      // const res = await fetch("http://127.0.0.1:5000/upload-json", {
+      //   method: "POST",
+      //   body: formData
+      // });
+
       const data = await res.json();
 
-      status.textContent = res.ok
-        ? `✅ Upload successful (v${data.version})`
-        : `❌ ${data.error}`;
+      if (res.ok) {
+        status.textContent = `✅ Upload successful (archived v${data.archived?.match(/\d+/)?.[0]})`;
+        form.reset();
+      } else {
+        status.textContent = `❌ ${data.message || data.error}`;
+      }
     } catch (err) {
       status.textContent = "❌ Server not reachable";
+    } finally {
+      button.disabled = false;
     }
   });
 </script>
-
