@@ -93,15 +93,15 @@
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/upload-methodology", {
-        method: "POST",
-        body: formData
-      });
-
-      // const res = await fetch("http://127.0.0.1:5000/upload-json", {
+      // const res = await fetch("/api/upload-methodology", {
       //   method: "POST",
       //   body: formData
       // });
+
+      const res = await fetch("http://127.0.0.1:5000/api/upload-methodology", {
+        method: "POST",
+        body: formData
+      });
 
       const data = await res.json();
 
