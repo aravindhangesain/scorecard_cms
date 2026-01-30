@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# -------- LOCK (nohup-like behavior) --------
+exec 9>/tmp/scorecard_deploy.lock || exit 1
+flock -n 9 || exit 0
+
 REPO_DIR="/var/www/astro-test/scorecard_cms"
 UPLOAD_JSON="/var/www/astro-test/uploads/methodology.json"
 TARGET_JSON="$REPO_DIR/src/data/methodology.json"
