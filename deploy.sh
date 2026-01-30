@@ -3,8 +3,14 @@ set -e
 
 export PATH=/usr/local/bin:/usr/bin:/bin
 
-exec 9>/tmp/scorecard_deploy.lock || exit 1
-flock -n 9 || exit 0
+LOCKFILE="/tmp/scorecard_deploy.lock"
+
+exec 9>"$LOCKFILE" || exit 1
+if ! flock -n 9; then
+  echo "Another deploy is running, exiting."
+  exit 0
+fi
+
 
 REPO_DIR="/var/www/astro-test/scorecard_cms"
 UPLOAD_JSON="/var/www/astro-test/uploads/methodology.json"
