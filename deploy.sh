@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PATH=/usr/local/bin:/usr/bin:/bin
+
 exec 9>/tmp/scorecard_deploy.lock || exit 1
 flock -n 9 || exit 0
 
@@ -12,19 +14,29 @@ cd "$REPO_DIR"
 
 echo "---- DEPLOY START $(date) ----"
 
-git reset --hard
-git clean -fd
-git pull origin main
+OLD_HASH=""
+[ -f "$TARGET_JSON" ] && OLD_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
 
-npm install
+/usr/bin/git reset --hard
+/usr/bin/git clean -fd
+/usr/bin/git pull origin main
+
+/usr/bin/npm install
 
 if [ -f "$UPLOAD_JSON" ]; then
-  echo "📦 Applying uploaded JSON"
   cp "$UPLOAD_JSON" "$TARGET_JSON"
+  echo "Copied uploaded methodology.json"
+fi
+
+NEW_HASH=""
+[ -f "$TARGET_JSON" ] && NEW_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
+
+if [ "$OLD_HASH" != "$NEW_HASH" ]; then
+  echo "✅ JSON changed → forcing clean Astro build"
   rm -rf dist node_modules/.vite
-  npm run build
+  /usr/bin/npm run build
 else
-  echo "ℹ️ No uploaded JSON found → skipping build"
+  echo "ℹ️ JSON unchanged → skipping build"
 fi
 
 echo "---- DEPLOY END $(date) ----"
