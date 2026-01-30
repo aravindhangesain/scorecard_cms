@@ -1,48 +1,21 @@
-# #!/bin/bash
-# set -e
-# # Ensure cron has access to node, npm, git
-# export PATH=/usr/bin:/bin:/usr/local/bin
-# # Move to project root
-# cd /var/www/astro-test/scorecard_cms
-# echo "---- DEPLOY START $(date) ----"
-# # Always deploy exactly what is on GitHub
-# git checkout main
-# git fetch origin
-# git reset --hard origin/main
-# git clean -fd
-# # Install dependencies
-# npm install
-# # Run custom script (if required)
-# node scripts/updateMethodology.js
-# # Build Astro (static build)
-# npm run build
-# echo "---- DEPLOY END $(date) ----"
-
-
-# #!/bin/bash
-# set -e
-
-# cd /var/www/astro-test/scorecard_cms
-
-# echo "---- DEPLOY START $(date) ----"
-
-# git reset --hard
-# git clean -fd
-
-
-# git pull origin main
-# npm install
-# node scripts/updateMethodology.cjs
-# npm run build
-
-# echo "---- DEPLOY END $(date) ----"
-
 #!/bin/bash
 set -e
 
-cd /var/www/astro-test/scorecard_cms
+REPO_DIR="/var/www/astro-test/scorecard_cms"
+UPLOAD_JSON="/var/www/astro-test/uploads/methodology.json"
+TARGET_JSON="$REPO_DIR/src/data/methodology.json"
 
-echo "Step 1: Cleanup at $(date)"
+cd "$REPO_DIR"
+
+echo "---- DEPLOY START $(date) ----"
+
+# Hash before (current target inside repo)
+OLD_HASH=""
+if [ -f "$TARGET_JSON" ]; then
+  OLD_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
+fi
+
+echo "Step 1: Cleanup repo"
 git reset --hard
 git clean -fd
 
@@ -52,8 +25,25 @@ git pull origin main
 echo "Step 3: Installing Dependencies..."
 npm install
 
-echo "Step 4: Building Astro..."
-npm run build
+echo "Step 4: Apply uploaded methodology.json (if exists)"
+if [ -f "$UPLOAD_JSON" ]; then
+  cp "$UPLOAD_JSON" "$TARGET_JSON"
+  echo "Copied: $UPLOAD_JSON -> $TARGET_JSON"
+else
+  echo "No uploaded file found at $UPLOAD_JSON (using repo version)"
+fi
 
-echo "DONE: $(date)"
+# Hash after copy
+NEW_HASH=""
+if [ -f "$TARGET_JSON" ]; then
+  NEW_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
+fi
 
+if [ "$OLD_HASH" != "$NEW_HASH" ]; then
+  echo "✅ methodology.json changed → Building Astro..."
+  npm run build
+else
+  echo "ℹ️ methodology.json unchanged → Skipping build"
+fi
+
+echo "---- DEPLOY END $(date) ----"

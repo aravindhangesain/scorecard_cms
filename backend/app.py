@@ -7,20 +7,18 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-# ---------------- CONFIG ----------------
-# For deployment, uncomment below and comment out local testing
 
-# DATA_DIR = "/var/www/astro-test/scorecard_cms/src/data"
-# ACTIVE_FILE = os.path.join(DATA_DIR, "methodology.json")
-# TEMP_FILE = os.path.join(DATA_DIR, "methodology.new.json")
+# ---------------- CONFIG (PRODUCTION) ----------------
+# Store uploaded JSON OUTSIDE git repo so cron/git reset won't wipe it
+UPLOAD_DIR = "/var/www/astro-test/uploads"
+ARCHIVE_DIR = os.path.join(UPLOAD_DIR, "archive")
 
-# For local testing, uncomment below and comment above
+ACTIVE_FILE = os.path.join(UPLOAD_DIR, "methodology.json")
+TEMP_FILE = os.path.join(UPLOAD_DIR, "methodology.new.json")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "..", "src", "data")
-
-ACTIVE_FILE = os.path.join(DATA_DIR, "methodology.json")
-TEMP_FILE = os.path.join(DATA_DIR, "methodology.new.json")
+# Ensure folders exist
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(ARCHIVE_DIR, exist_ok=True)
 
 
 # ---------- VALIDATION FUNCTION ----------
@@ -50,7 +48,7 @@ def validate_json(old_data, new_data):
 @app.route("/api/upload-methodology", methods=["POST"])
 def upload_json():
 
-    # 0️⃣ Basic upload validation
+    # 0) Basic upload validation
     if "file" not in request.files:
         return jsonify({"error": "No file provided"}), 400
 
@@ -62,19 +60,20 @@ def upload_json():
     if not file.filename.endswith(".json"):
         return jsonify({"error": "Only JSON files allowed"}), 400
 
-    os.makedirs(DATA_DIR, exist_ok=True)
-
-    # 1️⃣ Ensure active file exists
+    # 1) Ensure active file exists (first-time bootstrap required)
     if not os.path.exists(ACTIVE_FILE):
-        return jsonify({"error": "methodology.json not found"}), 400
+        return jsonify({
+            "error": "methodology.json not found in uploads folder",
+            "message": f"Expected at: {ACTIVE_FILE}"
+        }), 400
 
-    # 2️⃣ Save uploaded file as temp file
+    # 2) Save uploaded file as temp file
     file.save(TEMP_FILE)
 
     try:
-        # 3️⃣ Find latest archived version
+        # 3) Find latest archived version from ARCHIVE_DIR
         version_files = [
-            f for f in os.listdir(DATA_DIR)
+            f for f in os.listdir(ARCHIVE_DIR)
             if re.match(r"methodology\.v\d+\.json", f)
         ]
 
@@ -83,22 +82,21 @@ def upload_json():
             if version_files else 0
         )
 
-
-        # 4️⃣ Determine previous data file
+        # 4) Determine previous data file
         previous_file = (
-            os.path.join(DATA_DIR, f"methodology.v{latest_version}.json")
+            os.path.join(ARCHIVE_DIR, f"methodology.v{latest_version}.json")
             if latest_version > 0
             else ACTIVE_FILE
         )
 
-        # 5️⃣ Load old & new JSON
+        # 5) Load old & new JSON
         with open(previous_file, "r", encoding="utf-8") as f:
             old_data = json.load(f)
 
         with open(TEMP_FILE, "r", encoding="utf-8") as f:
             new_data = json.load(f)
 
-        # 6️⃣ Validate
+        # 6) Validate
         validate_json(old_data, new_data)
 
     except Exception as e:
@@ -110,34 +108,19 @@ def upload_json():
             "message": str(e)
         }), 400
 
-    # 7️⃣ Archive current active file
+    # 7) Archive current active file
     next_version = latest_version + 1
-    archive_file = os.path.join(
-        DATA_DIR, f"methodology.v{next_version}.json"
-    )
-
+    archive_file = os.path.join(ARCHIVE_DIR, f"methodology.v{next_version}.json")
     shutil.copyfile(ACTIVE_FILE, archive_file)
 
-    # 8️⃣ Activate new file (atomic replace)
+    # 8) Activate new file (atomic replace)
     os.replace(TEMP_FILE, ACTIVE_FILE)
 
     return jsonify({
         "message": "methodology.json updated successfully",
-        "archived": f"methodology.v{next_version}.json"
+        "archived": f"methodology.v{next_version}.json",
+        "active_path": ACTIVE_FILE
     }), 200
-
-# ------------- GET ENDPOINT -------------
-@app.route("/get-json", methods=["GET"])
-def get_json():
-    if not os.path.exists(ACTIVE_FILE):
-        return jsonify({"error": "methodology.json not found"}), 404
-
-    try:
-        with open(ACTIVE_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return jsonify(data), 200
-    except Exception as e:
-        return jsonify({"error": "Failed to read file", "message": str(e)}), 500
 
 
 # ------------- ENTRY POINT -------------
