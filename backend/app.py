@@ -7,6 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+print("### THIS APP.PY IS LOADED ###")
 
 # ---------------- CONFIG (PRODUCTION) ----------------
 # Store uploaded JSON OUTSIDE git repo so cron/git reset won't wipe it
@@ -43,6 +44,11 @@ def validate_json(old_data, new_data):
         if old_val is not None and (new_val is None or new_val == ""):
             raise ValueError(f"Missing required field: {path_key}")
 
+@app.route("/__routes", methods=["GET"])
+def list_routes():
+    return {
+        "routes": [str(r) for r in app.url_map.iter_rules()]
+    }
 
 # ------------- UPLOAD ENDPOINT -------------
 @app.route("/api/upload-methodology", methods=["POST"])
