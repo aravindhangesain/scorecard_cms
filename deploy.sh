@@ -11,38 +11,66 @@ if ! flock -n 9; then
   exit 0
 fi
 
-
 REPO_DIR="/var/www/astro-test/scorecard_cms"
-UPLOAD_JSON="/var/www/astro-test/uploads/methodology.json"
-TARGET_JSON="$REPO_DIR/src/data/methodology.json"
+UPLOAD_DIR="/var/www/astro-test/uploads"
+DATA_DIR="$REPO_DIR/src/data"
+
+FILES=(
+  "methodology.json"
+  "top-perfomers.json"
+)
 
 cd "$REPO_DIR"
 
 echo "---- DEPLOY START $(date) ----"
 
-OLD_HASH=""
-[ -f "$TARGET_JSON" ] && OLD_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
+# Save old hashes
+declare -A OLD_HASH
+declare -A NEW_HASH
 
+for file in "${FILES[@]}"; do
+  if [ -f "$DATA_DIR/$file" ]; then
+    OLD_HASH["$file"]=$(sha256sum "$DATA_DIR/$file" | awk '{print $1}')
+  else
+    OLD_HASH["$file"]=""
+  fi
+done
+
+# Git update
 /usr/bin/git reset --hard
 /usr/bin/git clean -fd
 /usr/bin/git pull origin main
 
 /usr/bin/npm install
 
-if [ -f "$UPLOAD_JSON" ]; then
-  cp "$UPLOAD_JSON" "$TARGET_JSON"
-  echo "Copied uploaded methodology.json"
-fi
+# Copy uploaded JSON files if they exist
+JSON_CHANGED=false
 
-NEW_HASH=""
-[ -f "$TARGET_JSON" ] && NEW_HASH=$(sha256sum "$TARGET_JSON" | awk '{print $1}')
+for file in "${FILES[@]}"; do
+  if [ -f "$UPLOAD_DIR/$file" ]; then
+    cp "$UPLOAD_DIR/$file" "$DATA_DIR/$file"
+    echo "Copied uploaded $file"
+  fi
 
-if [ "$OLD_HASH" != "$NEW_HASH" ]; then
-  echo "✅ JSON changed → forcing clean Astro build"
+  if [ -f "$DATA_DIR/$file" ]; then
+    NEW_HASH["$file"]=$(sha256sum "$DATA_DIR/$file" | awk '{print $1}')
+  else
+    NEW_HASH["$file"]=""
+  fi
+
+  if [ "${OLD_HASH[$file]}" != "${NEW_HASH[$file]}" ]; then
+    JSON_CHANGED=true
+    echo "$file changed"
+  fi
+done
+
+# Build only if something changed
+if [ "$JSON_CHANGED" = true ]; then
+  echo "JSON changed → forcing clean Astro build"
   rm -rf dist node_modules/.vite
   /usr/bin/npm run build
 else
-  echo "ℹ️ JSON unchanged → skipping build"
+  echo "JSON unchanged → skipping build"
 fi
 
 echo "---- DEPLOY END $(date) ----"
