@@ -254,7 +254,7 @@ def parse_excel(path):
     return data
 
 # ---------------- API ----------------
-@app.route("/api/upload-top-performers", methods=["POST"])
+@app.route("/api/upload-top-perfomers", methods=["POST"])
 def upload_top_performers():
     if "file" not in request.files:
         return jsonify({"error": "No file provided"}), 400
