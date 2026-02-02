@@ -2,75 +2,85 @@
 set -e
 
 export PATH=/usr/local/bin:/usr/bin:/bin
-
 LOCKFILE="/tmp/scorecard_deploy.lock"
 
 exec 9>"$LOCKFILE" || exit 1
-if ! flock -n 9; then
-  echo "Another deploy is running, exiting."
-  exit 0
-fi
+flock -n 9 || exit 0
 
 REPO_DIR="/var/www/astro-test/scorecard_cms"
 UPLOAD_DIR="/var/www/astro-test/uploads"
 DATA_DIR="$REPO_DIR/src/data"
 
-FILES=(
-  "methodology.json"
-  "top-perfomers.json"
-)
-
 cd "$REPO_DIR"
-
 echo "---- DEPLOY START $(date) ----"
 
-# Save old hashes
-declare -A OLD_HASH
-declare -A NEW_HASH
+# ------------------------------------------------
+# 1️⃣ UPDATE GIT FIRST (CRITICAL)
+# ------------------------------------------------
+git reset --hard
+git clean -fd
+git pull origin main
+npm install
 
-for file in "${FILES[@]}"; do
-  if [ -f "$DATA_DIR/$file" ]; then
-    OLD_HASH["$file"]=$(sha256sum "$DATA_DIR/$file" | awk '{print $1}')
-  else
-    OLD_HASH["$file"]=""
-  fi
-done
-
-# Git update
-/usr/bin/git reset --hard
-/usr/bin/git clean -fd
-/usr/bin/git pull origin main
-
-/usr/bin/npm install
-
-# Copy uploaded JSON files if they exist
 JSON_CHANGED=false
 
-for file in "${FILES[@]}"; do
-  if [ -f "$UPLOAD_DIR/$file" ]; then
-    cp "$UPLOAD_DIR/$file" "$DATA_DIR/$file"
-    echo "Copied uploaded $file"
-  fi
+# =================================================
+# FILE_MAP1 → methodology.json
+# =================================================
+METHOD_SRC="$UPLOAD_DIR/methodology.json"
+METHOD_DEST="$DATA_DIR/methodology.json"
 
-  if [ -f "$DATA_DIR/$file" ]; then
-    NEW_HASH["$file"]=$(sha256sum "$DATA_DIR/$file" | awk '{print $1}')
-  else
-    NEW_HASH["$file"]=""
-  fi
+METHOD_OLD_HASH=""
+METHOD_NEW_HASH=""
 
-  if [ "${OLD_HASH[$file]}" != "${NEW_HASH[$file]}" ]; then
-    JSON_CHANGED=true
-    echo "$file changed"
-  fi
-done
+[ -f "$METHOD_DEST" ] && METHOD_OLD_HASH=$(sha256sum "$METHOD_DEST" | awk '{print $1}')
 
-# Build only if something changed
+if [ -f "$METHOD_SRC" ]; then
+  cp "$METHOD_SRC" "$METHOD_DEST"
+  echo "Copied methodology.json"
+fi
+
+[ -f "$METHOD_DEST" ] && METHOD_NEW_HASH=$(sha256sum "$METHOD_DEST" | awk '{print $1}')
+
+if [ "$METHOD_OLD_HASH" != "$METHOD_NEW_HASH" ]; then
+  JSON_CHANGED=true
+  echo "methodology.json changed"
+fi
+
+
+# =================================================
+# FILE_MAP2 → top-perfomers.json
+# =================================================
+TOP_SRC="$UPLOAD_DIR/top-perfomers.json"
+TOP_DEST="$DATA_DIR/top-perfomers.json"
+
+TOP_OLD_HASH=""
+TOP_NEW_HASH=""
+
+[ -f "$TOP_DEST" ] && TOP_OLD_HASH=$(sha256sum "$TOP_DEST" | awk '{print $1}')
+
+if [ -f "$TOP_SRC" ]; then
+  cp "$TOP_SRC" "$TOP_DEST"
+  echo "Copied top-perfomers.json"
+fi
+
+[ -f "$TOP_DEST" ] && TOP_NEW_HASH=$(sha256sum "$TOP_DEST" | awk '{print $1}')
+
+if [ "$TOP_OLD_HASH" != "$TOP_NEW_HASH" ]; then
+  JSON_CHANGED=true
+  echo "top-perfomers.json changed"
+fi
+
+
+# ------------------------------------------------
+# 4️⃣ BUILD ONLY IF DATA CHANGED
+# ------------------------------------------------
 if [ "$JSON_CHANGED" = true ]; then
-  echo "JSON changed → forcing clean Astro build"
+  echo "JSON changed → rebuilding Astro"
   rm -rf dist node_modules/.vite
-  /usr/bin/npm run build
+  npm run build
 else
-  echo "JSON unchanged → skipping build"
+  echo "No JSON changes → skipping build"
 fi
 
 echo "---- DEPLOY END $(date) ----"
