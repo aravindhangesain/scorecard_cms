@@ -139,8 +139,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 UPLOAD_DIR = "/var/www/astro-test/uploads"
 ARCHIVE_DIR = os.path.join(UPLOAD_DIR, "archive")
 
-ACTIVE_FILE = os.path.join(UPLOAD_DIR, "top-performers.json")
-TEMP_FILE = os.path.join(UPLOAD_DIR, "top-performers.tmp")
+ACTIVE_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.json")
+TEMP_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.tmp")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(ARCHIVE_DIR, exist_ok=True)
@@ -173,7 +173,7 @@ def get_latest_version():
     versions = [
         int(re.search(r"\d+", f).group())
         for f in os.listdir(ARCHIVE_DIR)
-        if re.match(r"top-performers\.v\d+\.json", f)
+        if re.match(r"top-perfomers\.v\d+\.json", f)
     ]
     return max(versions) if versions else 0
 
@@ -284,7 +284,7 @@ def upload_top_performers():
             next_version = latest_version + 1
             shutil.copyfile(
                 ACTIVE_FILE,
-                os.path.join(ARCHIVE_DIR, f"top-performers.v{next_version}.json")
+                os.path.join(ARCHIVE_DIR, f"top-perfomers.v{next_version}.json")
             )
         else:
             next_version = 0
@@ -302,9 +302,9 @@ def upload_top_performers():
             os.remove(TEMP_FILE)
 
     return jsonify({
-        "message": "top-performers.json updated successfully",
+        "message": "top-perfomers.json updated successfully",
         "records": len(new_data),
-        "archived": f"top-performers.v{next_version}.json" if next_version else None
+        "archived": f"top-perfomers.v{next_version}.json" if next_version else None
     }), 200
 
 
