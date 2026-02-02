@@ -20,7 +20,7 @@
     padding: 32px;
     width: 360px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .upload-card h1 {
@@ -67,19 +67,83 @@
     <p>Select a JSON file to update methodology data.</p>
 
     <form id="uploadForm">
-      <input
+      <!-- <input
         type="file"
         name="file"
         accept="application/json"
         required
-      />
+      /> -->
+      <input type="file" name="file" accept=".json,.xlsx,.xls,.csv" required />
+
       <button type="submit">Upload JSON</button>
       <div id="status"></div>
     </form>
   </div>
 </div>
-
 <script>
+  const form = document.getElementById("uploadForm");
+  const status = document.getElementById("status");
+  const button = form.querySelector("button");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fileInput = form.querySelector('input[type="file"]');
+    const file = fileInput.files[0];
+
+    if (!file) {
+      status.textContent = "Please select a file";
+      return;
+    }
+
+    const ext = file.name.split(".").pop().toLowerCase();
+
+    let endpoint = "";
+
+    if (ext === "json") {
+      endpoint = "/api/upload-methodology";
+    } else if (["xlsx", "xls", "csv"].includes(ext)) {
+      endpoint = "/api/upload-top-performers";
+    } else {
+      status.textContent = "Unsupported file type";
+      return;
+    }
+
+    status.textContent = "Uploading…";
+    button.disabled = true;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        if (ext === "json") {
+          status.textContent =
+            `✅ JSON uploaded (archived v${data.archived?.match(/\d+/)?.[0]})`;
+        } else {
+          status.textContent =
+            `✅ ${ext.toUpperCase()} converted successfully`;
+        }
+        form.reset();
+      } else {
+        status.textContent = `${data.message || data.error}`;
+      }
+    } catch (err) {
+      status.textContent = "Server not reachable";
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+
+<!-- <script>
   const form = document.getElementById("uploadForm");
   const status = document.getElementById("status");
   const button = form.querySelector("button");
@@ -95,7 +159,7 @@
     try {
       const res = await fetch("/api/upload-methodology", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       // const res = await fetch("http://127.0.0.1:5000/api/upload-methodology", {
@@ -117,4 +181,4 @@
       button.disabled = false;
     }
   });
-</script>
+</script> -->
