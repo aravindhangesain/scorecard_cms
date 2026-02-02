@@ -126,10 +126,10 @@
       if (res.ok) {
         if (ext === "json") {
           status.textContent =
-            `✅ JSON uploaded (archived v${data.archived?.match(/\d+/)?.[0]})`;
+            `JSON uploaded (archived v${data.archived?.match(/\d+/)?.[0]})`;
         } else {
           status.textContent =
-            `✅ ${ext.toUpperCase()} converted successfully`;
+            `${ext.toUpperCase()} converted successfully`;
         }
         form.reset();
       } else {
