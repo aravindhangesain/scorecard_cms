@@ -17,8 +17,8 @@ print("### THIS APP.PY IS LOADED ###")
 UPLOAD_DIR = "/var/www/astro-test/uploads"
 ARCHIVE_DIR = os.path.join(UPLOAD_DIR, "archive")
 
-ACTIVE_FILE = os.path.join(UPLOAD_DIR, "methodology.json")
-TEMP_FILE = os.path.join(UPLOAD_DIR, "methodology.new.json")
+METH_ACTIVE_FILE = os.path.join(UPLOAD_DIR, "methodology.json")
+METH_TEMP_FILE   = os.path.join(UPLOAD_DIR, "methodology.new.json")
 
 # Ensure folders exist
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -70,14 +70,14 @@ def upload_json():
         return jsonify({"error": "Only JSON files allowed"}), 400
 
     # 1) Ensure active file exists (first-time bootstrap required)
-    if not os.path.exists(ACTIVE_FILE):
+    if not os.path.exists(METH_ACTIVE_FILE):
         return jsonify({
             "error": "methodology.json not found in uploads folder",
-            "message": f"Expected at: {ACTIVE_FILE}"
+            "message": f"Expected at: {METH_ACTIVE_FILE}"
         }), 400
 
     # 2) Save uploaded file as temp file
-    file.save(TEMP_FILE)
+    file.save(METH_TEMP_FILE)
 
     try:
         # 3) Find latest archived version from ARCHIVE_DIR
@@ -95,22 +95,22 @@ def upload_json():
         previous_file = (
             os.path.join(ARCHIVE_DIR, f"methodology.v{latest_version}.json")
             if latest_version > 0
-            else ACTIVE_FILE
+            else METH_ACTIVE_FILE 
         )
 
         # 5) Load old & new JSON
         with open(previous_file, "r", encoding="utf-8") as f:
             old_data = json.load(f)
 
-        with open(TEMP_FILE, "r", encoding="utf-8") as f:
+        with open(METH_TEMP_FILE, "r", encoding="utf-8") as f:
             new_data = json.load(f)
 
         # 6) Validate
         validate_json(old_data, new_data)
 
     except Exception as e:
-        if os.path.exists(TEMP_FILE):
-            os.remove(TEMP_FILE)
+        if os.path.exists(METH_TEMP_FILE):
+            os.remove(METH_TEMP_FILE)
 
         return jsonify({
             "error": "Update blocked",
@@ -120,15 +120,15 @@ def upload_json():
     # 7) Archive current active file
     next_version = latest_version + 1
     archive_file = os.path.join(ARCHIVE_DIR, f"methodology.v{next_version}.json")
-    shutil.copyfile(ACTIVE_FILE, archive_file)
+    shutil.copyfile(METH_ACTIVE_FILE , archive_file)
 
     # 8) Activate new file (atomic replace)
-    os.replace(TEMP_FILE, ACTIVE_FILE)
+    os.replace(METH_TEMP_FILE, METH_ACTIVE_FILE )
 
     return jsonify({
         "message": "methodology.json updated successfully",
         "archived": f"methodology.v{next_version}.json",
-        "active_path": ACTIVE_FILE
+        "active_path": METH_ACTIVE_FILE 
     }), 200
     
 # ---------------- PATHS ----------------
@@ -139,8 +139,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 UPLOAD_DIR = "/var/www/astro-test/uploads"
 ARCHIVE_DIR = os.path.join(UPLOAD_DIR, "archive")
 
-ACTIVE_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.json")
-TEMP_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.tmp")
+TOP_ACTIVE_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.json")
+TOP_TEMP_FILE = os.path.join(UPLOAD_DIR, "top-perfomers.tmp")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(ARCHIVE_DIR, exist_ok=True)
@@ -265,13 +265,13 @@ def upload_top_performers():
     if not filename.endswith((".csv", ".xlsx")):
         return jsonify({"error": "Only CSV or Excel allowed"}), 400
 
-    file.save(TEMP_FILE)
+    file.save(TOP_TEMP_FILE)
 
     try:
         if filename.endswith(".csv"):
-            new_data = parse_csv(TEMP_FILE)
+            new_data = parse_csv(TOP_TEMP_FILE)
         else:
-            new_data = parse_excel(TEMP_FILE)
+            new_data = parse_excel(TOP_TEMP_FILE)
 
         if not new_data:
             raise ValueError("No valid data rows found")
@@ -280,17 +280,17 @@ def upload_top_performers():
 
         latest_version = get_latest_version()
 
-        if os.path.exists(ACTIVE_FILE):
+        if os.path.exists(TOP_ACTIVE_FILE):
             next_version = latest_version + 1
             shutil.copyfile(
-                ACTIVE_FILE,
+                TOP_ACTIVE_FILE,
                 os.path.join(ARCHIVE_DIR, f"top-perfomers.v{next_version}.json")
             )
         else:
             next_version = 0
 
-        print("WRITING JSON TO:", ACTIVE_FILE)
-        with open(ACTIVE_FILE, "w", encoding="utf-8") as f:
+        print("WRITING JSON TO:", TOP_ACTIVE_FILE)
+        with open(TOP_ACTIVE_FILE, "w", encoding="utf-8") as f:
             json.dump(new_data, f, indent=2, ensure_ascii=False)
 
     except Exception as e:
@@ -298,8 +298,8 @@ def upload_top_performers():
         return jsonify({"error": str(e)}), 400
 
     finally:
-        if os.path.exists(TEMP_FILE):
-            os.remove(TEMP_FILE)
+        if os.path.exists(TOP_TEMP_FILE):
+            os.remove(TOP_TEMP_FILE)
 
     return jsonify({
         "message": "top-perfomers.json updated successfully",
